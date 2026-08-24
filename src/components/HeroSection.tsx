@@ -17,54 +17,70 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
     status: "매칭 완료 ✨",
   });
 
-  // 1. Energetic 0.58x Cinematic Motion (경쾌하고 시원한 속도감)
+  // 1. 100% Seamless 60FPS Crossfading Video Loop (완벽하게 부드러운 무한 디졸브 루프)
   useEffect(() => {
     const v1 = video1Ref.current;
     const v2 = video2Ref.current;
     if (!v1 || !v2) return;
 
-    // 시원하고 경쾌한 0.58배속 모션
-    v1.playbackRate = 0.58;
-    v2.playbackRate = 0.58;
+    const SPEED = 0.58;
+    const FADE_DURATION_MS = 1800;
+    const TRIGGER_BEFORE_END_SEC = 2.4; // 끝까지 도달하기 2.4초 전에 다음 영상 시작
+
+    v1.playbackRate = SPEED;
+    v2.playbackRate = SPEED;
 
     let isTransitioning = false;
+    let animId: number;
 
-    const handleTimeUpdate1 = () => {
-      if (!v1.duration || isTransitioning) return;
-      if (v1.currentTime >= v1.duration - 1.2) {
-        isTransitioning = true;
-        v2.currentTime = 0;
-        v2.playbackRate = 0.58;
-        v2.play().catch(() => {});
-        setActiveVideo(2);
-        setTimeout(() => {
-          isTransitioning = false;
-        }, 1500);
+    const checkLoop = () => {
+      // 1번 영상 ➔ 2번 영상 전환 체크
+      if (activeVideo === 1 && v1.duration && !isTransitioning) {
+        if (v1.currentTime >= v1.duration - TRIGGER_BEFORE_END_SEC) {
+          isTransitioning = true;
+          v2.currentTime = 0;
+          v2.playbackRate = SPEED;
+          v2.play().catch(() => {});
+          setActiveVideo(2);
+
+          // 페이드가 완전히 끝난 후 1번 영상을 안전하게 대기 상태로 정돈
+          setTimeout(() => {
+            if (v1) {
+              v1.pause();
+              v1.currentTime = 0;
+            }
+            isTransitioning = false;
+          }, FADE_DURATION_MS + 200);
+        }
       }
+      // 2번 영상 ➔ 1번 영상 전환 체크
+      else if (activeVideo === 2 && v2.duration && !isTransitioning) {
+        if (v2.currentTime >= v2.duration - TRIGGER_BEFORE_END_SEC) {
+          isTransitioning = true;
+          v1.currentTime = 0;
+          v1.playbackRate = SPEED;
+          v1.play().catch(() => {});
+          setActiveVideo(1);
+
+          setTimeout(() => {
+            if (v2) {
+              v2.pause();
+              v2.currentTime = 0;
+            }
+            isTransitioning = false;
+          }, FADE_DURATION_MS + 200);
+        }
+      }
+
+      animId = requestAnimationFrame(checkLoop);
     };
 
-    const handleTimeUpdate2 = () => {
-      if (!v2.duration || isTransitioning) return;
-      if (v2.currentTime >= v2.duration - 1.2) {
-        isTransitioning = true;
-        v1.currentTime = 0;
-        v1.playbackRate = 0.58;
-        v1.play().catch(() => {});
-        setActiveVideo(1);
-        setTimeout(() => {
-          isTransitioning = false;
-        }, 1500);
-      }
-    };
-
-    v1.addEventListener("timeupdate", handleTimeUpdate1);
-    v2.addEventListener("timeupdate", handleTimeUpdate2);
+    animId = requestAnimationFrame(checkLoop);
 
     return () => {
-      v1.removeEventListener("timeupdate", handleTimeUpdate1);
-      v2.removeEventListener("timeupdate", handleTimeUpdate2);
+      cancelAnimationFrame(animId);
     };
-  }, []);
+  }, [activeVideo]);
 
   // 2. Telemetry Live Dispatch Data
   useEffect(() => {
@@ -87,14 +103,15 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
 
   return (
     <section id="hero" className="relative min-h-[92vh] flex flex-col items-center justify-center overflow-hidden pt-28 md:pt-36 pb-20 px-4 sm:px-6 lg:px-8">
-      {/* 🎬 1. Full-Width Background Video Layer (부드러운 0.45배속 슬로우 모션) */}
+      {/* 🎬 1. Full-Width Background Video Layer (1.8초 울트라 스무스 크로스페이드 디졸브) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video
           ref={video1Ref}
           autoPlay
           muted
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover brightness-[1.02] contrast-[1.02] transition-opacity duration-1000 ease-in-out ${
+          preload="auto"
+          className={`absolute inset-0 w-full h-full object-cover brightness-[1.02] contrast-[1.02] transition-opacity duration-[1800ms] ease-in-out ${
             activeVideo === 1 ? "opacity-75" : "opacity-0"
           }`}
         >
@@ -105,7 +122,8 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           ref={video2Ref}
           muted
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover brightness-[1.02] contrast-[1.02] transition-opacity duration-1000 ease-in-out ${
+          preload="auto"
+          className={`absolute inset-0 w-full h-full object-cover brightness-[1.02] contrast-[1.02] transition-opacity duration-[1800ms] ease-in-out ${
             activeVideo === 2 ? "opacity-75" : "opacity-0"
           }`}
         >
