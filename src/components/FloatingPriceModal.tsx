@@ -109,8 +109,8 @@ export default function FloatingPriceModal({
 
   return (
     <>
-      {/* 🖥️ 1. Desktop Dual Floating Action Buttons (sm 이상 화면 전용) */}
-      <div className="hidden sm:flex fixed bottom-6 right-6 z-40 flex-col items-end space-y-2.5 animate-fade-in">
+      {/* 🖥️ 1. Desktop Dual Floating Action Buttons (위로 한 칸 올린 위치) */}
+      <div className="hidden sm:flex fixed bottom-20 right-6 z-40 flex-col items-end space-y-3 animate-fade-in">
         {/* Top Button: 10초 간편 접수 */}
         <button
           type="button"
