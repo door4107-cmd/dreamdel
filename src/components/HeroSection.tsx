@@ -17,14 +17,15 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
     status: "매칭 완료 ✨",
   });
 
-  // 1. Seamless Dual-Video Crossfade & 0.75x Slow Motion Loop
+  // 1. Serene 0.45x Cinematic Slow-Motion (정신없지 않고 부드러운 초슬로우 재생)
   useEffect(() => {
     const v1 = video1Ref.current;
     const v2 = video2Ref.current;
     if (!v1 || !v2) return;
 
-    v1.playbackRate = 0.75;
-    v2.playbackRate = 0.75;
+    // 편안하고 차분한 0.45배속 슬로우 모션
+    v1.playbackRate = 0.45;
+    v2.playbackRate = 0.45;
 
     let isTransitioning = false;
 
@@ -33,7 +34,7 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
       if (v1.currentTime >= v1.duration - 1.2) {
         isTransitioning = true;
         v2.currentTime = 0;
-        v2.playbackRate = 0.75;
+        v2.playbackRate = 0.45;
         v2.play().catch(() => {});
         setActiveVideo(2);
         setTimeout(() => {
@@ -47,7 +48,7 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
       if (v2.currentTime >= v2.duration - 1.2) {
         isTransitioning = true;
         v1.currentTime = 0;
-        v1.playbackRate = 0.75;
+        v1.playbackRate = 0.45;
         v1.play().catch(() => {});
         setActiveVideo(1);
         setTimeout(() => {
@@ -85,16 +86,16 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
   }, []);
 
   return (
-    <section id="hero" className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden pt-28 md:pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-      {/* 🎬 1. Full-Width Background Video Layer (자연스럽고 화사하게 밝아진 화질) */}
+    <section id="hero" className="relative min-h-[92vh] flex flex-col items-center justify-center overflow-hidden pt-28 md:pt-36 pb-20 px-4 sm:px-6 lg:px-8">
+      {/* 🎬 1. Full-Width Background Video Layer (부드러운 0.45배속 슬로우 모션) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video
           ref={video1Ref}
           autoPlay
           muted
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover brightness-[1.04] contrast-[1.04] transition-opacity duration-1000 ease-in-out ${
-            activeVideo === 1 ? "opacity-85" : "opacity-0"
+          className={`absolute inset-0 w-full h-full object-cover brightness-[1.02] contrast-[1.02] transition-opacity duration-1000 ease-in-out ${
+            activeVideo === 1 ? "opacity-75" : "opacity-0"
           }`}
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
@@ -104,116 +105,139 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           ref={video2Ref}
           muted
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover brightness-[1.04] contrast-[1.04] transition-opacity duration-1000 ease-in-out ${
-            activeVideo === 2 ? "opacity-85" : "opacity-0"
+          className={`absolute inset-0 w-full h-full object-cover brightness-[1.02] contrast-[1.02] transition-opacity duration-1000 ease-in-out ${
+            activeVideo === 2 ? "opacity-75" : "opacity-0"
           }`}
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
         {/* Clean Soft Light Blend to Section Below */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-[#F8F9FC]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-[#F8F9FC]" />
       </div>
 
-      {/* 2. Soft Ambient Lighting */}
+      {/* 2. Ambient Lighting */}
       <div className="ambient-glow bg-orange-500/10 top-1/4 left-1/2 -translate-x-1/2" />
       <div className="ambient-glow bg-blue-500/8 top-1/2 left-1/3" />
 
-      {/* 3. Hero Centered Foreground with Generous Typography Scale */}
+      {/* 3. Hero Centered Foreground */}
       <div className="relative z-10 max-w-5xl mx-auto text-center">
         {/* Dynamic Live Badge */}
-        <div className="inline-flex items-center space-x-2.5 px-5 py-2 rounded-full bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-sm mb-7 hover:border-slate-300 transition-all">
+        <div className="inline-flex items-center space-x-2.5 px-5 py-2.5 rounded-full bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-sm mb-7 hover:border-slate-300 transition-all">
           <span className="flex h-2.5 w-2.5 relative">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75" />
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500" />
           </span>
-          <span className="text-sm font-bold text-slate-800">
+          <span className="text-sm sm:text-base font-black text-slate-900">
             수도권 30초 배차망
           </span>
           <span className="text-slate-300">|</span>
-          <span className="text-sm font-medium text-slate-600">
-            {latestDispatch.area} · <span className="text-orange-600 font-extrabold">{latestDispatch.vehicle}</span> ({latestDispatch.status})
+          <span className="text-sm sm:text-base font-semibold text-slate-700">
+            {latestDispatch.area} · <span className="text-orange-600 font-black">{latestDispatch.vehicle}</span> ({latestDispatch.status})
           </span>
         </div>
 
-        {/* 🌟 이상적인 비율의 세련된 메인 헤드라인 (정말 약간만 더 크게 조율) */}
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-950 mb-6 leading-[1.12] break-keep drop-shadow-[0_2px_12px_rgba(255,255,255,0.9)]">
+        {/* 메인 헤드라인 */}
+        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-950 mb-7 leading-[1.12] break-keep drop-shadow-[0_2px_15px_rgba(255,255,255,0.9)]">
           급할 땐 고민 없이,<br />
           <span className="text-gradient-vermilion drop-shadow-none">가장 빠른 퀵서비스 드림델.</span>
         </h1>
 
-        {/* 30초 배차 안전하고 빠른 배송 드림델 서브 카피 (가독성 높은 로열 블루 포인트) */}
-        <p className="text-lg sm:text-xl md:text-2xl text-slate-800 font-semibold max-w-3xl mx-auto mb-10 leading-relaxed break-keep">
-          오토바이 급행부터 다마스 · 라보 · 밴 · 트럭까지.<br className="hidden sm:inline" />
-          지금 부르면 가장 가까운 전문 기사님의 <span className="text-blue-700 font-black drop-shadow-sm">30초 배차, 안전하고 빠른 배송 드림델</span>.
-        </p>
+        {/* 🌟 2. 눈에 확 들어오는 고대비 서브 카피 박스 (가독성 극대화) */}
+        <div className="inline-block p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200/90 shadow-xl max-w-3xl mx-auto mb-10 text-center">
+          <div className="text-slate-700 font-bold text-sm sm:text-base md:text-lg mb-1.5 break-keep">
+            🛵 오토바이 급행부터 다마스 · 라보 · 밴 · 1톤 트럭까지
+          </div>
+          <div className="text-slate-950 font-black text-base sm:text-lg md:text-2xl leading-snug break-keep">
+            지금 부르면 가장 가까운 전문 기사님의{" "}
+            <span className="text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-xl border border-blue-200 inline-block my-0.5">
+              ⚡ 30초 배차
+            </span>
+            ,{" "}
+            <span className="text-orange-600 bg-orange-50 px-2.5 py-0.5 rounded-xl border border-orange-200 inline-block my-0.5">
+              안전하고 빠른 배송 드림델
+            </span>
+          </div>
+        </div>
 
-        {/* 시원해진 메인 인터랙티브 CTA 버튼 */}
-        <div className="flex items-center justify-center gap-3 mb-16">
+        {/* 메인 인터랙티브 CTA 버튼 */}
+        <div className="flex items-center justify-center gap-3 mb-14">
           <button
             type="button"
             onClick={onQuote}
-            className="btn-tactile-primary text-base sm:text-lg !py-4.5 !px-10 flex items-center justify-center space-x-3 shadow-[0_12px_30px_rgba(15,23,42,0.25)] active:scale-[0.98] transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:outline-none font-bold"
+            className="btn-tactile-primary text-base sm:text-lg md:text-xl !py-5 !px-12 flex items-center justify-center space-x-3.5 shadow-[0_16px_36px_rgba(15,23,42,0.28)] active:scale-[0.98] transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:outline-none font-black"
           >
             <span>실시간 요금 조회 (동대동 / 거리)</span>
-            <svg className="w-5 h-5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg className="w-6 h-6 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </button>
         </div>
 
-        {/* 4. 4열 신뢰 지표 카드 */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto">
-          <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-sm text-left hover:border-slate-300 hover:shadow-md transition-all">
-            <div className="text-[11px] font-bold text-orange-600 mb-1 flex items-center space-x-1">
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-              <span>30초 매칭</span>
+        {/* 🌟 3. 크고 시원시원해진 4칸 신뢰 지표 카드 (글자 크기 & 박스 크기 대폭 확장) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
+          {/* Card 1: 배차 시간 */}
+          <div className="p-5 sm:p-7 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-lg hover:shadow-2xl hover:border-orange-300 hover:-translate-y-1 transition-all text-left">
+            <div className="text-xs sm:text-sm font-black text-orange-600 mb-2 flex items-center space-x-1.5">
+              <span className="p-1.5 rounded-lg bg-orange-100/80">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </span>
+              <span>초고속 매칭</span>
             </div>
-            <div className="text-xl sm:text-2xl font-black text-slate-900 font-mono">
-              24.8<span className="text-xs font-bold text-slate-500 ml-0.5">초</span>
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 font-mono tracking-tight my-1">
+              24.8<span className="text-sm sm:text-base font-bold text-slate-500 ml-1">초</span>
             </div>
-            <div className="text-[10px] text-slate-500 mt-0.5">평균 배차 시간</div>
+            <div className="text-xs sm:text-sm text-slate-600 font-bold mt-1">평균 배차 시간</div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-sm text-left hover:border-slate-300 hover:shadow-md transition-all">
-            <div className="text-[11px] font-bold text-emerald-600 mb-1 flex items-center space-x-1">
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>정시 배송</span>
+          {/* Card 2: 약속 시간 준수 */}
+          <div className="p-5 sm:p-7 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-lg hover:shadow-2xl hover:border-emerald-300 hover:-translate-y-1 transition-all text-left">
+            <div className="text-xs sm:text-sm font-black text-emerald-600 mb-2 flex items-center space-x-1.5">
+              <span className="p-1.5 rounded-lg bg-emerald-100/80">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </span>
+              <span>정시 도착</span>
             </div>
-            <div className="text-xl sm:text-2xl font-black text-slate-900 font-mono">
-              99.8<span className="text-xs font-bold text-slate-500 ml-0.5">%</span>
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 font-mono tracking-tight my-1">
+              99.8<span className="text-sm sm:text-base font-bold text-slate-500 ml-1">%</span>
             </div>
-            <div className="text-[10px] text-slate-500 mt-0.5">도심 약속 준수</div>
+            <div className="text-xs sm:text-sm text-slate-600 font-bold mt-1">도심 약속 준수율</div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-sm text-left hover:border-slate-300 hover:shadow-md transition-all">
-            <div className="text-[11px] font-bold text-blue-600 mb-1 flex items-center space-x-1">
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-              </svg>
+          {/* Card 3: 적재물 책임보험 */}
+          <div className="p-5 sm:p-7 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-lg hover:shadow-2xl hover:border-blue-300 hover:-translate-y-1 transition-all text-left">
+            <div className="text-xs sm:text-sm font-black text-blue-600 mb-2 flex items-center space-x-1.5">
+              <span className="p-1.5 rounded-lg bg-blue-100/80">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </span>
               <span>책임 보험</span>
             </div>
-            <div className="text-xl sm:text-2xl font-black text-slate-900 font-mono">
-              1<span className="text-xs font-bold text-slate-500 ml-0.5">억원</span>
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 font-mono tracking-tight my-1">
+              1<span className="text-sm sm:text-base font-bold text-slate-500 ml-1">억원</span>
             </div>
-            <div className="text-[10px] text-slate-500 mt-0.5">현대해상 정식가입</div>
+            <div className="text-xs sm:text-sm text-slate-600 font-bold mt-1">현대해상 100% 가입</div>
           </div>
 
-          <div className="p-4 rounded-2xl bg-white/90 backdrop-blur-md border border-slate-200/80 shadow-sm text-left hover:border-slate-300 hover:shadow-md transition-all">
-            <div className="text-[11px] font-bold text-rose-600 mb-1 flex items-center space-x-1">
-              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
+          {/* Card 4: 24시간 상담 센터 */}
+          <div className="p-5 sm:p-7 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-lg hover:shadow-2xl hover:border-rose-300 hover:-translate-y-1 transition-all text-left">
+            <div className="text-xs sm:text-sm font-black text-rose-600 mb-2 flex items-center space-x-1.5">
+              <span className="p-1.5 rounded-lg bg-rose-100/80">
+                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+              </span>
               <span>상담 센터</span>
             </div>
-            <div className="text-xl sm:text-2xl font-black text-slate-900 font-mono">
-              365<span className="text-xs font-bold text-slate-500 ml-0.5">일</span>
+            <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 font-mono tracking-tight my-1">
+              365<span className="text-sm sm:text-base font-bold text-slate-500 ml-1">일</span>
             </div>
-            <div className="text-[10px] text-slate-500 mt-0.5">24시간 친절 응대</div>
+            <div className="text-xs sm:text-sm text-slate-600 font-bold mt-1">24시간 친절 상담</div>
           </div>
         </div>
       </div>
