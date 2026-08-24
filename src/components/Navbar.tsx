@@ -13,9 +13,10 @@ interface NavbarProps {
   navItems: NavItem[];
   onOpenPriceModal?: () => void;
   onOpenDispatchModal?: () => void;
+  onOpenQuoteModal?: () => void;
 }
 
-export default function Navbar({ navItems, onOpenPriceModal, onOpenDispatchModal }: NavbarProps) {
+export default function Navbar({ navItems, onOpenPriceModal, onOpenDispatchModal, onOpenQuoteModal }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -34,8 +35,8 @@ export default function Navbar({ navItems, onOpenPriceModal, onOpenDispatchModal
   };
 
   const handleNavClick = (href: string) => {
-    if (href === "#calculator" && onOpenPriceModal) {
-      onOpenPriceModal();
+    if (href === "#calculator" && onOpenQuoteModal) {
+      onOpenQuoteModal();
     } else if (href === "#order" && onOpenDispatchModal) {
       onOpenDispatchModal();
     } else {

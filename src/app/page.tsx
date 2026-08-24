@@ -7,11 +7,13 @@ import ClientLogos from "@/components/ClientLogos";
 import ServiceCards from "@/components/ServiceCards";
 import FloatingPriceModal from "@/components/FloatingPriceModal";
 import DispatchModal from "@/components/DispatchModal";
+import QuoteModal from "@/components/QuoteModal";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   const [isPriceModalOpen, setIsPriceModalOpen] = useState(false);
   const [isDispatchModalOpen, setIsDispatchModalOpen] = useState(false);
+  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -31,6 +33,7 @@ export default function Home() {
         ]}
         onOpenPriceModal={() => setIsPriceModalOpen(true)}
         onOpenDispatchModal={() => setIsDispatchModalOpen(true)}
+        onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
       />
 
       <main>
@@ -219,7 +222,13 @@ export default function Home() {
         onClose={() => setIsDispatchModalOpen(false)}
       />
 
-      {/* 6. Footer */}
+      {/* 6. Custom B2B & Freight Quote Modal */}
+      <QuoteModal
+        isOpen={isQuoteModalOpen}
+        onClose={() => setIsQuoteModalOpen(false)}
+      />
+
+      {/* 7. Footer */}
       <Footer
         onContact={() => scrollTo("about")}
         onOpenPriceModal={() => setIsPriceModalOpen(true)}
