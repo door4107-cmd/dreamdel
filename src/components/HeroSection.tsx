@@ -141,7 +141,7 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           {/* 메인 헤드라인 (좌측 정렬) */}
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-950 mb-6 leading-[1.12] break-keep drop-shadow-[0_2px_15px_rgba(255,255,255,0.95)]">
             급할 땐 고민 없이,<br />
-            <span className="text-gradient-vermilion drop-shadow-none">가장 빠른 퀵서비스 드림델.</span>
+            <span className="text-gradient-vermilion drop-shadow-none">가장 빠른 퀵서비스 드림델</span>
           </h1>
 
           {/* 🌟 2. 100% 투명 배경 서브 카피 (좌측 정렬) */}
@@ -152,7 +152,7 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
             <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-slate-950 leading-snug break-keep drop-shadow-[0_2px_12px_rgba(255,255,255,0.95)]">
               지금 부르면 가장 가까운 전문 기사님의{" "}
               <span className="text-slate-950 font-black">
-                30초 배차, 안전하고 빠른 배송 드림델.
+                30초 배차, 안전하고 빠른 배송 드림델
               </span>
             </p>
           </div>
