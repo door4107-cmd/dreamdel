@@ -143,21 +143,42 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           <span className="text-gradient-vermilion drop-shadow-none">가장 빠른 퀵서비스 드림델.</span>
         </h1>
 
-        {/* 🌟 2. 눈에 확 들어오는 고대비 서브 카피 박스 (가독성 극대화) */}
-        <div className="inline-block p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200/90 shadow-xl max-w-3xl mx-auto mb-10 text-center">
-          <div className="text-slate-700 font-bold text-sm sm:text-base md:text-lg mb-1.5 break-keep">
-            🛵 오토바이 급행부터 다마스 · 라보 · 밴 · 1톤 트럭까지
+        {/* 🌟 2. 압도적 가독성의 서브 카피 카드 (불투명 솔리드 화이트 & 선명한 차종 태그) */}
+        <div className="p-6 sm:p-7 md:p-8 rounded-3xl bg-white border-2 border-slate-200/90 shadow-[0_16px_45px_rgba(15,23,42,0.12)] max-w-3xl mx-auto mb-10 text-center">
+          {/* 차종 태그 뱃지 바 */}
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-3.5">
+            <span className="text-xs sm:text-sm font-black text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full shadow-xs">
+              🛵 오토바이 급행
+            </span>
+            <span className="text-slate-300 font-bold">·</span>
+            <span className="text-xs sm:text-sm font-black text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full shadow-xs">
+              📦 다마스
+            </span>
+            <span className="text-slate-300 font-bold">·</span>
+            <span className="text-xs sm:text-sm font-black text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full shadow-xs">
+              🚚 라보
+            </span>
+            <span className="text-slate-300 font-bold">·</span>
+            <span className="text-xs sm:text-sm font-black text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full shadow-xs">
+              🚐 밴
+            </span>
+            <span className="text-slate-300 font-bold">·</span>
+            <span className="text-xs sm:text-sm font-black text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full shadow-xs">
+              🚛 1톤 트럭
+            </span>
           </div>
-          <div className="text-slate-950 font-black text-base sm:text-lg md:text-2xl leading-snug break-keep">
-            지금 부르면 가장 가까운 전문 기사님의{" "}
-            <span className="text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-xl border border-blue-200 inline-block my-0.5">
+
+          {/* 핵심 메시지 (선명한 블랙 & 로열 블루 & 오렌지 포인트) */}
+          <p className="text-lg sm:text-2xl md:text-3xl font-black text-slate-950 leading-snug break-keep">
+            지금 부르면 가장 가까운 전문 기사님의<br className="hidden sm:inline" />{" "}
+            <span className="text-blue-700 font-black bg-blue-50 px-2.5 py-0.5 rounded-xl border border-blue-200 inline-block my-1">
               ⚡ 30초 배차
             </span>
             ,{" "}
-            <span className="text-orange-600 bg-orange-50 px-2.5 py-0.5 rounded-xl border border-orange-200 inline-block my-0.5">
+            <span className="text-orange-600 font-black bg-orange-50 px-2.5 py-0.5 rounded-xl border border-orange-200 inline-block my-1">
               안전하고 빠른 배송 드림델
             </span>
-          </div>
+          </p>
         </div>
 
         {/* 메인 인터랙티브 CTA 버튼 */}
