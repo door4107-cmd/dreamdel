@@ -143,21 +143,17 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           <span className="text-gradient-vermilion drop-shadow-none">가장 빠른 퀵서비스 드림델.</span>
         </h1>
 
-        {/* 🌟 2. 눈에 확 들어오는 고대비 서브 카피 박스 (가독성 극대화) */}
-        <div className="inline-block p-4 sm:p-5 md:p-6 rounded-2xl sm:rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200/90 shadow-xl max-w-3xl mx-auto mb-10 text-center">
-          <div className="text-slate-700 font-bold text-sm sm:text-base md:text-lg mb-1.5 break-keep">
-            🛵 오토바이 급행부터 다마스 · 라보 · 밴 · 1톤 트럭까지
-          </div>
-          <div className="text-slate-950 font-black text-base sm:text-lg md:text-2xl leading-snug break-keep">
+        {/* 🌟 2. 100% 투명 배경 서브 카피 (박스 프레임 없이 깔끔하고 개방감 있는 텍스트) */}
+        <div className="max-w-3xl mx-auto mb-10 text-center">
+          <p className="text-sm sm:text-base md:text-lg font-bold text-slate-800 mb-2 break-keep drop-shadow-[0_1px_8px_rgba(255,255,255,0.9)]">
+            오토바이 급행부터 다마스 · 라보 · 밴 · 1톤 트럭까지.
+          </p>
+          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-slate-950 leading-snug break-keep drop-shadow-[0_2px_12px_rgba(255,255,255,0.95)]">
             지금 부르면 가장 가까운 전문 기사님의{" "}
-            <span className="text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-xl border border-blue-200 inline-block my-0.5">
-              ⚡ 30초 배차
+            <span className="text-slate-950 font-black">
+              30초 배차, 안전하고 빠른 배송 드림델.
             </span>
-            ,{" "}
-            <span className="text-orange-600 bg-orange-50 px-2.5 py-0.5 rounded-xl border border-orange-200 inline-block my-0.5">
-              안전하고 빠른 배송 드림델
-            </span>
-          </div>
+          </p>
         </div>
 
         {/* 메인 인터랙티브 CTA 버튼 */}
