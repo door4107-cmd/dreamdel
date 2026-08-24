@@ -120,44 +120,46 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
       <div className="ambient-glow bg-orange-500/10 top-1/4 left-1/2 -translate-x-1/2" />
       <div className="ambient-glow bg-blue-500/8 top-1/2 left-1/3" />
 
-      {/* 3. Hero Centered Foreground */}
-      <div className="relative z-10 max-w-5xl mx-auto text-center">
-        {/* Dynamic Live Badge */}
-        <div className="inline-flex items-center space-x-2.5 px-5 py-2.5 rounded-full bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-sm mb-7 hover:border-slate-300 transition-all">
-          <span className="flex h-2.5 w-2.5 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500" />
-          </span>
-          <span className="text-sm sm:text-base font-black text-slate-900">
-            수도권 30초 배차망
-          </span>
-          <span className="text-slate-300">|</span>
-          <span className="text-sm sm:text-base font-semibold text-slate-700">
-            {latestDispatch.area} · <span className="text-orange-600 font-black">{latestDispatch.vehicle}</span> ({latestDispatch.status})
-          </span>
-        </div>
-
-        {/* 메인 헤드라인 */}
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-950 mb-7 leading-[1.12] break-keep drop-shadow-[0_2px_15px_rgba(255,255,255,0.9)]">
-          급할 땐 고민 없이,<br />
-          <span className="text-gradient-vermilion drop-shadow-none">가장 빠른 퀵서비스 드림델.</span>
-        </h1>
-
-        {/* 🌟 2. 100% 투명 배경 서브 카피 (박스 프레임 없이 깔끔하고 개방감 있는 텍스트) */}
-        <div className="max-w-3xl mx-auto mb-10 text-center">
-          <p className="text-sm sm:text-base md:text-lg font-bold text-slate-800 mb-2 break-keep drop-shadow-[0_1px_8px_rgba(255,255,255,0.9)]">
-            오토바이 급행부터 다마스 · 라보 · 밴 · 1톤 트럭까지.
-          </p>
-          <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-slate-950 leading-snug break-keep drop-shadow-[0_2px_12px_rgba(255,255,255,0.95)]">
-            지금 부르면 가장 가까운 전문 기사님의{" "}
-            <span className="text-slate-950 font-black">
-              30초 배차, 안전하고 빠른 배송 드림델.
+      {/* 3. Hero Left-Aligned Foreground (세련된 좌측 정렬 레이아웃) */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full text-left px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl">
+          {/* Dynamic Live Badge (좌측 정렬) */}
+          <div className="inline-flex items-center space-x-2.5 px-5 py-2.5 rounded-full bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-sm mb-7 hover:border-slate-300 transition-all">
+            <span className="flex h-2.5 w-2.5 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500" />
             </span>
-          </p>
+            <span className="text-sm sm:text-base font-black text-slate-900">
+              수도권 30초 배차망
+            </span>
+            <span className="text-slate-300">|</span>
+            <span className="text-sm sm:text-base font-semibold text-slate-700">
+              {latestDispatch.area} · <span className="text-orange-600 font-black">{latestDispatch.vehicle}</span> ({latestDispatch.status})
+            </span>
+          </div>
+
+          {/* 메인 헤드라인 (좌측 정렬) */}
+          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-950 mb-6 leading-[1.12] break-keep drop-shadow-[0_2px_15px_rgba(255,255,255,0.95)]">
+            급할 땐 고민 없이,<br />
+            <span className="text-gradient-vermilion drop-shadow-none">가장 빠른 퀵서비스 드림델.</span>
+          </h1>
+
+          {/* 🌟 2. 100% 투명 배경 서브 카피 (좌측 정렬) */}
+          <div className="mb-12 text-left">
+            <p className="text-sm sm:text-base md:text-lg font-bold text-slate-800 mb-2 break-keep drop-shadow-[0_1px_8px_rgba(255,255,255,0.9)]">
+              오토바이 급행부터 다마스 · 라보 · 밴 · 1톤 트럭까지.
+            </p>
+            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-slate-950 leading-snug break-keep drop-shadow-[0_2px_12px_rgba(255,255,255,0.95)]">
+              지금 부르면 가장 가까운 전문 기사님의{" "}
+              <span className="text-slate-950 font-black">
+                30초 배차, 안전하고 빠른 배송 드림델.
+              </span>
+            </p>
+          </div>
         </div>
 
-        {/* 🌟 3. 압도적 가독성의 4칸 신뢰 지표 카드 (100% 솔리드 화이트 & 굵고 큼직한 수치) */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
+        {/* 🌟 3. 압도적 가독성의 4칸 신뢰 지표 카드 */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl">
           {/* Card 1: 배차 시간 */}
           <div className="p-5 sm:p-7 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-lg hover:shadow-2xl hover:border-orange-300 hover:-translate-y-1 transition-all text-left">
             <div className="text-xs sm:text-sm font-black text-orange-600 mb-2 flex items-center space-x-1.5">
