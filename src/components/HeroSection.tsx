@@ -143,33 +143,33 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           <span className="text-gradient-vermilion drop-shadow-none">가장 빠른 퀵서비스 드림델.</span>
         </h1>
 
-        {/* 🌟 2. 압도적 가독성의 서브 카피 카드 (불투명 솔리드 화이트 & 선명한 차종 태그) */}
-        <div className="p-6 sm:p-7 md:p-8 rounded-3xl bg-white border-2 border-slate-200/90 shadow-[0_16px_45px_rgba(15,23,42,0.12)] max-w-3xl mx-auto mb-10 text-center">
+        {/* 🌟 2. 차종 태그 & 서브 카피 (배경 박스 제거하여 깔끔하고 개방감 있는 레이아웃) */}
+        <div className="max-w-3xl mx-auto mb-10 text-center">
           {/* 차종 태그 뱃지 바 */}
-          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-3.5">
-            <span className="text-xs sm:text-sm font-black text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full shadow-xs">
+          <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 mb-4">
+            <span className="text-xs sm:text-sm font-black text-slate-900 bg-white/90 backdrop-blur-md border border-slate-200/90 px-3.5 py-1.5 rounded-full shadow-sm">
               🛵 오토바이 급행
             </span>
-            <span className="text-slate-300 font-bold">·</span>
-            <span className="text-xs sm:text-sm font-black text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full shadow-xs">
+            <span className="text-slate-400 font-bold">·</span>
+            <span className="text-xs sm:text-sm font-black text-slate-900 bg-white/90 backdrop-blur-md border border-slate-200/90 px-3.5 py-1.5 rounded-full shadow-sm">
               📦 다마스
             </span>
-            <span className="text-slate-300 font-bold">·</span>
-            <span className="text-xs sm:text-sm font-black text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full shadow-xs">
+            <span className="text-slate-400 font-bold">·</span>
+            <span className="text-xs sm:text-sm font-black text-slate-900 bg-white/90 backdrop-blur-md border border-slate-200/90 px-3.5 py-1.5 rounded-full shadow-sm">
               🚚 라보
             </span>
-            <span className="text-slate-300 font-bold">·</span>
-            <span className="text-xs sm:text-sm font-black text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full shadow-xs">
+            <span className="text-slate-400 font-bold">·</span>
+            <span className="text-xs sm:text-sm font-black text-slate-900 bg-white/90 backdrop-blur-md border border-slate-200/90 px-3.5 py-1.5 rounded-full shadow-sm">
               🚐 밴
             </span>
-            <span className="text-slate-300 font-bold">·</span>
-            <span className="text-xs sm:text-sm font-black text-slate-800 bg-slate-100 border border-slate-200 px-3 py-1 rounded-full shadow-xs">
+            <span className="text-slate-400 font-bold">·</span>
+            <span className="text-xs sm:text-sm font-black text-slate-900 bg-white/90 backdrop-blur-md border border-slate-200/90 px-3.5 py-1.5 rounded-full shadow-sm">
               🚛 1톤 트럭
             </span>
           </div>
 
-          {/* 핵심 메시지 (선명하고 또렷한 솔리드 블랙 타이포그래피 - 글자 깨짐 완전 해결) */}
-          <p className="text-xl sm:text-2xl md:text-3xl font-black text-slate-950 leading-relaxed tracking-tight break-keep">
+          {/* 핵심 메시지 */}
+          <p className="text-xl sm:text-2xl md:text-3xl font-black text-slate-950 leading-relaxed tracking-tight break-keep drop-shadow-[0_2px_12px_rgba(255,255,255,0.85)]">
             지금 부르면 가장 가까운 전문 기사님의<br className="hidden sm:inline" />
             <span className="text-slate-950 font-black">30초 배차, 안전하고 빠른 배송 드림델.</span>
           </p>
