@@ -86,16 +86,15 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
 
   return (
     <section id="hero" className="relative min-h-[90vh] flex flex-col items-center justify-center overflow-hidden pt-28 md:pt-32 pb-16 px-4 sm:px-6 lg:px-8">
-      {/* 🎬 1. Full-Width Background Video Layer (0.75x Slow Motion & Seamless Loop) */}
-      {/* 🎬 1. Full-Width Background Video Layer (조금 더 밝고 선명한 화질) */}
+      {/* 🎬 1. Full-Width Background Video Layer (자연스럽고 화사하게 밝아진 화질) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video
           ref={video1Ref}
           autoPlay
           muted
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover brightness-[0.98] contrast-[1.08] transition-opacity duration-1000 ease-in-out ${
-            activeVideo === 1 ? "opacity-75" : "opacity-0"
+          className={`absolute inset-0 w-full h-full object-cover brightness-[1.04] contrast-[1.04] transition-opacity duration-1000 ease-in-out ${
+            activeVideo === 1 ? "opacity-85" : "opacity-0"
           }`}
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
@@ -105,15 +104,15 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           ref={video2Ref}
           muted
           playsInline
-          className={`absolute inset-0 w-full h-full object-cover brightness-[0.98] contrast-[1.08] transition-opacity duration-1000 ease-in-out ${
-            activeVideo === 2 ? "opacity-75" : "opacity-0"
+          className={`absolute inset-0 w-full h-full object-cover brightness-[1.04] contrast-[1.04] transition-opacity duration-1000 ease-in-out ${
+            activeVideo === 2 ? "opacity-85" : "opacity-0"
           }`}
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
         {/* Clean Soft Light Blend to Section Below */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-[#F8F9FC]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-[#F8F9FC]" />
       </div>
 
       {/* 2. Soft Ambient Lighting */}
