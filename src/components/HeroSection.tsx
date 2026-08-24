@@ -17,15 +17,15 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
     status: "매칭 완료 ✨",
   });
 
-  // 1. Balanced 0.40x Cinematic Slow-Motion (딱 알맞게 부드럽고 생동감 있는 속도)
+  // 1. Energetic 0.58x Cinematic Motion (경쾌하고 시원한 속도감)
   useEffect(() => {
     const v1 = video1Ref.current;
     const v2 = video2Ref.current;
     if (!v1 || !v2) return;
 
-    // 자연스럽고 알맞은 0.40배속 슬로우 모션
-    v1.playbackRate = 0.40;
-    v2.playbackRate = 0.40;
+    // 시원하고 경쾌한 0.58배속 모션
+    v1.playbackRate = 0.58;
+    v2.playbackRate = 0.58;
 
     let isTransitioning = false;
 
@@ -34,7 +34,7 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
       if (v1.currentTime >= v1.duration - 1.2) {
         isTransitioning = true;
         v2.currentTime = 0;
-        v2.playbackRate = 0.40;
+        v2.playbackRate = 0.58;
         v2.play().catch(() => {});
         setActiveVideo(2);
         setTimeout(() => {
@@ -48,7 +48,7 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
       if (v2.currentTime >= v2.duration - 1.2) {
         isTransitioning = true;
         v1.currentTime = 0;
-        v1.playbackRate = 0.40;
+        v1.playbackRate = 0.58;
         v1.play().catch(() => {});
         setActiveVideo(1);
         setTimeout(() => {
