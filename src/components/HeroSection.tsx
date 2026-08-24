@@ -156,21 +156,7 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           </p>
         </div>
 
-        {/* 메인 인터랙티브 CTA 버튼 */}
-        <div className="flex items-center justify-center gap-3 mb-14">
-          <button
-            type="button"
-            onClick={onQuote}
-            className="btn-tactile-primary text-base sm:text-lg md:text-xl !py-5 !px-12 flex items-center justify-center space-x-3.5 shadow-[0_16px_36px_rgba(15,23,42,0.28)] active:scale-[0.98] transition-all cursor-pointer focus-visible:ring-2 focus-visible:ring-orange-500 focus-visible:outline-none font-black"
-          >
-            <span>실시간 요금 조회 (동대동 / 거리)</span>
-            <svg className="w-6 h-6 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
-        </div>
-
-        {/* 🌟 3. 크고 시원시원해진 4칸 신뢰 지표 카드 (글자 크기 & 박스 크기 대폭 확장) */}
+        {/* 🌟 3. 압도적 가독성의 4칸 신뢰 지표 카드 (100% 솔리드 화이트 & 굵고 큼직한 수치) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl mx-auto">
           {/* Card 1: 배차 시간 */}
           <div className="p-5 sm:p-7 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-lg hover:shadow-2xl hover:border-orange-300 hover:-translate-y-1 transition-all text-left">
