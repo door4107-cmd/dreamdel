@@ -112,8 +112,8 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* Clean Soft Light Blend to Section Below */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-white/5 to-[#F8F9FC]" />
+        {/* 100% Transparent Video Viewport */}
+        <div className="absolute inset-0 bg-transparent" />
       </div>
 
       {/* 2. Ambient Lighting */}
