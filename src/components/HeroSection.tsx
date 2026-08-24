@@ -168,16 +168,10 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
             </span>
           </div>
 
-          {/* 핵심 메시지 (선명한 블랙 & 로열 블루 & 오렌지 포인트) */}
-          <p className="text-lg sm:text-2xl md:text-3xl font-black text-slate-950 leading-snug break-keep">
-            지금 부르면 가장 가까운 전문 기사님의<br className="hidden sm:inline" />{" "}
-            <span className="text-blue-700 font-black bg-blue-50 px-2.5 py-0.5 rounded-xl border border-blue-200 inline-block my-1">
-              ⚡ 30초 배차
-            </span>
-            ,{" "}
-            <span className="text-orange-600 font-black bg-orange-50 px-2.5 py-0.5 rounded-xl border border-orange-200 inline-block my-1">
-              안전하고 빠른 배송 드림델
-            </span>
+          {/* 핵심 메시지 (선명하고 또렷한 솔리드 블랙 타이포그래피 - 글자 깨짐 완전 해결) */}
+          <p className="text-xl sm:text-2xl md:text-3xl font-black text-slate-950 leading-relaxed tracking-tight break-keep">
+            지금 부르면 가장 가까운 전문 기사님의<br className="hidden sm:inline" />
+            <span className="text-slate-950 font-black">30초 배차, 안전하고 빠른 배송 드림델.</span>
           </p>
         </div>
 
