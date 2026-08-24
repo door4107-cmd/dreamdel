@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ClientLogos from "@/components/ClientLogos";
 import ServiceCards from "@/components/ServiceCards";
 import FloatingPriceModal from "@/components/FloatingPriceModal";
 import DispatchModal from "@/components/DispatchModal";
@@ -23,8 +24,9 @@ export default function Home() {
       <Navbar
         navItems={[
           { href: "#order", label: "주문접수" },
-          { href: "#about", label: "회사소개" },
+          { href: "#clients", label: "주요고객" },
           { href: "#services", label: "용달안내" },
+          { href: "#about", label: "회사소개" },
           { href: "#calculator", label: "견적문의" },
         ]}
         onOpenPriceModal={() => setIsPriceModalOpen(true)}
@@ -37,7 +39,10 @@ export default function Home() {
           onQuote={() => setIsPriceModalOpen(true)}
         />
 
-        {/* 2. Fleet Specifications Section (용달안내) */}
+        {/* 2. Major Clients & B2B Partners Section (주요 고객사) */}
+        <ClientLogos />
+
+        {/* 3. Fleet Specifications Section (용달안내) */}
         <section id="services" className="relative py-16 sm:py-24 border-t border-slate-200/80 overflow-hidden bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <ServiceCards />
