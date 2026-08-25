@@ -130,13 +130,12 @@ export default function FloatingPriceModal({
         <button
           type="button"
           onClick={onOpen}
-          className="w-[200px] h-12 flex items-center justify-center space-x-2 px-4 rounded-full bg-white/95 backdrop-blur-xl border border-slate-300 text-slate-800 font-bold text-sm shadow-xl shadow-slate-300/60 hover:border-slate-400 hover:scale-[1.03] active:scale-95 transition-all duration-200 cursor-pointer whitespace-nowrap focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:outline-none"
+          className="w-[200px] h-12 flex items-center justify-center space-x-2 px-4 rounded-full bg-white border border-slate-300 text-slate-900 font-bold text-sm shadow-md hover:bg-slate-50 hover:border-slate-400 active:scale-95 transition-all duration-150 cursor-pointer whitespace-nowrap focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:outline-none"
         >
-          <span className="flex h-2 w-2 relative shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500" />
-          </span>
-          <span className="tracking-tight text-slate-800">실시간 요금 조회</span>
+          <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          <span className="tracking-tight text-slate-900 font-bold">실시간 요금 조회</span>
         </button>
       </div>
 
