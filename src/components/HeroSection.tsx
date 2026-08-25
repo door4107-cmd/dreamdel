@@ -8,10 +8,12 @@ interface HeroSectionProps {
   onOpenDispatchModal?: () => void;
 }
 
-export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectionProps) {
+export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const sliderRef = useRef<HTMLDivElement>(null);
 
   // 1. 100% Seamless 60FPS Crossfading Video Loop
   useEffect(() => {
@@ -30,40 +32,22 @@ export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectio
     let animId: number;
 
     const checkLoop = () => {
-      if (activeVideo === 1 && v1.duration && !isTransitioning) {
-        if (v1.currentTime >= v1.duration - TRIGGER_BEFORE_END_SEC) {
+      const currentVideo = activeVideo === 1 ? v1 : v2;
+      const nextVideo = activeVideo === 1 ? v2 : v1;
+
+      if (currentVideo.duration) {
+        const timeLeft = currentVideo.duration - currentVideo.currentTime;
+        if (timeLeft <= TRIGGER_BEFORE_END_SEC && !isTransitioning) {
           isTransitioning = true;
-          v2.currentTime = 0;
-          v2.playbackRate = SPEED;
-          v2.play().catch(() => {});
-          setActiveVideo(2);
+          nextVideo.currentTime = 0;
+          nextVideo.play().catch(() => {});
+          setActiveVideo(activeVideo === 1 ? 2 : 1);
 
           setTimeout(() => {
-            if (v1) {
-              v1.pause();
-              v1.currentTime = 0;
-            }
             isTransitioning = false;
-          }, FADE_DURATION_MS + 200);
-        }
-      } else if (activeVideo === 2 && v2.duration && !isTransitioning) {
-        if (v2.currentTime >= v2.duration - TRIGGER_BEFORE_END_SEC) {
-          isTransitioning = true;
-          v1.currentTime = 0;
-          v1.playbackRate = SPEED;
-          v1.play().catch(() => {});
-          setActiveVideo(1);
-
-          setTimeout(() => {
-            if (v2) {
-              v2.pause();
-              v2.currentTime = 0;
-            }
-            isTransitioning = false;
-          }, FADE_DURATION_MS + 200);
+          }, FADE_DURATION_MS);
         }
       }
-
       animId = requestAnimationFrame(checkLoop);
     };
 
@@ -79,13 +63,14 @@ export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectio
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
 
+  // 5 Feature Cards (01 COMPANY, 02 BUSINESS, 03 ORDER, 04 CORPORATE, 05 DRIVER)
   const cards = [
     {
       tag: "01 COMPANY",
       title: "회사소개",
       descLine1: "1994년부터 이어온",
-      descLine2: "운송 노하우",
-      imageSrc: "/images/driver.jpg",
+      descLine2: "30년 운송 노하우",
+      imageSrc: "/images/vehicles/van.jpg",
       actionText: "자세히 보기 ↓",
       actionType: "scroll",
       targetId: "company",
@@ -94,34 +79,44 @@ export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectio
       tag: "02 BUSINESS",
       title: "사업영역",
       descLine1: "오토바이·차량·전국연계",
-      descLine2: "기타 서비스까지",
+      descLine2: "기타 맞춤 서비스까지",
       imageSrc: "/images/vehicles/bike.jpg",
-      actionText: "자세히 보기 ↓",
+      actionText: "서비스 안내 ↓",
       actionType: "scroll",
       targetId: "services",
     },
     {
       tag: "03 ORDER ↗",
       title: "오더접수",
-      descLine1: "지금 바로 접수",
-      descLine2: "실시간 배차",
+      descLine1: "지금 바로 10초 접수",
+      descLine2: "실시간 배차 현황 확인",
       imageSrc: "/images/vehicles/damas.jpg",
-      actionText: "접수하러 가기 ↗",
+      actionText: "간편 접수하기 ↗",
       actionType: "dispatch",
     },
     {
       tag: "04 CORPORATE",
       title: "법인서비스",
       descLine1: "월 정산·세금계산서",
-      descLine2: "거래처 전용 조건",
+      descLine2: "기업 전용 맞춤 요금제",
       imageSrc: "/images/vehicles/truck.jpg",
-      actionText: "자세히 보기 ↓",
+      actionText: "법인 혜택 보기 ↓",
       actionType: "scroll",
       targetId: "about",
     },
+    {
+      tag: "05 DRIVER",
+      title: "기사모집",
+      descLine1: "함께 달릴 퀵·화물 기사님",
+      descLine2: "100% 당일정산·최대물량",
+      imageSrc: "/images/driver.jpg",
+      actionText: "기사 지원하기 ↓",
+      actionType: "scroll",
+      targetId: "driver",
+    },
   ];
 
-  const handleCardClick = (card: typeof cards[0]) => {
+  const handleCardClick = (card: (typeof cards)[0]) => {
     if (card.actionType === "dispatch") {
       if (onOpenDispatchModal) onOpenDispatchModal();
     } else if (card.targetId) {
@@ -129,9 +124,21 @@ export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectio
     }
   };
 
+  // Slider navigation: 총 5개 카드, 데스크톱 4개 노출 기준 (max index = 1)
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : cards.length - 1));
+  };
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev < cards.length - 1 ? prev + 1 : 0));
+  };
+
   return (
-    <section id="hero" className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-28 md:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-[#18181B]">
-      {/* 🎬 1. Full-Width Background Video Layer (1.8초 스무스 크로스페이드 루프 - 선명한 비주얼 최적화) */}
+    <section
+      id="hero"
+      className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-28 md:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-[#18181B]"
+    >
+      {/* 🎬 1. Full-Width Background Video Layer (1.8초 스무스 크로스페이드 루프) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video
           ref={video1Ref}
@@ -158,74 +165,109 @@ export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectio
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* Cinematic Soft Tint Overlay (영상 생생함 극대화 + 텍스트 가독성 조화) */}
+        {/* Cinematic Soft Tint Overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-[#12141A]/65 via-[#18181B]/35 to-[#18181B]/75" />
       </div>
 
       {/* ── Content Container (z-10) ── */}
       <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col justify-between h-full">
-        {/* ── 2. Top Header & Title Area ── */}
-        <div className="mb-8 sm:mb-10">
-          <div className="text-xs sm:text-sm font-mono font-bold tracking-widest text-slate-400 uppercase mb-3 sm:mb-4">
-            DREAMDEL · GLOBAL LOGISTICS INNOVATOR
+        {/* ── 2. Top Header & Title Area with < > Navigation Controls ── */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
+          <div>
+            <div className="text-xs sm:text-sm font-mono font-bold tracking-widest text-slate-400 uppercase mb-3 sm:mb-4">
+              DREAMDEL · GLOBAL LOGISTICS INNOVATOR
+            </div>
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18] break-keep mb-3">
+              꿈의 운송서비스<br />
+              고객님의 든든한 운송파트너{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 drop-shadow-[0_2px_14px_rgba(249,115,22,0.45)]">
+                드림델
+              </span>
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg text-slate-300 font-medium break-keep">
+              오토바이 퀵부터 11톤 화물, 전국연계 운송까지
+            </p>
           </div>
-          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18] break-keep mb-3">
-            꿈의 운송서비스<br />
-            고객님의 든든한 운송파트너{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 drop-shadow-[0_2px_14px_rgba(249,115,22,0.45)]">
-              드림델
-            </span>
-          </h1>
-          <p className="text-sm sm:text-base md:text-lg text-slate-300 font-medium break-keep">
-            오토바이 퀵부터 11톤 화물, 전국연계 운송까지
-          </p>
+
+          {/* ── < > Slide Arrows & Card Index Indicator ── */}
+          <div className="flex items-center space-x-3 self-start md:self-end mb-1">
+            <div className="text-xs font-mono font-bold text-slate-400 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-white/10">
+              <span className="text-orange-400">{currentIndex + 1}</span> / {cards.length}
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <button
+                type="button"
+                onClick={prevSlide}
+                className="w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-orange-600 active:bg-orange-700 border border-white/15 hover:border-orange-500 text-white flex items-center justify-center transition-all duration-200 text-lg font-black shadow-lg cursor-pointer active:scale-95"
+                aria-label="이전 카드 보기"
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                onClick={nextSlide}
+                className="w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-orange-600 active:bg-orange-700 border border-white/15 hover:border-orange-500 text-white flex items-center justify-center transition-all duration-200 text-lg font-black shadow-lg cursor-pointer active:scale-95"
+                aria-label="다음 카드 보기"
+              >
+                ›
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* ── 3. 4 Feature Cards Grid (X 표시 및 규격문구 제거, 세련된 카드 레이아웃) ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-8 sm:mb-10">
-          {cards.map((card, idx) => (
-            <div
-              key={idx}
-              onClick={() => handleCardClick(card)}
-              className="group relative h-[340px] sm:h-[370px] md:h-[390px] rounded-2xl bg-white border border-slate-200/90 hover:border-orange-500 overflow-hidden flex flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
-            >
-              {/* Background Visual Layer (선명하게 보이도록 투명도 및 오버레이 최적화) */}
-              <div className="absolute inset-0 z-0">
-                <Image
-                  src={card.imageSrc}
-                  alt={card.title}
-                  fill
-                  className="object-cover object-center opacity-65 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/45 to-white/90 group-hover:from-white/90 group-hover:via-white/25 group-hover:to-white/85 transition-colors" />
-              </div>
-
-              {/* Card Header (Tag, Title, Description) */}
-              <div className="relative z-10">
-                <div className="text-[11px] font-mono font-bold tracking-wider text-slate-600 uppercase mb-2">
-                  {card.tag}
+        {/* ── 3. 5 Feature Cards Slider Carousel (Desktop 4 cards visible, smooth slide) ── */}
+        <div className="relative w-full overflow-hidden mb-8 sm:mb-10" ref={sliderRef}>
+          <div
+            className="flex transition-transform duration-500 ease-out gap-4 sm:gap-5"
+            style={{
+              transform: `translateX(calc(-${currentIndex} * (100% / 4 + 5px)))`,
+            }}
+          >
+            {cards.map((card, idx) => (
+              <div
+                key={idx}
+                onClick={() => handleCardClick(card)}
+                className="group relative flex-shrink-0 w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)] h-[350px] sm:h-[370px] md:h-[390px] rounded-2xl bg-white border border-slate-200/90 hover:border-orange-500 overflow-hidden flex flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
+              >
+                {/* Background Visual Layer */}
+                <div className="absolute inset-0 z-0">
+                  <Image
+                    src={card.imageSrc}
+                    alt={card.title}
+                    fill
+                    className="object-cover object-center opacity-65 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/45 to-white/90 group-hover:from-white/90 group-hover:via-white/25 group-hover:to-white/85 transition-colors" />
                 </div>
-                <h3 className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight mb-2 group-hover:text-orange-600 transition-colors drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]">
-                  {card.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-800 leading-snug font-semibold drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]">
-                  {card.descLine1}<br />
-                  {card.descLine2}
-                </p>
-              </div>
 
-              {/* Card Footer (Action Link with Hover Transition) */}
-              <div className="relative z-10 pt-4 border-t border-slate-200/80 flex items-center justify-between">
-                <span className="font-black text-xs sm:text-sm text-slate-950 group-hover:text-orange-600 transition-colors inline-flex items-center space-x-1.5 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
-                  <span>{card.actionText}</span>
-                </span>
-                <span className="w-7 h-7 rounded-full bg-white/90 shadow-sm group-hover:bg-orange-50 text-slate-700 group-hover:text-orange-600 flex items-center justify-center text-xs font-bold transition-colors">
-                  →
-                </span>
+                {/* Card Header (Tag, Title, Description) */}
+                <div className="relative z-10">
+                  <div className="text-[11px] font-mono font-bold tracking-wider text-slate-600 uppercase mb-2">
+                    {card.tag}
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight mb-2 group-hover:text-orange-600 transition-colors drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]">
+                    {card.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-800 leading-snug font-semibold drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]">
+                    {card.descLine1}<br />
+                    {card.descLine2}
+                  </p>
+                </div>
+
+                {/* Card Footer (Action Link with Hover Transition) */}
+                <div className="relative z-10 pt-4 border-t border-slate-200/80 flex items-center justify-between">
+                  <span className="font-black text-xs sm:text-sm text-slate-950 group-hover:text-orange-600 transition-colors inline-flex items-center space-x-1.5 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+                    <span>{card.actionText}</span>
+                  </span>
+                  <span className="w-7 h-7 rounded-full bg-white/90 shadow-sm group-hover:bg-orange-50 text-slate-700 group-hover:text-orange-600 flex items-center justify-center text-xs font-bold transition-colors">
+                    →
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* ── 4. Bottom Badges (2 Pill/Box Badges) ── */}

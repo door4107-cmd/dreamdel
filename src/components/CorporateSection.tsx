@@ -2,7 +2,7 @@ interface CorporateSectionProps {
   onOpenQuoteModal?: () => void;
 }
 
-export default function CorporateSection({ onOpenQuoteModal: _onOpenQuoteModal }: CorporateSectionProps = {}) {
+export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionProps = {}) {
   const benefits = [
     {
       number: "01",
@@ -162,25 +162,37 @@ export default function CorporateSection({ onOpenQuoteModal: _onOpenQuoteModal }
             </p>
           </div>
 
-          {/* Mobile: 실제 전화 발신 연결 */}
-          <a
-            href="tel:1588-5575"
-            className="md:hidden shrink-0 w-full px-7 py-4 rounded-xl bg-white hover:bg-orange-50 text-slate-950 font-black text-sm sm:text-base shadow-xl transition-all active:scale-95 cursor-pointer text-center inline-flex items-center justify-center space-x-2.5 group"
-          >
-            <svg className="w-4 h-4 text-orange-600 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            <span>법인 상담 문의: 1588-5575</span>
-          </a>
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
+            {onOpenQuoteModal && (
+              <button
+                type="button"
+                onClick={onOpenQuoteModal}
+                className="px-6 py-4 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-black text-sm shadow-xl transition-all active:scale-95 cursor-pointer text-center"
+              >
+                맞춤 견적 문의하기 ↗
+              </button>
+            )}
 
-          {/* PC (Desktop): 클릭 안되고 안내만 되는 형태 */}
-          <div
-            className="hidden md:inline-flex shrink-0 px-8 py-4 rounded-xl bg-white text-slate-950 font-black text-sm sm:text-base shadow-xl text-center items-center justify-center space-x-2.5 select-text cursor-default"
-          >
-            <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-            </svg>
-            <span>법인 상담 문의: 1588-5575</span>
+            {/* Mobile: 실제 전화 발신 연결 */}
+            <a
+              href="tel:1588-5575"
+              className="md:hidden px-7 py-4 rounded-xl bg-white hover:bg-orange-50 text-slate-950 font-black text-sm sm:text-base shadow-xl transition-all active:scale-95 cursor-pointer text-center inline-flex items-center justify-center space-x-2.5 group"
+            >
+              <svg className="w-4 h-4 text-orange-600 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span>전화 상담: 1588-5575</span>
+            </a>
+
+            {/* PC (Desktop): 안내 형태 */}
+            <div
+              className="hidden md:inline-flex px-8 py-4 rounded-xl bg-white text-slate-950 font-black text-sm sm:text-base shadow-xl text-center items-center justify-center space-x-2.5 select-text cursor-default"
+            >
+              <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span>전화 상담: 1588-5575</span>
+            </div>
           </div>
         </div>
       </div>
