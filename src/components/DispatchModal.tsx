@@ -13,20 +13,23 @@ export default function DispatchModal({ isOpen, onClose }: DispatchModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 animate-fade-in">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-1 sm:p-2 md:p-3 animate-fade-in">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity"
+        className="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity"
         onClick={onClose}
       />
 
-      {/* Modal Window */}
-      <div className="relative z-10 w-full max-w-5xl h-[92vh] max-h-[920px] rounded-3xl bg-white border border-slate-200 shadow-2xl flex flex-col overflow-hidden">
-        {/* Clean Modal Header (오직 '실시간간편접수'만 심플하고 또렷하게 표시) */}
-        <div className="flex items-center justify-between px-5 sm:px-6 py-4 bg-slate-900 border-b border-slate-800 shrink-0">
-          <h3 className="text-base sm:text-lg font-black text-white tracking-tight">
-            실시간간편접수
-          </h3>
+      {/* Modal Window (대폭 확장된 대형 화면 창) */}
+      <div className="relative z-10 w-[98vw] max-w-[1440px] h-[96vh] rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-2xl flex flex-col overflow-hidden">
+        {/* Clean Modal Header */}
+        <div className="flex items-center justify-between px-5 sm:px-8 py-3.5 bg-slate-900 border-b border-slate-800 shrink-0">
+          <div className="flex items-center space-x-2.5">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+            <h3 className="text-base sm:text-lg font-black text-white tracking-tight">
+              실시간 간편접수
+            </h3>
+          </div>
 
           <button
             onClick={onClose}

@@ -85,18 +85,34 @@ export default function Navbar({ navItems, onOpenPriceModal, onOpenDispatchModal
             ))}
           </nav>
 
-          {/* Direct 24/7 Call CTA Button (크고 눈에 띄는 대표전화 버튼) */}
-          <div className="flex items-center space-x-3">
+          {/* Right Action Area (24시 접수 1588-5575 & 오더접수 버튼) */}
+          <div className="flex items-center space-x-3 sm:space-x-4">
+            {/* Phone Info: Mobile (clickable) */}
             <a
               href="tel:1588-5575"
-              className="flex items-center space-x-2.5 text-sm sm:text-base font-black text-slate-900 hover:text-orange-600 px-5 py-2.5 rounded-full bg-slate-100 hover:bg-orange-50 border border-slate-200 hover:border-orange-300 transition-all active:scale-95 shadow-sm"
+              className="md:hidden flex flex-col items-end text-right active:scale-95 transition-transform"
             >
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-              <svg className="w-4 h-4 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span className="font-mono tracking-tight font-black text-base sm:text-lg">1588-5575</span>
+              <span className="text-[10px] font-bold text-slate-500 leading-none">24시 접수</span>
+              <span className="font-mono font-black text-sm text-slate-900 leading-tight">1588-5575</span>
             </a>
+
+            {/* Phone Info: PC Desktop (unclickable) */}
+            <div className="hidden md:flex flex-col items-end text-right select-text cursor-default">
+              <span className="text-[11px] font-medium text-slate-500 leading-none">24시 접수</span>
+              <span className="font-mono font-black text-base text-slate-900 leading-tight">1588-5575</span>
+            </div>
+
+            {/* [오더접수 ↗] Button */}
+            {onOpenDispatchModal && (
+              <button
+                type="button"
+                onClick={onOpenDispatchModal}
+                className="hidden sm:inline-flex items-center space-x-1 px-4 sm:px-5 py-2.5 rounded-full bg-slate-950 hover:bg-slate-800 active:bg-black text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all cursor-pointer"
+              >
+                <span>오더접수</span>
+                <span>↗</span>
+              </button>
+            )}
           </div>
 
           {/* Mobile Menu Trigger */}

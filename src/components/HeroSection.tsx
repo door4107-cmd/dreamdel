@@ -1,23 +1,20 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 
 interface HeroSectionProps {
-  onQuote: () => void;
+  onQuote?: () => void;
+  onOpenDispatchModal?: () => void;
 }
 
-export default function HeroSection({ onQuote }: HeroSectionProps) {
+export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectionProps) {
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const [latestDispatch, setLatestDispatch] = useState({
-    area: "강남 테헤란로 → 송파 롯데타워",
-    vehicle: "오토바이",
-    status: "매칭 완료 ✨",
-  });
-
-  // 1. 100% Seamless 60FPS Crossfading Video Loop (완벽하게 부드러운 무한 디졸브 루프)
+  // 1. 100% Seamless 60FPS Crossfading Video Loop
   useEffect(() => {
     const v1 = video1Ref.current;
     const v2 = video2Ref.current;
@@ -25,7 +22,7 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
 
     const SPEED = 0.58;
     const FADE_DURATION_MS = 1800;
-    const TRIGGER_BEFORE_END_SEC = 2.4; // 끝까지 도달하기 2.4초 전에 다음 영상 시작
+    const TRIGGER_BEFORE_END_SEC = 2.4;
 
     v1.playbackRate = SPEED;
     v2.playbackRate = SPEED;
@@ -34,7 +31,6 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
     let animId: number;
 
     const checkLoop = () => {
-      // 1번 영상 ➔ 2번 영상 전환 체크
       if (activeVideo === 1 && v1.duration && !isTransitioning) {
         if (v1.currentTime >= v1.duration - TRIGGER_BEFORE_END_SEC) {
           isTransitioning = true;
@@ -43,7 +39,6 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           v2.play().catch(() => {});
           setActiveVideo(2);
 
-          // 페이드가 완전히 끝난 후 1번 영상을 안전하게 대기 상태로 정돈
           setTimeout(() => {
             if (v1) {
               v1.pause();
@@ -52,9 +47,7 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
             isTransitioning = false;
           }, FADE_DURATION_MS + 200);
         }
-      }
-      // 2번 영상 ➔ 1번 영상 전환 체크
-      else if (activeVideo === 2 && v2.duration && !isTransitioning) {
+      } else if (activeVideo === 2 && v2.duration && !isTransitioning) {
         if (v2.currentTime >= v2.duration - TRIGGER_BEFORE_END_SEC) {
           isTransitioning = true;
           v1.currentTime = 0;
@@ -82,28 +75,72 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
     };
   }, [activeVideo]);
 
-  // 2. Telemetry Live Dispatch Data
-  useEffect(() => {
-    const dispatches = [
-      { area: "강남 테헤란로 → 송파 롯데타워", vehicle: "오토바이", status: "매칭 완료 ✨" },
-      { area: "여의도 IFC → 서초 법원로", vehicle: "다마스", status: "배송 중 📦" },
-      { area: "광화문 D타워 → 판교 테크노밸리", vehicle: "라보", status: "픽업 완료 🚚" },
-      { area: "상암 DMC → 용산 한남동", vehicle: "밴", status: "출발 🚀" },
-      { area: "인천 송도 → 구로디지털단지", vehicle: "트럭", status: "배차 확정 ⚡" },
-    ];
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
 
-    let idx = 0;
-    const interval = setInterval(() => {
-      idx = (idx + 1) % dispatches.length;
-      setLatestDispatch(dispatches[idx]);
-    }, 3500);
+  const cards = [
+    {
+      tag: "01 COMPANY",
+      title: "회사소개",
+      descLine1: "1994년부터 이어온",
+      descLine2: "운송 노하우",
+      imageSrc: "/images/driver.jpg",
+      actionText: "자세히 보기 ↓",
+      actionType: "scroll",
+      targetId: "company",
+    },
+    {
+      tag: "02 BUSINESS",
+      title: "사업영역",
+      descLine1: "오토바이·차량·전국연계",
+      descLine2: "기타 서비스까지",
+      imageSrc: "/images/vehicles/bike.jpg",
+      actionText: "자세히 보기 ↓",
+      actionType: "scroll",
+      targetId: "services",
+    },
+    {
+      tag: "03 ORDER ↗",
+      title: "오더접수",
+      descLine1: "지금 바로 접수",
+      descLine2: "실시간 배차",
+      imageSrc: "/images/vehicles/damas.jpg",
+      actionText: "접수하러 가기 ↗",
+      actionType: "dispatch",
+    },
+    {
+      tag: "04 CORPORATE",
+      title: "법인서비스",
+      descLine1: "월 정산·세금계산서",
+      descLine2: "거래처 전용 조건",
+      imageSrc: "/images/vehicles/truck.jpg",
+      actionText: "자세히 보기 ↓",
+      actionType: "scroll",
+      targetId: "about",
+    },
+  ];
 
-    return () => clearInterval(interval);
-  }, []);
+  const handleCardClick = (card: typeof cards[0]) => {
+    if (card.actionType === "dispatch") {
+      if (onOpenDispatchModal) onOpenDispatchModal();
+    } else if (card.targetId) {
+      scrollTo(card.targetId);
+    }
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % cards.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + cards.length) % cards.length);
+  };
 
   return (
-    <section id="hero" className="relative min-h-[92vh] flex flex-col items-center justify-center overflow-hidden pt-28 md:pt-36 pb-20 px-4 sm:px-6 lg:px-8">
-      {/* 🎬 1. Full-Width Background Video Layer (1.8초 울트라 스무스 크로스페이드 디졸브) */}
+    <section id="hero" className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-28 md:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-[#18181B]">
+      {/* 🎬 1. Full-Width Background Video Layer (1.8초 스무스 크로스페이드 루프 - 선명한 비주얼 최적화) */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video
           ref={video1Ref}
@@ -111,8 +148,8 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           muted
           playsInline
           preload="auto"
-          className={`absolute inset-0 w-full h-full object-cover brightness-[1.02] contrast-[1.02] transition-opacity duration-[1800ms] ease-in-out ${
-            activeVideo === 1 ? "opacity-75" : "opacity-0"
+          className={`absolute inset-0 w-full h-full object-cover brightness-[0.95] contrast-[1.05] transition-opacity duration-[1800ms] ease-in-out ${
+            activeVideo === 1 ? "opacity-90" : "opacity-0"
           }`}
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
@@ -123,123 +160,112 @@ export default function HeroSection({ onQuote }: HeroSectionProps) {
           muted
           playsInline
           preload="auto"
-          className={`absolute inset-0 w-full h-full object-cover brightness-[1.02] contrast-[1.02] transition-opacity duration-[1800ms] ease-in-out ${
-            activeVideo === 2 ? "opacity-75" : "opacity-0"
+          className={`absolute inset-0 w-full h-full object-cover brightness-[0.95] contrast-[1.05] transition-opacity duration-[1800ms] ease-in-out ${
+            activeVideo === 2 ? "opacity-90" : "opacity-0"
           }`}
         >
           <source src="/videos/hero.mp4" type="video/mp4" />
         </video>
 
-        {/* 100% Transparent Video Viewport */}
-        <div className="absolute inset-0 bg-transparent" />
+        {/* Cinematic Soft Tint Overlay (영상 생생함 극대화 + 텍스트 가독성 조화) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#12141A]/65 via-[#18181B]/35 to-[#18181B]/75" />
       </div>
 
-      {/* 2. Ambient Lighting */}
-      <div className="ambient-glow bg-orange-500/10 top-1/4 left-1/2 -translate-x-1/2" />
-      <div className="ambient-glow bg-blue-500/8 top-1/2 left-1/3" />
-
-      {/* 3. Hero Left-Aligned Foreground (세련된 좌측 정렬 레이아웃) */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full text-left px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl">
-          {/* Dynamic Live Badge (좌측 정렬) */}
-          <div className="inline-flex items-center space-x-2.5 px-5 py-2.5 rounded-full bg-white/95 backdrop-blur-xl border border-slate-200/90 shadow-sm mb-7 hover:border-slate-300 transition-all">
-            <span className="flex h-2.5 w-2.5 relative">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-orange-500" />
-            </span>
-            <span className="text-sm sm:text-base font-black text-slate-900">
-              수도권 30초 배차망
-            </span>
-            <span className="text-slate-300">|</span>
-            <span className="text-sm sm:text-base font-semibold text-slate-700">
-              {latestDispatch.area} · <span className="text-orange-600 font-black">{latestDispatch.vehicle}</span> ({latestDispatch.status})
-            </span>
+      {/* ── Content Container (z-10) ── */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col justify-between h-full">
+        {/* ── 2. Top Header & Title Area ── */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
+          <div>
+            <div className="text-xs sm:text-sm font-mono font-bold tracking-widest text-slate-400 uppercase mb-3 sm:mb-4">
+              DREAMDEL · GLOBAL LOGISTICS INNOVATOR
+            </div>
+            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18] break-keep mb-3">
+              꿈의 운송서비스<br />
+              고객님의 든든한 운송파트너{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 drop-shadow-[0_2px_14px_rgba(249,115,22,0.45)]">
+                드림델
+              </span>
+            </h1>
+            <p className="text-sm sm:text-base md:text-lg text-slate-300 font-medium break-keep">
+              오토바이 퀵부터 11톤 화물, 전국연계 운송까지
+            </p>
           </div>
 
-          {/* 메인 헤드라인 (좌측 정렬) */}
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight text-slate-950 mb-6 leading-[1.12] break-keep drop-shadow-[0_2px_15px_rgba(255,255,255,0.95)]">
-            급할 땐 고민 없이,<br />
-            <span className="text-gradient-vermilion drop-shadow-none">가장 빠른 퀵서비스 드림델</span>
-          </h1>
-
-          {/* 🌟 2. 100% 투명 배경 서브 카피 (좌측 정렬) */}
-          <div className="mb-12 text-left">
-            <p className="text-sm sm:text-base md:text-lg font-bold text-slate-800 mb-2 break-keep drop-shadow-[0_1px_8px_rgba(255,255,255,0.9)]">
-              오토바이 급행부터 다마스 · 라보 · 밴 · 1톤 트럭까지.
-            </p>
-            <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-black text-slate-950 leading-snug break-keep drop-shadow-[0_2px_12px_rgba(255,255,255,0.95)]">
-              지금 부르면 가장 가까운 전문 기사님의{" "}
-              <span className="text-slate-950 font-black">
-                30초 배차, 안전하고 빠른 배송 드림델
-              </span>
-            </p>
+          {/* Slider Control Arrows */}
+          <div className="hidden sm:flex items-center space-x-2 self-end mb-2">
+            <button
+              type="button"
+              onClick={prevSlide}
+              className="w-10 h-10 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-white/10 text-white flex items-center justify-center transition-colors text-sm font-bold cursor-pointer"
+              aria-label="이전 카드"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={nextSlide}
+              className="w-10 h-10 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-white/10 text-white flex items-center justify-center transition-colors text-sm font-bold cursor-pointer"
+              aria-label="다음 카드"
+            >
+              ›
+            </button>
           </div>
         </div>
 
-        {/* 🌟 3. 압도적 가독성의 4칸 신뢰 지표 카드 */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-5xl">
-          {/* Card 1: 배차 시간 */}
-          <div className="p-5 sm:p-7 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-lg hover:shadow-2xl hover:border-orange-300 hover:-translate-y-1 transition-all text-left">
-            <div className="text-xs sm:text-sm font-black text-orange-600 mb-2 flex items-center space-x-1.5">
-              <span className="p-1.5 rounded-lg bg-orange-100/80">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </span>
-              <span>초고속 매칭</span>
-            </div>
-            <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 font-mono tracking-tight my-1">
-              24.8<span className="text-sm sm:text-base font-bold text-slate-500 ml-1">초</span>
-            </div>
-            <div className="text-xs sm:text-sm text-slate-600 font-bold mt-1">평균 배차 시간</div>
-          </div>
+        {/* ── 3. 4 Feature Cards Grid (X 표시 및 규격문구 제거, 세련된 카드 레이아웃) ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-8 sm:mb-10">
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              onClick={() => handleCardClick(card)}
+              className="group relative h-[340px] sm:h-[370px] md:h-[390px] rounded-2xl bg-white border border-slate-200/90 hover:border-orange-500 overflow-hidden flex flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
+            >
+              {/* Background Visual Layer (선명하게 보이도록 투명도 및 오버레이 최적화) */}
+              <div className="absolute inset-0 z-0">
+                <Image
+                  src={card.imageSrc}
+                  alt={card.title}
+                  fill
+                  className="object-cover object-center opacity-65 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/45 to-white/90 group-hover:from-white/90 group-hover:via-white/25 group-hover:to-white/85 transition-colors" />
+              </div>
 
-          {/* Card 2: 약속 시간 준수 */}
-          <div className="p-5 sm:p-7 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-lg hover:shadow-2xl hover:border-emerald-300 hover:-translate-y-1 transition-all text-left">
-            <div className="text-xs sm:text-sm font-black text-emerald-600 mb-2 flex items-center space-x-1.5">
-              <span className="p-1.5 rounded-lg bg-emerald-100/80">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </span>
-              <span>정시 도착</span>
-            </div>
-            <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 font-mono tracking-tight my-1">
-              99.8<span className="text-sm sm:text-base font-bold text-slate-500 ml-1">%</span>
-            </div>
-            <div className="text-xs sm:text-sm text-slate-600 font-bold mt-1">도심 약속 준수율</div>
-          </div>
+              {/* Card Header (Tag, Title, Description) */}
+              <div className="relative z-10">
+                <div className="text-[11px] font-mono font-bold tracking-wider text-slate-600 uppercase mb-2">
+                  {card.tag}
+                </div>
+                <h3 className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight mb-2 group-hover:text-orange-600 transition-colors drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]">
+                  {card.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-800 leading-snug font-semibold drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]">
+                  {card.descLine1}<br />
+                  {card.descLine2}
+                </p>
+              </div>
 
-          {/* Card 3: 적재물 책임보험 */}
-          <div className="p-5 sm:p-7 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-lg hover:shadow-2xl hover:border-blue-300 hover:-translate-y-1 transition-all text-left">
-            <div className="text-xs sm:text-sm font-black text-blue-600 mb-2 flex items-center space-x-1.5">
-              <span className="p-1.5 rounded-lg bg-blue-100/80">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                </svg>
-              </span>
-              <span>책임 보험</span>
+              {/* Card Footer (Action Link with Hover Transition) */}
+              <div className="relative z-10 pt-4 border-t border-slate-200/80 flex items-center justify-between">
+                <span className="font-black text-xs sm:text-sm text-slate-950 group-hover:text-orange-600 transition-colors inline-flex items-center space-x-1.5 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
+                  <span>{card.actionText}</span>
+                </span>
+                <span className="w-7 h-7 rounded-full bg-white/90 shadow-sm group-hover:bg-orange-50 text-slate-700 group-hover:text-orange-600 flex items-center justify-center text-xs font-bold transition-colors">
+                  →
+                </span>
+              </div>
             </div>
-            <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 font-mono tracking-tight my-1">
-              1<span className="text-sm sm:text-base font-bold text-slate-500 ml-1">억원</span>
-            </div>
-            <div className="text-xs sm:text-sm text-slate-600 font-bold mt-1">현대해상 100% 가입</div>
-          </div>
+          ))}
+        </div>
 
-          {/* Card 4: 24시간 상담 센터 */}
-          <div className="p-5 sm:p-7 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200 shadow-lg hover:shadow-2xl hover:border-rose-300 hover:-translate-y-1 transition-all text-left">
-            <div className="text-xs sm:text-sm font-black text-rose-600 mb-2 flex items-center space-x-1.5">
-              <span className="p-1.5 rounded-lg bg-rose-100/80">
-                <svg className="w-4 h-4 sm:w-5 sm:h-5 text-rose-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                </svg>
-              </span>
-              <span>상담 센터</span>
-            </div>
-            <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 font-mono tracking-tight my-1">
-              365<span className="text-sm sm:text-base font-bold text-slate-500 ml-1">일</span>
-            </div>
-            <div className="text-xs sm:text-sm text-slate-600 font-bold mt-1">24시간 친절 상담</div>
+        {/* ── 4. Bottom Badges (2 Pill/Box Badges) ── */}
+        <div className="flex flex-wrap items-center gap-3">
+          <div className="px-4 py-2 rounded-lg bg-slate-900/90 border border-slate-700 text-slate-300 text-xs sm:text-sm font-medium">
+            적재물배상책임보험 보상한도 5,000만원
+          </div>
+          <div className="px-4 py-2 rounded-lg bg-slate-900/90 border border-slate-700 text-slate-300 text-xs sm:text-sm font-medium">
+            사랑의열매 &apos;착한가게&apos; 참여업체
           </div>
         </div>
       </div>

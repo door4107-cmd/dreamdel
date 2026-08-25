@@ -1,146 +1,356 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 
-interface ServiceItem {
-  id: string;
-  name: string;
-  badge: string;
-  summary: string;
-  capacity: string;
-  imageSrc: string;
-  accentColor: string;
-  accentBg: string;
-  recommended: string;
-}
+type TabId = "bike" | "vehicle" | "express" | "etc";
 
 export default function ServiceCards() {
-  const services: ServiceItem[] = [
-    {
-      id: "bike",
-      name: "오토바이",
-      badge: "가장 빠른 배차",
-      summary: "긴급 서류 · 소형 박스 · 여권 · 귀중품",
-      capacity: "최대 20kg",
-      imageSrc: "/images/vehicles/bike.jpg",
-      accentColor: "text-orange-600",
-      accentBg: "bg-orange-50 border-orange-200/80 text-orange-700",
-      recommended: "30분 내 초고속 도착",
-    },
-    {
-      id: "damas",
-      name: "다마스",
-      badge: "우천 안심 밀폐",
-      summary: "라면박스 10~15개 · 데스크톱 · 소형가전",
-      capacity: "최대 350kg",
-      imageSrc: "/images/vehicles/damas.jpg",
-      accentColor: "text-blue-600",
-      accentBg: "bg-blue-50 border-blue-200/80 text-blue-700",
-      recommended: "비·눈 100% 안심 차단",
-    },
-    {
-      id: "labo",
-      name: "라보",
-      badge: "가구 · 파레트",
-      summary: "소파 · 매트리스 · 전시장 부스 장비",
-      capacity: "최대 500kg",
-      imageSrc: "/images/vehicles/labo.jpg",
-      accentColor: "text-emerald-600",
-      accentBg: "bg-emerald-50 border-emerald-200/80 text-emerald-700",
-      recommended: "부피 큰 가구 적재 최적화",
-    },
-    {
-      id: "van",
-      name: "밴",
-      badge: "대용량 밀폐",
-      summary: "의류 행거 · 행사 장비 · 방송 음향 기기",
-      capacity: "최대 500kg",
-      imageSrc: "/images/vehicles/van.jpg",
-      accentColor: "text-cyan-600",
-      accentBg: "bg-cyan-50 border-cyan-200/80 text-cyan-700",
-      recommended: "스타리아급 안심 밀폐 운송",
-    },
-    {
-      id: "truck",
-      name: "트럭",
-      badge: "전국 당일 직행",
-      summary: "기업 정기 물류 · 산업 장비 · 대형 화물",
-      capacity: "최대 1500kg",
-      imageSrc: "/images/vehicles/truck.jpg",
-      accentColor: "text-purple-600",
-      accentBg: "bg-purple-50 border-purple-200/80 text-purple-700",
-      recommended: "전국 어디든 당일 직행",
-    },
+  const [activeTab, setActiveTab] = useState<TabId>("bike");
+
+  const tabs = [
+    { id: "bike" as TabId, label: "오토바이 운송서비스", shortLabel: "오토바이" },
+    { id: "vehicle" as TabId, label: "차량 운송서비스", shortLabel: "차량(다마스/라보/1톤)" },
+    { id: "express" as TabId, label: "전국연계 운송서비스", shortLabel: "전국연계(KTX/항공)" },
+    { id: "etc" as TabId, label: "기타 서비스", shortLabel: "특수/맞춤옵션" },
   ];
 
   return (
     <div className="w-full">
-      {/* Editorial Section Header */}
-      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 pb-5 border-b border-slate-200/90">
-        <div>
-          <div className="inline-flex items-center space-x-1.5 px-3 py-0.5 rounded-full bg-orange-50 border border-orange-200/80 text-[11px] font-bold text-orange-600 mb-2">
-            <svg className="w-3.5 h-3.5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-            <span>맞춤 차량 스펙 가이드</span>
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 tracking-tight">
-            어떤 화물이든, 가장 완벽한 크기로.
-          </h2>
+      {/* ── 1. Section Header ── */}
+      <div className="mb-8 sm:mb-12">
+        <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 text-white text-[11px] font-mono font-bold tracking-widest uppercase mb-4 shadow-sm">
+          <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+          <span>02 BUSINESS</span>
         </div>
-        <p className="text-xs sm:text-sm text-slate-500 font-medium mt-3 sm:mt-0">
-          적재 용량별 최적 차량 배치 · 10초 실시간 AI 기사님 매칭
+        
+        <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight leading-[1.2] break-keep mb-3">
+          보내야 할 것이 무엇이든, 맞는 수단이 있습니다
+        </h2>
+        <p className="text-slate-600 text-sm sm:text-base font-medium break-keep">
+          소형 서류 퀵배송부터 1톤~11톤 대형 화물, KTX·항공 전국 당일 연계망까지 최적의 운송 수단을 제공합니다.
         </p>
       </div>
 
-      {/* 5-Column Grid with Luxury Automotive Showcase Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
-        {services.map((item) => (
-          <div
-            key={item.id}
-            className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200/90 shadow-[0_4px_20px_rgb(0,0,0,0.03)] hover:-translate-y-1.5 hover:border-slate-300 hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group overflow-hidden cursor-pointer active:scale-[0.98]"
-          >
-            <div>
-              {/* Top Badges */}
-              <div className="flex items-center justify-between mb-3">
-                <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${item.accentBg}`}>
-                  {item.badge}
-                </span>
-                <span className={`text-xs font-mono font-black ${item.accentColor}`}>
-                  {item.capacity}
-                </span>
+      {/* ── 2. Tab Navigation Bar (Sleek Modern Segmented Tabs) ── */}
+      <div className="border-b border-slate-200 mb-8 sm:mb-10">
+        <div className="flex flex-wrap gap-2 sm:gap-6">
+          {tabs.map((tab) => {
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                onClick={() => setActiveTab(tab.id)}
+                className={`pb-3.5 sm:pb-4 text-sm sm:text-base font-bold transition-all relative cursor-pointer ${
+                  isActive
+                    ? "text-slate-950"
+                    : "text-slate-500 hover:text-slate-800"
+                }`}
+              >
+                <span>{tab.label}</span>
+                {isActive && (
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 sm:h-1 bg-slate-950 rounded-full" />
+                )}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ── 3. Active Tab Content Container ── */}
+      <div className="p-6 sm:p-8 md:p-10 rounded-2xl sm:rounded-3xl bg-white border border-slate-200/90 shadow-sm">
+        {/* ── TAB 01: 오토바이 운송서비스 ── */}
+        {activeTab === "bike" && (
+          <div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              {/* Left Column: 오토바이 이미지 */}
+              <div className="lg:col-span-5 flex flex-col">
+                <div className="relative w-full h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] rounded-2xl overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 border border-slate-200/90 shadow-md flex items-center justify-center p-4">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/vehicles/bike.jpg"
+                      alt="오토바이 주행 컷"
+                      fill
+                      className="object-contain object-center drop-shadow-xl"
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                    />
+                  </div>
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[11px] font-bold border border-white/15">
+                    오토바이 퀵서비스
+                  </div>
+                </div>
               </div>
 
-              {/* Vehicle Render Image Showcase Frame */}
-              <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-4 bg-slate-950 border border-slate-200/80 shadow-inner group-hover:shadow-md transition-shadow">
-                <Image
-                  src={item.imageSrc}
-                  alt={item.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 20vw"
-                  priority
-                />
+              {/* Right Column: 서비스 설명 및 비교표 */}
+              <div className="lg:col-span-7 flex flex-col justify-between">
+                <div className="mb-5">
+                  <div className="inline-block text-xs font-mono font-bold text-orange-600 uppercase mb-1">
+                    TAB 01 · MOTORCYCLE
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight mb-2">
+                    오토바이 운송서비스
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-keep font-medium">
+                    도심 속 가장 빠른 기동성으로 서류, 소형 패키지, 긴급 물품을 30분 내외로 신속 배송합니다.
+                  </p>
+                </div>
+
+                {/* 2-Service Comparison Table */}
+                <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+                  <table className="w-full text-left text-xs sm:text-sm border-collapse">
+                    <thead>
+                      <tr className="bg-slate-100 border-b border-slate-200 text-slate-950 font-black">
+                        <th className="py-3 px-3.5 sm:px-4 border-r border-slate-200 w-[22%] bg-slate-100">서비스 구분</th>
+                        <th className="py-3 px-3.5 sm:px-4 border-r border-slate-200 w-[39%] text-slate-900">일반 오토바이 운송</th>
+                        <th className="py-3 px-3.5 sm:px-4 w-[39%] text-orange-600">급송 · 프리미엄 오토바이</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-200 text-slate-700 font-medium">
+                      <tr>
+                        <th className="py-2.5 px-3.5 sm:px-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">개요</th>
+                        <td className="py-2.5 px-3.5 sm:px-4 border-r border-slate-200">기본적인 규격 소형물품 운송</td>
+                        <td className="py-2.5 px-3.5 sm:px-4 text-slate-950 font-bold">최우선 픽업 및 직통 단독 배송</td>
+                      </tr>
+                      <tr>
+                        <th className="py-2.5 px-3.5 sm:px-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">접수</th>
+                        <td className="py-2.5 px-3.5 sm:px-4 border-r border-slate-200">온라인 / 전화 (1588-5575)</td>
+                        <td className="py-2.5 px-3.5 sm:px-4">전화 (1588-5575) / 직통</td>
+                      </tr>
+                      <tr>
+                        <th className="py-2.5 px-3.5 sm:px-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">접수시간</th>
+                        <td colSpan={2} className="py-2.5 px-3.5 sm:px-4 text-slate-900 font-semibold">
+                          평일 08:00~20:00 · 토요일 08:00~19:00 · 일·공휴일 09:00~18:00 (야간 24시 접수 가능)
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className="py-2.5 px-3.5 sm:px-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">운송지역</th>
+                        <td className="py-2.5 px-3.5 sm:px-4 border-r border-slate-200">서울 · 경기 · 인천 전역</td>
+                        <td className="py-2.5 px-3.5 sm:px-4">서울 · 경기 · 인천 전역</td>
+                      </tr>
+                      <tr>
+                        <th className="py-2.5 px-3.5 sm:px-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">소요시간</th>
+                        <td className="py-2.5 px-3.5 sm:px-4 border-r border-slate-200 leading-snug">
+                          서울 시내 10km 이내 30분 내외<br />
+                          수도권 60분 내외
+                        </td>
+                        <td className="py-2.5 px-3.5 sm:px-4 leading-snug text-slate-950 font-bold">
+                          서울 시내 10km 이내 20분 내외<br />
+                          수도권 40분 내외 직송
+                        </td>
+                      </tr>
+                      <tr>
+                        <th className="py-2.5 px-3.5 sm:px-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">적재규격</th>
+                        <td colSpan={2} className="py-2.5 px-3.5 sm:px-4 text-slate-900 font-semibold">
+                          오토바이 적재함 탑재 물품 · 최대 중량 20kg 이내 · 3면의 합 120cm 이내
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
-
-              {/* Title & Summary */}
-              <h3 className="text-lg font-black text-slate-950 tracking-tight mb-1.5 group-hover:text-orange-600 transition-colors">
-                {item.name}
-              </h3>
-              <p className="text-xs text-slate-500 leading-relaxed mb-4">
-                {item.summary}
-              </p>
-            </div>
-
-            {/* Bottom Feature Pill Tag */}
-            <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-600 font-medium">
-              <span>{item.recommended}</span>
-              <svg className="w-3.5 h-3.5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M5 13l4 4L19 7" />
-              </svg>
             </div>
           </div>
-        ))}
+        )}
+
+        {/* ── TAB 02: 차량 운송서비스 ── */}
+        {activeTab === "vehicle" && (
+          <div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              {/* Left Column: 차량 이미지 */}
+              <div className="lg:col-span-5 flex flex-col">
+                <div className="relative w-full h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] rounded-2xl overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 border border-slate-200/90 shadow-md flex items-center justify-center p-4">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/vehicles/damas.jpg"
+                      alt="차량 운송 주행 컷"
+                      fill
+                      className="object-contain object-center drop-shadow-xl"
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                    />
+                  </div>
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[11px] font-bold border border-white/15">
+                    다마스 · 라보 · 1톤 트럭
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: 서비스 설명 및 상세 항목 */}
+              <div className="lg:col-span-7 flex flex-col justify-between">
+                <div className="mb-5">
+                  <div className="inline-block text-xs font-mono font-bold text-blue-600 uppercase mb-1">
+                    TAB 02 · VEHICLES
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight mb-2">
+                    차량 운송서비스
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-keep font-medium">
+                    오토바이로 운송이 불가능한 박스 화물, 가전/가구, 파레트 및 대형 화물을 전차종으로 안전하게 운송합니다.
+                  </p>
+                </div>
+
+                <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+                  <table className="w-full text-left text-xs sm:text-sm border-collapse">
+                    <tbody className="divide-y divide-slate-200 text-slate-700 font-medium">
+                      <tr>
+                        <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900 w-[24%]">차량 라인업</th>
+                        <td className="p-4 text-slate-950 font-bold text-sm sm:text-base">다마스 (밴) / 라보 (소형화물) / 1톤~11톤 카고·탑차</td>
+                      </tr>
+                      <tr>
+                        <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">접수 방법</th>
+                        <td className="p-4">온라인 실시간 접수 / 전화 접수 (1588-5575)</td>
+                      </tr>
+                      <tr>
+                        <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">운송 권역</th>
+                        <td className="p-4">수도권 전역 및 전국 전 지역 (도서산간 제외)</td>
+                      </tr>
+                      <tr>
+                        <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">적재 중량</th>
+                        <td className="p-4 text-slate-950 font-semibold">다마스 (350kg) / 라보 (450kg) / 1톤 (1,000kg 이상)</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── TAB 03: 전국연계 운송서비스 ── */}
+        {activeTab === "express" && (
+          <div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              {/* Left Column: 전국연계 이미지 */}
+              <div className="lg:col-span-5 flex flex-col">
+                <div className="relative w-full h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] rounded-2xl overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 border border-slate-200/90 shadow-md flex items-center justify-center p-4">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/vehicles/van.jpg"
+                      alt="전국연계 운송 컷"
+                      fill
+                      className="object-contain object-center drop-shadow-xl"
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                    />
+                  </div>
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[11px] font-bold border border-white/15">
+                    KTX · 고속버스 · 항공 연계
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: 서비스 설명 및 상세 항목 */}
+              <div className="lg:col-span-7 flex flex-col justify-between">
+                <div className="mb-5">
+                  <div className="inline-block text-xs font-mono font-bold text-emerald-600 uppercase mb-1">
+                    TAB 03 · NATIONWIDE
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight mb-2">
+                    전국연계 당일 특송서비스
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-keep font-medium">
+                    KTX 특급망, 고속버스 터미널망, 국내 항공망과 도심 퀵서비스를 연계하여 전국 어디든 당일 배송합니다.
+                  </p>
+                </div>
+
+                <div className="overflow-x-auto rounded-xl border border-slate-200 shadow-sm">
+                  <table className="w-full text-left text-xs sm:text-sm border-collapse">
+                    <tbody className="divide-y divide-slate-200 text-slate-700 font-medium">
+                      <tr>
+                        <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900 w-[24%]">연계 수단</th>
+                        <td className="p-4 text-slate-950 font-bold text-sm sm:text-base">KTX 특급열차 / 고속버스 당일택배 / 국내선 항공 특송</td>
+                      </tr>
+                      <tr>
+                        <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">접수 방법</th>
+                        <td className="p-4">전화 전담 배차 (1588-5575)</td>
+                      </tr>
+                      <tr>
+                        <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">배송 기준</th>
+                        <td className="p-4 text-slate-950 font-semibold">오전 픽업 접수 시 당일 오후 도착 보장</td>
+                      </tr>
+                      <tr>
+                        <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">서비스 권역</th>
+                        <td className="p-4">전국 주요 광역시, KTX 정차역 및 지방 거점 도시</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ── TAB 04: 기타 서비스 ── */}
+        {activeTab === "etc" && (
+          <div>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-stretch">
+              {/* Left Column: 기타 서비스 이미지 */}
+              <div className="lg:col-span-5 flex flex-col">
+                <div className="relative w-full h-full min-h-[320px] sm:min-h-[380px] lg:min-h-[440px] rounded-2xl overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 border border-slate-200/90 shadow-md flex items-center justify-center p-4">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/images/vehicles/truck.jpg"
+                      alt="기타 운송 옵션 컷"
+                      fill
+                      className="object-contain object-center drop-shadow-xl"
+                      sizes="(max-width: 1024px) 100vw, 42vw"
+                    />
+                  </div>
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-slate-950/80 backdrop-blur-md text-white text-[11px] font-bold border border-white/15">
+                    맞춤형 특수 운송 옵션
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: 3행 옵션 카드 */}
+              <div className="lg:col-span-7 flex flex-col justify-between">
+                <div className="mb-5">
+                  <div className="inline-block text-xs font-mono font-bold text-purple-600 uppercase mb-1">
+                    TAB 04 · SPECIAL OPTIONS
+                  </div>
+                  <h3 className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight mb-2">
+                    맞춤형 특수 운송 옵션
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-keep font-medium">
+                    고객사의 비즈니스 스케줄과 현장 조건에 맞춘 유연한 부가 운송 솔루션을 제공합니다.
+                  </p>
+                </div>
+
+                <div className="space-y-3.5 my-auto">
+                  <div className="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between hover:bg-white hover:shadow-sm transition-all">
+                    <div>
+                      <div className="font-bold text-slate-950 text-sm sm:text-base">지정 시간 예약 운송</div>
+                      <div className="text-xs text-slate-500 mt-0.5">고객이 지정한 정확한 일시에 픽업 및 배송 완료</div>
+                    </div>
+                    <span className="text-xs font-mono font-bold text-orange-600 bg-orange-50 px-2.5 py-1 rounded-full border border-orange-200">
+                      RESERVE
+                    </span>
+                  </div>
+
+                  <div className="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between hover:bg-white hover:shadow-sm transition-all">
+                    <div>
+                      <div className="font-bold text-slate-950 text-sm sm:text-base">단기 보관 후 지정 배송</div>
+                      <div className="text-xs text-slate-500 mt-0.5">안전 물류 창고 보관 후 원하는 시간대에 맞춰 순차 배송</div>
+                    </div>
+                    <span className="text-xs font-mono font-bold text-blue-600 bg-blue-50 px-2.5 py-1 rounded-full border border-blue-200">
+                      STORAGE
+                    </span>
+                  </div>
+
+                  <div className="p-4 sm:p-5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between hover:bg-white hover:shadow-sm transition-all">
+                    <div>
+                      <div className="font-bold text-slate-950 text-sm sm:text-base">다중 경유지 순회 운송</div>
+                      <div className="text-xs text-slate-500 mt-0.5">단 한 번의 접수로 여러 거래처 동시 배송 및 서류 회수</div>
+                    </div>
+                    <span className="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                      MULTI-WAY
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
