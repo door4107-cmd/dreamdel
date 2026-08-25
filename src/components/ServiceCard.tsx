@@ -7,7 +7,7 @@ interface ServiceCardProps {
   title: string;
   description: string;
   features: string[];
-  price: string;
+  price?: string;
   fromPrice?: string;
   badge?: {
     label: string;
@@ -20,7 +20,6 @@ export default function ServiceCard({
   title,
   description,
   features,
-  price,
   fromPrice,
   badge,
 }: ServiceCardProps) {

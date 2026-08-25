@@ -1,10 +1,8 @@
-"use client";
-
 interface CorporateSectionProps {
   onOpenQuoteModal?: () => void;
 }
 
-export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionProps) {
+export default function CorporateSection({ onOpenQuoteModal: _onOpenQuoteModal }: CorporateSectionProps = {}) {
   const benefits = [
     {
       number: "01",

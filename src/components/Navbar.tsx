@@ -37,6 +37,8 @@ export default function Navbar({ navItems, onOpenPriceModal, onOpenDispatchModal
   const handleNavClick = (href: string) => {
     if (href === "#calculator" && onOpenQuoteModal) {
       onOpenQuoteModal();
+    } else if (href === "#price" && onOpenPriceModal) {
+      onOpenPriceModal();
     } else if (href === "#order" && onOpenDispatchModal) {
       onOpenDispatchModal();
     } else {

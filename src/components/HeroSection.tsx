@@ -12,7 +12,6 @@ export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectio
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   // 1. 100% Seamless 60FPS Crossfading Video Loop
   useEffect(() => {
@@ -131,11 +130,11 @@ export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectio
   };
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % cards.length);
+    scrollTo("services");
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + cards.length) % cards.length);
+    scrollTo("hero");
   };
 
   return (
