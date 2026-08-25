@@ -12,58 +12,8 @@ export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const sliderRef = useRef<HTMLDivElement>(null);
 
-  // 1. 100% Seamless 60FPS Crossfading Video Loop
-  useEffect(() => {
-    const v1 = video1Ref.current;
-    const v2 = video2Ref.current;
-    if (!v1 || !v2) return;
-
-    const SPEED = 0.58;
-    const FADE_DURATION_MS = 1800;
-    const TRIGGER_BEFORE_END_SEC = 2.4;
-
-    v1.playbackRate = SPEED;
-    v2.playbackRate = SPEED;
-
-    let isTransitioning = false;
-    let animId: number;
-
-    const checkLoop = () => {
-      const currentVideo = activeVideo === 1 ? v1 : v2;
-      const nextVideo = activeVideo === 1 ? v2 : v1;
-
-      if (currentVideo.duration) {
-        const timeLeft = currentVideo.duration - currentVideo.currentTime;
-        if (timeLeft <= TRIGGER_BEFORE_END_SEC && !isTransitioning) {
-          isTransitioning = true;
-          nextVideo.currentTime = 0;
-          nextVideo.play().catch(() => {});
-          setActiveVideo(activeVideo === 1 ? 2 : 1);
-
-          setTimeout(() => {
-            isTransitioning = false;
-          }, FADE_DURATION_MS);
-        }
-      }
-      animId = requestAnimationFrame(checkLoop);
-    };
-
-    animId = requestAnimationFrame(checkLoop);
-
-    return () => {
-      cancelAnimationFrame(animId);
-    };
-  }, [activeVideo]);
-
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
-  // 5 Feature Cards (01 COMPANY, 02 BUSINESS, 03 ORDER, 04 CORPORATE, 05 DRIVER)
+  // 5 Base Feature Cards (01 COMPANY, 02 BUSINESS, 03 ORDER, 04 CORPORATE, 05 DRIVER)
   const cards = [
     {
       tag: "01 COMPANY",
@@ -116,6 +66,62 @@ export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
     },
   ];
 
+  // 3-Set Cloned Extended Cards for 100% Infinite Seamless Looping
+  const extendedCards = [...cards, ...cards, ...cards];
+  const CARD_COUNT = cards.length; // 5
+
+  // Start at the first card of the middle set (index 5)
+  const [offsetIndex, setOffsetIndex] = useState(CARD_COUNT);
+  const [isTransitioning, setIsTransitioning] = useState(true);
+
+  // 1. 100% Seamless 60FPS Crossfading Video Loop
+  useEffect(() => {
+    const v1 = video1Ref.current;
+    const v2 = video2Ref.current;
+    if (!v1 || !v2) return;
+
+    const SPEED = 0.58;
+    const FADE_DURATION_MS = 1800;
+    const TRIGGER_BEFORE_END_SEC = 2.4;
+
+    v1.playbackRate = SPEED;
+    v2.playbackRate = SPEED;
+
+    let isVideoTransitioning = false;
+    let animId: number;
+
+    const checkLoop = () => {
+      const currentVideo = activeVideo === 1 ? v1 : v2;
+      const nextVideo = activeVideo === 1 ? v2 : v1;
+
+      if (currentVideo.duration) {
+        const timeLeft = currentVideo.duration - currentVideo.currentTime;
+        if (timeLeft <= TRIGGER_BEFORE_END_SEC && !isVideoTransitioning) {
+          isVideoTransitioning = true;
+          nextVideo.currentTime = 0;
+          nextVideo.play().catch(() => {});
+          setActiveVideo(activeVideo === 1 ? 2 : 1);
+
+          setTimeout(() => {
+            isVideoTransitioning = false;
+          }, FADE_DURATION_MS);
+        }
+      }
+      animId = requestAnimationFrame(checkLoop);
+    };
+
+    animId = requestAnimationFrame(checkLoop);
+
+    return () => {
+      cancelAnimationFrame(animId);
+    };
+  }, [activeVideo]);
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   const handleCardClick = (card: (typeof cards)[0]) => {
     if (card.actionType === "dispatch") {
       if (onOpenDispatchModal) onOpenDispatchModal();
@@ -124,14 +130,32 @@ export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
     }
   };
 
-  // Slider navigation: 총 5개 카드, 데스크톱 4개 노출 기준 (max index = 1)
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev > 0 ? prev - 1 : cards.length - 1));
+  // Slider Navigation: Infinite Next & Prev
+  const nextSlide = () => {
+    setIsTransitioning(true);
+    setOffsetIndex((prev) => prev + 1);
   };
 
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev < cards.length - 1 ? prev + 1 : 0));
+  const prevSlide = () => {
+    setIsTransitioning(true);
+    setOffsetIndex((prev) => prev - 1);
   };
+
+  // Seamless Infinite Reset on Transition End (Without flickering)
+  const handleTransitionEnd = () => {
+    if (offsetIndex >= CARD_COUNT * 2) {
+      // Reached the end of middle set -> reset seamlessly to start of middle set
+      setIsTransitioning(false);
+      setOffsetIndex(CARD_COUNT + (offsetIndex % CARD_COUNT));
+    } else if (offsetIndex < CARD_COUNT) {
+      // Reached before middle set -> reset seamlessly to end of middle set
+      setIsTransitioning(false);
+      setOffsetIndex(CARD_COUNT + ((offsetIndex % CARD_COUNT) + CARD_COUNT) % CARD_COUNT);
+    }
+  };
+
+  // Real 1-based index (1 ~ 5)
+  const realCurrentIndex = ((offsetIndex % CARD_COUNT) + CARD_COUNT) % CARD_COUNT;
 
   return (
     <section
@@ -191,8 +215,8 @@ export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
 
           {/* ── < > Slide Arrows & Card Index Indicator ── */}
           <div className="flex items-center space-x-3 self-start md:self-end mb-1">
-            <div className="text-xs font-mono font-bold text-slate-400 bg-slate-900/80 px-3 py-1.5 rounded-lg border border-white/10">
-              <span className="text-orange-400">{currentIndex + 1}</span> / {cards.length}
+            <div className="text-xs font-mono font-bold text-slate-400 bg-slate-900/80 px-3.5 py-1.5 rounded-lg border border-white/10 select-none">
+              <span className="text-orange-400">{realCurrentIndex + 1}</span> / {CARD_COUNT}
             </div>
 
             <div className="flex items-center space-x-2">
@@ -216,19 +240,22 @@ export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
           </div>
         </div>
 
-        {/* ── 3. 5 Feature Cards Slider Carousel (Desktop 4 cards visible, smooth slide) ── */}
-        <div className="relative w-full overflow-hidden mb-8 sm:mb-10" ref={sliderRef}>
+        {/* ── 3. 5-Card Infinite Seamless Carousel (Desktop 4 cards always fully visible) ── */}
+        <div className="relative w-full overflow-hidden mb-8 sm:mb-10 [--slider-gap:16px] sm:[--slider-gap:20px] [--slider-visible:1] sm:[--slider-visible:2] lg:[--slider-visible:4]">
           <div
-            className="flex transition-transform duration-500 ease-out gap-4 sm:gap-5"
+            onTransitionEnd={handleTransitionEnd}
+            className={`flex gap-4 sm:gap-5 ${
+              isTransitioning ? "transition-transform duration-500 ease-out" : ""
+            }`}
             style={{
-              transform: `translateX(calc(-${currentIndex} * (100% / 4 + 5px)))`,
+              transform: `translateX(calc(-${offsetIndex} * (100% + var(--slider-gap)) / var(--slider-visible)))`,
             }}
           >
-            {cards.map((card, idx) => (
+            {extendedCards.map((card, idx) => (
               <div
                 key={idx}
                 onClick={() => handleCardClick(card)}
-                className="group relative flex-shrink-0 w-full sm:w-[calc(50%-10px)] lg:w-[calc(25%-15px)] h-[350px] sm:h-[370px] md:h-[390px] rounded-2xl bg-white border border-slate-200/90 hover:border-orange-500 overflow-hidden flex flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer"
+                className="group relative flex-shrink-0 w-full sm:w-[calc((100%-20px)/2)] lg:w-[calc((100%-60px)/4)] h-[350px] sm:h-[370px] md:h-[390px] rounded-2xl bg-white border border-slate-200/90 hover:border-orange-500 overflow-hidden flex flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer select-none"
               >
                 {/* Background Visual Layer */}
                 <div className="absolute inset-0 z-0">
