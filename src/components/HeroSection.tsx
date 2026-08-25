@@ -129,14 +129,6 @@ export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectio
     }
   };
 
-  const nextSlide = () => {
-    scrollTo("services");
-  };
-
-  const prevSlide = () => {
-    scrollTo("hero");
-  };
-
   return (
     <section id="hero" className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-28 md:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-[#18181B]">
       {/* 🎬 1. Full-Width Background Video Layer (1.8초 스무스 크로스페이드 루프 - 선명한 비주얼 최적화) */}
@@ -173,42 +165,20 @@ export default function HeroSection({ onQuote, onOpenDispatchModal }: HeroSectio
       {/* ── Content Container (z-10) ── */}
       <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col justify-between h-full">
         {/* ── 2. Top Header & Title Area ── */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
-          <div>
-            <div className="text-xs sm:text-sm font-mono font-bold tracking-widest text-slate-400 uppercase mb-3 sm:mb-4">
-              DREAMDEL · GLOBAL LOGISTICS INNOVATOR
-            </div>
-            <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18] break-keep mb-3">
-              꿈의 운송서비스<br />
-              고객님의 든든한 운송파트너{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 drop-shadow-[0_2px_14px_rgba(249,115,22,0.45)]">
-                드림델
-              </span>
-            </h1>
-            <p className="text-sm sm:text-base md:text-lg text-slate-300 font-medium break-keep">
-              오토바이 퀵부터 11톤 화물, 전국연계 운송까지
-            </p>
+        <div className="mb-8 sm:mb-10">
+          <div className="text-xs sm:text-sm font-mono font-bold tracking-widest text-slate-400 uppercase mb-3 sm:mb-4">
+            DREAMDEL · GLOBAL LOGISTICS INNOVATOR
           </div>
-
-          {/* Slider Control Arrows */}
-          <div className="hidden sm:flex items-center space-x-2 self-end mb-2">
-            <button
-              type="button"
-              onClick={prevSlide}
-              className="w-10 h-10 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-white/10 text-white flex items-center justify-center transition-colors text-sm font-bold cursor-pointer"
-              aria-label="이전 카드"
-            >
-              ‹
-            </button>
-            <button
-              type="button"
-              onClick={nextSlide}
-              className="w-10 h-10 rounded-lg bg-slate-900/80 hover:bg-slate-800 border border-white/10 text-white flex items-center justify-center transition-colors text-sm font-bold cursor-pointer"
-              aria-label="다음 카드"
-            >
-              ›
-            </button>
-          </div>
+          <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18] break-keep mb-3">
+            꿈의 운송서비스<br />
+            고객님의 든든한 운송파트너{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 drop-shadow-[0_2px_14px_rgba(249,115,22,0.45)]">
+              드림델
+            </span>
+          </h1>
+          <p className="text-sm sm:text-base md:text-lg text-slate-300 font-medium break-keep">
+            오토바이 퀵부터 11톤 화물, 전국연계 운송까지
+          </p>
         </div>
 
         {/* ── 3. 4 Feature Cards Grid (X 표시 및 규격문구 제거, 세련된 카드 레이아웃) ── */}
