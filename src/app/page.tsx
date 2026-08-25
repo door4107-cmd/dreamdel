@@ -25,7 +25,6 @@ export default function Home() {
         navItems={[
           { href: "#company", label: "회사소개" },
           { href: "#services", label: "사업영역" },
-          { href: "#order", label: "오더접수 ↗" },
           { href: "#about", label: "법인서비스" },
           { href: "#calculator", label: "견적문의" },
           { href: "#driver", label: "퀵·화물 기사모집" },
