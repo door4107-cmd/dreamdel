@@ -10,8 +10,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dreamdel.co.kr"),
-  title: "드림델 퀵서비스 | 서울·경기 10초 배차, 30분 안심 배송 | 오토바이·다마스·라보·밴·트럭",
-  description: "대한민국 No.1 퀵서비스 드림델. 현대해상 1억원 적재물 배상책임보험 100% 가입. 오토바이 급행부터 다마스, 라보, 밴, 트럭까지 실시간 GPS 관제 및 10초 온라인 간편접수 지원.",
+  title: "드림델 퀵서비스 | 서울·경기 퀵·화물·전국연계 운송 상담",
+  description: "드림델 퀵서비스 오토바이 퀵 다마스·라보·밴·트럭 화물 전국연계 운송을 상담하고 인터넷 접수를 제공합니다",
   keywords: [
     "드림델",
     "드림델 퀵서비스",
@@ -37,8 +37,8 @@ export const metadata: Metadata = {
     email: true,
   },
   openGraph: {
-    title: "드림델 퀵서비스 | 서울·경기 10초 배차, 30분 안심 배송",
-    description: "보내시는 마음도, 닿아야 할 꿈도 가장 빠르게 전해드립니다. 현대해상 1억원 보험 가입 & 24시간 실시간 요금조회.",
+    title: "드림델 퀵서비스 | 퀵·화물·전국연계 운송 상담",
+    description: "오토바이 퀵부터 차량 화물과 전국연계 운송까지 운송 조건을 확인하고 상담·인터넷 접수를 이용하세요",
     url: "https://dreamdel.co.kr",
     siteName: "드림델 퀵서비스 (DREAMDEL)",
     locale: "ko_KR",
@@ -46,16 +46,16 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/images/vehicles/van.jpg",
-        width: 1200,
-        height: 630,
+        width: 1376,
+        height: 768,
         alt: "드림델 퀵서비스 대표 이미지",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "드림델 퀵서비스 | 10초 배차, 30분 안심 배송",
-    description: "서울·경기 전지역 오토바이, 다마스, 라보, 밴, 트럭 실시간 퀵서비스.",
+    title: "드림델 퀵서비스 | 퀵·화물·전국연계 운송 상담",
+    description: "서울·경기 퀵서비스 차량 화물 전국연계 운송 상담",
     images: ["/images/vehicles/van.jpg"],
   },
   robots: {
@@ -82,9 +82,9 @@ const jsonLd = {
   "url": "https://dreamdel.co.kr",
   "logo": "https://dreamdel.co.kr/images/vehicles/bike.jpg",
   "image": "https://dreamdel.co.kr/images/vehicles/van.jpg",
-  "description": "서울·경기 전 지역 10초 배차, 30분 안심 도착 퀵서비스 및 용달 화물",
-  "telephone": "1588-5575",
-  "priceRange": "8,000원 ~",
+  "description": "서울·경기 퀵서비스 차량 화물 전국연계 운송 상담 및 인터넷 접수",
+  "telephone": "1588-5452",
+
   "areaServed": [
     { "@type": "AdministrativeArea", "name": "서울특별시" },
     { "@type": "AdministrativeArea", "name": "경기도" },

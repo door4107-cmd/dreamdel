@@ -27,7 +27,7 @@ export default function DispatchModal({ isOpen, onClose }: DispatchModalProps) {
           <div className="flex items-center space-x-2.5">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
             <h3 className="text-base sm:text-lg font-black text-white tracking-tight">
-              실시간 간편접수
+              인터넷 간편접수
             </h3>
           </div>
 
@@ -47,7 +47,7 @@ export default function DispatchModal({ isOpen, onClose }: DispatchModalProps) {
             <div className="absolute inset-0 flex flex-col items-center justify-center bg-white z-10 space-y-3">
               <div className="w-10 h-10 border-3 border-orange-500 border-t-transparent rounded-full animate-spin" />
               <p className="text-xs font-bold text-slate-600">
-                공식 간편 접수 시스템을 안전하게 불러오는 중입니다...
+                인터넷 간편접수 시스템을 불러오는 중입니다
               </p>
             </div>
           )}

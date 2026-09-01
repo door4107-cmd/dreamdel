@@ -14,6 +14,7 @@ interface FloatingPriceModalProps {
   onOpen: () => void;
   onClose: () => void;
   onOpenDispatchModal: () => void;
+  showTriggers?: boolean;
 }
 
 export default function FloatingPriceModal({
@@ -21,6 +22,7 @@ export default function FloatingPriceModal({
   onOpen,
   onClose,
   onOpenDispatchModal,
+  showTriggers = true,
 }: FloatingPriceModalProps) {
   const [activeTab, setActiveTab] = useState<"dong" | "distance">("dong");
 
@@ -110,7 +112,7 @@ export default function FloatingPriceModal({
   return (
     <>
       {/* 🖥️ 1. Desktop Dual Floating Action Buttons (위로 한 칸 올린 위치) */}
-      <div className="hidden sm:flex fixed bottom-20 right-6 z-40 flex-col items-end space-y-3 animate-fade-in">
+      <div className={`${showTriggers ? "hidden sm:flex" : "hidden"} fixed bottom-20 right-6 z-40 flex-col items-end space-y-3 animate-fade-in`}>
         {/* Top Button: 10초 간편 접수 */}
         <button
           type="button"
@@ -120,7 +122,7 @@ export default function FloatingPriceModal({
           <svg className="w-4 h-4 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-          <span>10초 간편 접수</span>
+          <span>인터넷 접수</span>
           <svg className="w-3.5 h-3.5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
           </svg>
@@ -135,20 +137,20 @@ export default function FloatingPriceModal({
           <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
           </svg>
-          <span className="tracking-tight text-slate-900 font-bold">실시간 요금 조회</span>
+          <span className="tracking-tight text-slate-900 font-bold">요금 안내</span>
         </button>
       </div>
 
       {/* 📱 2. Mobile-First Bottom Sticky Action Dock (스마트폰 최하단 고정바) */}
-      <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 p-2.5 bg-white/95 backdrop-blur-2xl border-t border-slate-200/90 shadow-2xl flex items-center justify-between gap-2 safe-bottom">
+      <div className={`${showTriggers ? "sm:hidden" : "hidden"} fixed bottom-0 left-0 right-0 z-40 p-2.5 bg-white/95 backdrop-blur-2xl border-t border-slate-200/90 shadow-2xl flex items-center justify-between gap-2 safe-bottom`}>
         <a
-          href="tel:1588-5575"
+          href="tel:1588-5452"
           className="flex-1 h-12 rounded-2xl bg-slate-100 hover:bg-slate-200 border border-slate-300/70 text-slate-900 font-bold text-xs flex items-center justify-center space-x-1.5 active:scale-95 transition-transform"
         >
           <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
-          <span>1588-5575</span>
+          <span>1588-5452</span>
         </a>
 
         <button
@@ -187,10 +189,10 @@ export default function FloatingPriceModal({
             <div className="flex items-center justify-between pb-4 border-b border-slate-100 mb-6">
               <div>
                 <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-orange-50 border border-orange-200 text-[10px] font-bold text-orange-600 mb-1.5">
-                  <span>회사 정식 요금표 조회 DB</span>
+                  <span>운송 조건 기반 예상 요금</span>
                 </div>
                 <h3 className="font-display text-xl sm:text-2xl font-black text-slate-900">
-                  실시간 퀵서비스 요금 조회
+                  퀵서비스 예상 요금 계산
                 </h3>
               </div>
 
@@ -345,7 +347,7 @@ export default function FloatingPriceModal({
                   disabled={isLoading}
                   className="w-full btn-tactile-primary !py-3.5 !text-sm font-bold shadow-xl shadow-slate-900/15 cursor-pointer active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-orange-500"
                 >
-                  {isLoading ? "회사 DB 요금 조회 중..." : "동대동 공식 요금 조회하기 →"}
+                  {isLoading ? "예상 요금 계산 중..." : "동 단위 예상 요금 계산 →"}
                 </button>
               </form>
             )}
@@ -486,7 +488,7 @@ export default function FloatingPriceModal({
                   disabled={isLoading}
                   className="w-full btn-tactile-primary !py-3.5 !text-sm font-bold shadow-xl shadow-slate-900/15 cursor-pointer active:scale-[0.99] focus-visible:ring-2 focus-visible:ring-orange-500"
                 >
-                  {isLoading ? "거리 요금 계산 중..." : "주행 거리 요금 조회하기 →"}
+                  {isLoading ? "거리 요금 계산 중..." : "주행 거리 예상 요금 계산 →"}
                 </button>
               </form>
             )}
@@ -496,7 +498,7 @@ export default function FloatingPriceModal({
               <div className="mt-6 p-5 rounded-2xl bg-slate-900 text-white animate-fade-in shadow-xl space-y-4">
                 <div className="flex items-center justify-between pb-3 border-b border-white/10">
                   <div className="text-xs font-bold text-amber-400">
-                    DB 조회 완료: {result.routeDescription}
+                    예상 계산 완료: {result.routeDescription}
                   </div>
                   <span className="text-[11px] font-mono text-emerald-400 font-bold">
                     약 {result.estimatedMinutes}분 소요 예상
@@ -505,7 +507,7 @@ export default function FloatingPriceModal({
 
                 <div className="flex items-baseline justify-between">
                   <div>
-                    <span className="text-xs text-slate-400 block">{result.vehicleName} 최종 운임</span>
+                    <span className="text-xs text-slate-400 block">{result.vehicleName} 예상 운임</span>
                     <span className="text-3xl font-black font-mono text-white">
                       {result.totalPrice.toLocaleString()}
                     </span>
@@ -517,7 +519,7 @@ export default function FloatingPriceModal({
                     onClick={handleApplyToOrder}
                     className="btn-tactile-primary !bg-orange-500 hover:!bg-orange-600 !text-white !py-2.5 !px-5 !text-xs font-bold shadow-lg flex items-center space-x-1.5 cursor-pointer active:scale-[0.98]"
                   >
-                    <span>간편 접수 바로가기</span>
+                    <span>인터넷 접수 로그인</span>
                     <svg className="w-3.5 h-3.5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                     </svg>

@@ -138,7 +138,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
             </h4>
             <p>정보주체는 회사에 대해 언제든지 개인정보 열람·정정·삭제·처리정지 요구 등의 권리를 행사할 수 있으며, 회사는 지체 없이 조치합니다.</p>
             <p className="text-slate-500 text-xs">
-              권리 행사는 서면, 전자우편, 고객센터 유선 전화(1588-5575)를 통하여 가능하며 대리인을 통해서도 요청하실 수 있습니다.
+              권리 행사는 서면, 전자우편, 고객센터 유선 전화(1588-5452)를 통하여 가능하며 대리인을 통해서도 요청하실 수 있습니다.
             </p>
           </div>
 
@@ -161,7 +161,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
               </div>
               <div className="flex items-center space-x-2">
                 <span className="font-bold text-slate-950 w-24">대표 전화</span>
-                <span className="text-slate-800 font-mono font-bold">1588-5575 / 02-3446-7668</span>
+                <span className="text-slate-800 font-mono font-bold">1588-5452 / 02-3446-7668</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="font-bold text-slate-950 w-24">사업장 주소</span>

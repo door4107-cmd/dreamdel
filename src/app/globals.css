@@ -163,3 +163,12 @@ body {
   filter: blur(120px);
   pointer-events: none;
 }
+
+.hero-card-rail {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.hero-card-rail::-webkit-scrollbar {
+  display: none;
+}
