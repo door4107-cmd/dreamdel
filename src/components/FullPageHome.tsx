@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { type PointerEvent as ReactPointerEvent, useEffect, useRef, useState } from "react";
+import { type PointerEvent as ReactPointerEvent, type ReactNode, useEffect, useRef, useState } from "react";
 import DispatchModal from "@/components/DispatchModal";
 import PrivacyPolicyModal from "@/components/PrivacyPolicyModal";
 
@@ -76,6 +76,15 @@ function OnlineOrderIcon({ className = "h-5 w-5" }: { className?: string }) {
       <path d="M7 13h5M7 16h3" />
       <path d="m14.5 15 1.7 1.7 3.3-3.7" />
     </svg>
+  );
+}
+
+function ResponsivePhoneAction({ children, mobileClassName, desktopClassName }: { children: ReactNode; mobileClassName: string; desktopClassName: string }) {
+  return (
+    <>
+      <a href="tel:1588-5452" className={`${mobileClassName} lg:hidden`}>{children}</a>
+      <span className={desktopClassName} aria-label="전화번호 1588-5452">{children}</span>
+    </>
   );
 }
 
@@ -287,13 +296,13 @@ export default function FullPageHome() {
             </nav>
 
             <div className="flex items-center gap-2.5 lg:col-start-3 lg:justify-self-end">
-              <a
-                href="tel:1588-5452"
-                className={`hidden text-right font-black leading-none sm:block ${activeTheme === "dark" ? "text-white" : "text-slate-950"}`}
+              <ResponsivePhoneAction
+                mobileClassName={`hidden text-right font-black leading-none sm:block ${activeTheme === "dark" ? "text-white" : "text-slate-950"}`}
+                desktopClassName={`hidden cursor-default text-right font-black leading-none lg:block ${activeTheme === "dark" ? "text-white" : "text-slate-950"}`}
               >
                 <span className={`block text-xs font-bold ${activeTheme === "dark" ? "text-slate-200" : "text-slate-500"}`}>24시 접수</span>
                 <span className="mt-1 block text-base tracking-[-0.02em] lg:text-lg">1588-5452</span>
-              </a>
+              </ResponsivePhoneAction>
               <button
                 type="button"
                 onClick={() => setIsDispatchModalOpen(true)}
@@ -451,7 +460,7 @@ export default function FullPageHome() {
               <p className="mt-5 max-w-xl text-base font-bold text-slate-100 sm:text-lg">{selectedService.description}</p>
               <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-300">{selectedService.detail}</p>
               <div className="mt-6 flex flex-wrap gap-2">{selectedService.facts.map((fact) => <span key={fact} className="rounded-full border border-white/20 bg-slate-950/35 px-3 py-1.5 text-xs font-bold text-slate-100">{fact}</span>)}</div>
-              <div className="mt-8 flex flex-wrap gap-3"><a href="tel:1588-5452" className="rounded-full border border-white/30 px-5 py-3 text-sm font-black text-white hover:bg-white/10">전화 상담 1588-5452</a></div>
+              <div className="mt-8 flex flex-wrap gap-3"><ResponsivePhoneAction mobileClassName="rounded-full border border-white/30 px-5 py-3 text-sm font-black text-white hover:bg-white/10" desktopClassName="hidden cursor-default rounded-full border border-white/30 px-5 py-3 text-sm font-black text-white lg:inline-flex">전화 상담 1588-5452</ResponsivePhoneAction></div>
             </div>
           </div>
         </section>
@@ -471,7 +480,7 @@ export default function FullPageHome() {
               <p className="text-xs font-black tracking-[0.16em] text-slate-500">주요 브랜드 · CORPORATE PARTNERS</p>
               <div className="mt-3 grid grid-cols-3 gap-x-3 gap-y-2 sm:grid-cols-6 lg:grid-cols-12">{corporateBrands.map((brand) => <span key={brand} className="whitespace-nowrap text-center text-xs font-black tracking-[-0.04em] text-slate-700 sm:text-sm">{brand}</span>)}</div>
             </div>
-            <div className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-slate-950 p-5 text-white sm:px-7"><div><p className="text-sm font-black">법인 계약 상담이 필요하신가요</p><p className="mt-1 text-xs text-slate-300">정기 물량과 주요 운송 노선을 알려주시면 확인 후 안내합니다</p></div><a href="tel:1588-5452" className="rounded-full bg-orange-500 px-5 py-3 text-sm font-black hover:bg-orange-600">법인 상담 1588-5452</a></div>
+            <div className="mt-7 flex flex-wrap items-center justify-between gap-4 rounded-2xl bg-slate-950 p-5 text-white sm:px-7"><div><p className="text-sm font-black">법인 계약 상담이 필요하신가요</p><p className="mt-1 text-xs text-slate-300">정기 물량과 주요 운송 노선을 알려주시면 확인 후 안내합니다</p></div><ResponsivePhoneAction mobileClassName="rounded-full bg-orange-500 px-5 py-3 text-sm font-black hover:bg-orange-600" desktopClassName="hidden cursor-default rounded-full bg-orange-500 px-5 py-3 text-sm font-black lg:inline-flex">법인 상담 1588-5452</ResponsivePhoneAction></div>
           </div>
         </section>
 
@@ -479,14 +488,14 @@ export default function FullPageHome() {
           <Image src="/images/driver.jpg" alt="운송 기사" fill className="object-cover opacity-35" sizes="100vw" />
           <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/30" />
           <div className="relative mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
-            <div><p className="text-xs font-black tracking-[0.2em] text-orange-300">04 / DRIVER NETWORK</p><h2 className="mt-4 text-4xl font-black leading-[1.08] tracking-[-0.055em] sm:text-6xl">함께 달릴<br />기사님을 찾습니다</h2><p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-lg">오토바이 퀵·차량 화물 운송을 희망하는 기사님은 고객센터를 통해 활동 지역과 차량 조건을 먼저 상담할 수 있습니다</p><a href="tel:1588-5452" className="mt-7 inline-flex rounded-full bg-orange-500 px-5 py-3 text-sm font-black text-white hover:bg-orange-600">기사 지원 상담 1588-5452</a></div>
+            <div><p className="text-xs font-black tracking-[0.2em] text-orange-300">04 / DRIVER NETWORK</p><h2 className="mt-4 text-4xl font-black leading-[1.08] tracking-[-0.055em] sm:text-6xl">함께 달릴<br />기사님을 찾습니다</h2><p className="mt-5 max-w-xl text-sm leading-relaxed text-slate-300 sm:text-lg">오토바이 퀵·차량 화물 운송을 희망하는 기사님은 고객센터를 통해 활동 지역과 차량 조건을 먼저 상담할 수 있습니다</p><ResponsivePhoneAction mobileClassName="mt-7 inline-flex rounded-full bg-orange-500 px-5 py-3 text-sm font-black text-white hover:bg-orange-600" desktopClassName="mt-7 hidden cursor-default rounded-full bg-orange-500 px-5 py-3 text-sm font-black text-white lg:inline-flex">기사 지원 상담 1588-5452</ResponsivePhoneAction></div>
             <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">{[["운송 조건 상담", "활동 권역과 차량 조건을 먼저 확인"], ["운영 안내", "배차·정산 관련 절차를 상담으로 안내"], ["안전 운행", "운송 전 필요한 사항을 확인"]].map(([title, copy]) => <div key={title} className="rounded-2xl border border-white/15 bg-white/10 p-4 backdrop-blur-lg sm:p-5"><h3 className="text-base font-black">{title}</h3><p className="mt-2 text-xs leading-relaxed text-slate-300">{copy}</p></div>)}</div>
           </div>
         </section>
 
         <section id="contact" data-page="contact" className="flex h-[100svh] snap-start items-center overflow-hidden bg-[#f4f6f8] px-5 py-24 text-slate-950 sm:px-8 lg:px-12">
           <div className="mx-auto grid w-full max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-            <div><p className="text-xs font-black tracking-[0.2em] text-orange-600">05 / CONTACT</p><h2 className="mt-4 text-4xl font-black leading-[1.08] tracking-[-0.055em] sm:text-6xl">운송 전<br />먼저 확인하세요</h2><p className="mt-5 max-w-lg text-sm leading-relaxed text-slate-600 sm:text-lg">정확한 요금·배차 가능 여부·보험 보장 범위는 물품과 운송 조건에 따라 달라질 수 있어 고객센터 확인 후 접수해 주세요</p><div className="mt-7 flex flex-wrap gap-3"><a href="tel:1588-5452" className="rounded-full bg-slate-950 px-5 py-3 text-sm font-black text-white hover:bg-slate-800">전화 상담 1588-5452</a></div></div>
+            <div><p className="text-xs font-black tracking-[0.2em] text-orange-600">05 / CONTACT</p><h2 className="mt-4 text-4xl font-black leading-[1.08] tracking-[-0.055em] sm:text-6xl">운송 전<br />먼저 확인하세요</h2><p className="mt-5 max-w-lg text-sm leading-relaxed text-slate-600 sm:text-lg">정확한 요금·배차 가능 여부·보험 보장 범위는 물품과 운송 조건에 따라 달라질 수 있어 고객센터 확인 후 접수해 주세요</p><div className="mt-7 flex flex-wrap gap-3"><ResponsivePhoneAction mobileClassName="rounded-full bg-slate-950 px-5 py-3 text-sm font-black text-white hover:bg-slate-800" desktopClassName="hidden cursor-default rounded-full bg-slate-950 px-5 py-3 text-sm font-black text-white lg:inline-flex">전화 상담 1588-5452</ResponsivePhoneAction></div></div>
             <div className="self-end rounded-3xl bg-white p-6 shadow-xl shadow-slate-900/10 sm:p-8"><p className="text-xs font-black tracking-[0.16em] text-slate-400">드림델 안내</p><dl className="mt-6 space-y-4 text-sm"><div className="flex justify-between gap-6 border-b border-slate-100 pb-3"><dt className="font-bold text-slate-500">대표 접수</dt><dd className="font-black">1588-5452</dd></div><div className="flex justify-between gap-6 border-b border-slate-100 pb-3"><dt className="font-bold text-slate-500">고객만족센터</dt><dd className="font-black">02-3446-7668</dd></div><div className="flex justify-between gap-6 border-b border-slate-100 pb-3"><dt className="font-bold text-slate-500">주소</dt><dd className="text-right font-bold">서울 강남구 논현동 114-14<br />금산빌딩 4층</dd></div></dl><button type="button" onClick={() => setIsPrivacyOpen(true)} className="mt-6 text-xs font-bold text-slate-600 underline underline-offset-4 hover:text-slate-950">개인정보처리방침</button><p className="mt-4 text-[11px] text-slate-400">© DREAMDEL All rights reserved</p></div>
           </div>
         </section>
