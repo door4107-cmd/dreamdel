@@ -115,8 +115,8 @@ export default function ServiceCards() {
                       </tr>
                       <tr>
                         <th className="py-2.5 px-3.5 sm:px-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">접수</th>
-                        <td className="py-2.5 px-3.5 sm:px-4 border-r border-slate-200">온라인 / 전화 (1588-5452)</td>
-                        <td className="py-2.5 px-3.5 sm:px-4">전화 (1588-5452) / 직통</td>
+                        <td className="py-2.5 px-3.5 sm:px-4 border-r border-slate-200">온라인 / 전화 (1588-5575)</td>
+                        <td className="py-2.5 px-3.5 sm:px-4">전화 (1588-5575) / 직통</td>
                       </tr>
                       <tr>
                         <th className="py-2.5 px-3.5 sm:px-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">접수시간</th>
@@ -199,7 +199,7 @@ export default function ServiceCards() {
                       </tr>
                       <tr>
                         <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">접수 방법</th>
-                        <td className="p-4">온라인 실시간 접수 / 전화 접수 (1588-5452)</td>
+                        <td className="p-4">온라인 실시간 접수 / 전화 접수 (1588-5575)</td>
                       </tr>
                       <tr>
                         <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">운송 권역</th>
@@ -262,7 +262,7 @@ export default function ServiceCards() {
                       </tr>
                       <tr>
                         <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">접수 방법</th>
-                        <td className="p-4">전화 전담 배차 (1588-5452)</td>
+                        <td className="p-4">전화 전담 배차 (1588-5575)</td>
                       </tr>
                       <tr>
                         <th className="p-4 bg-slate-50 border-r border-slate-200 font-bold text-slate-900">배송 기준</th>

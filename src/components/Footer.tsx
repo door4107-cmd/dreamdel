@@ -76,12 +76,12 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Right: 고객센터 1588-5452 & TOP Button */}
+            {/* Right: 고객센터 1588-5575 & TOP Button */}
             <div className="flex items-center space-x-4 self-end md:self-auto">
               <div className="flex items-center space-x-2">
                 <span className="text-xs sm:text-sm text-slate-500 font-medium">고객센터</span>
                 <span className="font-mono text-base sm:text-lg md:text-xl font-black text-slate-950">
-                  1588-5452
+                  1588-5575
                 </span>
               </div>
 

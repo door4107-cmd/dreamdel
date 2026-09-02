@@ -79,10 +79,10 @@ export default function ClientLogos() {
           </div>
 
           <a
-            href="tel:1588-5452"
+            href="tel:1588-5575"
             className="w-full sm:w-auto px-6 py-2.5 rounded-full bg-white hover:bg-orange-50 text-slate-900 font-black text-xs sm:text-sm shadow-md transition-all active:scale-95 text-center shrink-0"
           >
-            기업 제휴 상담: 1588-5452
+            기업 제휴 상담: 1588-5575
           </a>
         </div>
       </div>
