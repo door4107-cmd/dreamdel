@@ -1,197 +1,191 @@
+"use client";
+
 interface CorporateSectionProps {
   onOpenQuoteModal?: () => void;
 }
 
 export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionProps = {}) {
-  const benefits = [
-    {
-      number: "01",
-      title: "기업 전용 맞춤 요금제",
-      description: "월 정기 물량 및 주요 운송 노선에 맞춘 기업 전용 단가표를 제공합니다.",
-      badge: "최대 30% 절감",
-      icon: (
-        <svg className="w-5 h-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      ),
-    },
-    {
-      number: "02",
-      title: "월 1회 통합 후불 정산",
-      description: "건별 결제 번거로움 없이 월말 세금계산서 100% 자동 발행 및 상세 명세서를 지원합니다.",
-      badge: "세무 자동화",
-      icon: (
-        <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-        </svg>
-      ),
-    },
-    {
-      number: "03",
-      title: "법인 전용 접수 콘솔",
-      description: "사내 PC에서 원클릭 대량 접수, 다건 배차, 실시간 배송 경로 추적을 한눈에 관리합니다.",
-      badge: "웹 / 모바일 지원",
-      icon: (
-        <svg className="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-        </svg>
-      ),
-    },
-    {
-      number: "04",
-      title: "안심 적재물 책임보험",
-      description: "중요 서류부터 고가 화물까지 운송 중 파손·분실 시 최고 5,000만원 전액 보상 체계 완비.",
-      badge: "100% 안심 보상",
-      icon: (
-        <svg className="w-5 h-5 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-        </svg>
-      ),
-    },
+  const partners = [
+    "CJ홈쇼핑", "Häagen-Dazs", "TOM FORD", "DKNY",
+    "TOD'S", "YSL", "삼양", "DreamCIS"
   ];
 
-  const brandRow1 = ["LesMore", "DKNY", "EXR", "TOD'S", "YSL", "Brioni"];
-  const brandRow2 = ["DreamCIS", "Häagen-Dazs", "TOM FORD", "CJ홈쇼핑", "LIG손해보험", "삼양"];
-
   return (
-    <section id="about" className="scroll-mt-14 py-16 sm:py-20 bg-white border-t border-slate-200/90 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="about"
+      data-fullpage-section
+      className="scroll-mt-14 relative overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#F8FAFC] to-[#F1F5F9] py-14 lg:py-0 lg:flex lg:h-[100svh] lg:snap-start lg:snap-always lg:items-center text-slate-900 selection:bg-orange-500 selection:text-white"
+    >
+      {/* ── Top Subtle Technical Border Line ── */}
+      <div className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-orange-500/25 to-transparent pointer-events-none" />
+
+      {/* ── Atmospheric Ambient Lighting ── */}
+      <div className="absolute -top-32 -left-32 w-[550px] h-[450px] rounded-full bg-orange-400/8 blur-[130px] pointer-events-none" />
+      <div className="absolute -bottom-32 -right-32 w-[550px] h-[450px] rounded-full bg-blue-500/6 blur-[130px] pointer-events-none" />
+
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-4 lg:-translate-y-4">
         {/* ── 1. Section Header ── */}
-        <div className="mb-10 sm:mb-14">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 text-white text-[11px] font-mono font-bold tracking-widest uppercase mb-4 shadow-sm">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-            <span>03 CORPORATE</span>
+        <div className="mb-6 lg:mb-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/80 text-orange-700 text-xs sm:text-sm font-bold tracking-wider uppercase mb-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+            <span>03 CORPORATE B2B</span>
           </div>
-          
-          <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight leading-[1.2] break-keep mb-3">
-            법인 고객은 접수부터 정산까지 한 번에
-          </h2>
-          <p className="text-slate-600 text-sm sm:text-base font-medium break-keep">
-            기업 전용 요금 · 월 통합 정산 · 전담 배차 관제로 기업 물류 담당자의 업무를 획기적으로 줄여드립니다.
-          </p>
-        </div>
-
-        {/* ── 2. 4 Benefit Cards Grid (Bespoke Swiss Architecture) ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-14 sm:mb-18">
-          {benefits.map((item, idx) => (
-            <div
-              key={idx}
-              className="p-6 sm:p-7 rounded-2xl bg-white border border-slate-200/90 shadow-[0_2px_12px_rgb(0,0,0,0.03)] hover:border-slate-400 hover:shadow-lg transition-all duration-300 flex flex-col justify-between group"
-            >
-              <div>
-                {/* Top Badge & Icon */}
-                <div className="flex items-center justify-between mb-6">
-                  <div className="w-10 h-10 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center group-hover:scale-110 transition-transform">
-                    {item.icon}
-                  </div>
-                  <span className="text-[10px] font-bold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full font-mono">
-                    {item.badge}
-                  </span>
-                </div>
-
-                <div className="text-[11px] font-mono font-bold text-slate-400 mb-1">
-                  BENEFIT {item.number}
-                </div>
-                <h3 className="text-base sm:text-lg font-black text-slate-950 tracking-tight mb-2 group-hover:text-orange-600 transition-colors">
-                  {item.title}
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-keep font-normal">
-                  {item.description}
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* ── 3. Brand Showcase Section (Refined Luxury Typography & Layout) ── */}
-        <div className="mb-12 sm:mb-16">
-          <div className="mb-6 flex items-center justify-between border-b border-slate-100 pb-3">
-            <h3 className="font-display text-lg sm:text-xl font-black text-slate-950 tracking-tight flex items-center space-x-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-slate-950" />
-              <span>이미 이런 주요 브랜드가 드림델과 함께합니다</span>
-            </h3>
-            <span className="text-xs font-mono text-slate-400 font-bold hidden sm:inline">
-              PROVEN TRACK RECORD
-            </span>
-          </div>
-
-          {/* 12 Brand Boxes (6 x 2 Grid) */}
-          <div className="space-y-3">
-            {/* Row 1 */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {brandRow1.map((brand, idx) => (
-                <div
-                  key={idx}
-                  className="h-16 sm:h-20 rounded-xl bg-slate-50/90 border border-slate-200/80 flex items-center justify-center p-3 text-center hover:bg-white hover:border-slate-300 hover:shadow-sm transition-all group"
-                >
-                  <span className="font-display font-black text-xs sm:text-sm text-slate-700 group-hover:text-slate-950 tracking-wider">
-                    {brand}
-                  </span>
-                </div>
-              ))}
-            </div>
-
-            {/* Row 2 */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-              {brandRow2.map((brand, idx) => (
-                <div
-                  key={idx}
-                  className="h-16 sm:h-20 rounded-xl bg-slate-50/90 border border-slate-200/80 flex items-center justify-center p-3 text-center hover:bg-white hover:border-slate-300 hover:shadow-sm transition-all group"
-                >
-                  <span className="font-display font-black text-xs sm:text-sm text-slate-700 group-hover:text-slate-950 tracking-wider">
-                    {brand}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* ── 4. Bottom Corporate Consultation Callout Box (드림델 전화번호 직통 안내) ── */}
-        <div className="p-7 sm:p-9 rounded-2xl bg-slate-950 text-white border border-slate-800 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-          <div>
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-[11px] font-bold text-orange-400 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-              <span>법인 계약 전담팀 직통</span>
-            </div>
-            <h4 className="font-display text-xl sm:text-2xl font-black text-white tracking-tight mb-1.5">
-              법인 계약 상담이 필요하신가요?
-            </h4>
-            <p className="text-xs sm:text-sm text-slate-300 font-medium break-keep">
-              물량과 정기 운송 노선을 알려주시면 전담 담당자가 1:1 맞춤 우대 단가를 신속히 제안드립니다.
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-2">
+            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 tracking-tight leading-tight break-keep">
+              기업 물류의 모든 번거로움,{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500">
+                드림델이 해결합니다
+              </span>
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 font-medium break-keep">
+              맞춤 우대 요금 · 월 통합 후불 정산 · B2B 전담 매니저 배정
             </p>
           </div>
+        </div>
 
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0">
-            {onOpenQuoteModal && (
-              <button
-                type="button"
-                onClick={onOpenQuoteModal}
-                className="px-6 py-4 rounded-xl bg-orange-600 hover:bg-orange-700 text-white font-black text-sm shadow-xl transition-all active:scale-95 cursor-pointer text-center"
+        {/* ── 2. Two-Column Architectural Console ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
+          {/* ── Left Column: 3대 핵심 혜택 (7 cols) ── */}
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-3.5">
+            {/* 3 Core Benefit Rows */}
+            <div className="space-y-3">
+              {/* Benefit 1 */}
+              <div className="p-4 sm:p-4.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-orange-400 transition-all flex items-start gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <h4 className="font-bold text-slate-950 text-base sm:text-lg">기업 맞춤 우대 단가제</h4>
+                    <span className="text-xs font-bold text-orange-700 bg-orange-50 px-2 py-0.5 rounded-md border border-orange-200/70 shrink-0">
+                      최대 30% 절감
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed break-keep">
+                    정기 운송 노선과 월 발송 물량을 분석하여 합리적인 전용 요율표를 제안합니다.
+                  </p>
+                </div>
+              </div>
+
+              {/* Benefit 2 */}
+              <div className="p-4 sm:p-4.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 transition-all flex items-start gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <h4 className="font-bold text-slate-950 text-base sm:text-lg">월 1회 통합 후불 정산</h4>
+                    <span className="text-xs font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200/70 shrink-0">
+                      세무 간소화
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed break-keep">
+                    건별 결제 번거로움 없이 월말 전자세금계산서 100% 발행 및 상세 배송 명세서를 제공합니다.
+                  </p>
+                </div>
+              </div>
+
+              {/* Benefit 3 */}
+              <div className="p-4 sm:p-4.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-emerald-400 transition-all flex items-start gap-4 group">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2 mb-1">
+                    <h4 className="font-bold text-slate-950 text-base sm:text-lg">1:1 전담 배차 플래너</h4>
+                    <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/70 shrink-0">
+                      전담 지원
+                    </span>
+                  </div>
+                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed break-keep">
+                    다건 대량 배송도 담당 플래너가 1:1로 실시간 배차 및 완료 상태를 끝까지 책임집니다.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Action Bar */}
+            <div className="flex flex-wrap items-center gap-3 pt-1">
+              {onOpenQuoteModal && (
+                <button
+                  type="button"
+                  onClick={onOpenQuoteModal}
+                  className="px-6 py-3 rounded-full bg-slate-950 hover:bg-slate-800 active:scale-95 text-white font-bold text-sm sm:text-base shadow-sm transition-all cursor-pointer flex items-center gap-2"
+                >
+                  <span>법인 전용 맞춤 견적 문의</span>
+                  <span>→</span>
+                </button>
+              )}
+              <a
+                href="tel:1588-5575"
+                className="px-5 py-3 rounded-full bg-white hover:bg-slate-100 border border-slate-300 text-slate-900 font-bold text-sm sm:text-base shadow-2xs transition-all flex items-center gap-2.5"
               >
-                맞춤 견적 문의하기 ↗
-              </button>
-            )}
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-slate-600 font-medium">법인 직통:</span>
+                <span className="font-display font-black text-black text-base sm:text-lg tracking-tight">1588-5575</span>
+              </a>
+            </div>
+          </div>
 
-            {/* Mobile: 실제 전화 발신 연결 */}
-            <a
-              href="tel:1588-5575"
-              className="md:hidden px-7 py-4 rounded-xl bg-white hover:bg-orange-50 text-slate-950 font-black text-sm sm:text-base shadow-xl transition-all active:scale-95 cursor-pointer text-center inline-flex items-center justify-center space-x-2.5 group"
-            >
-              <svg className="w-4 h-4 text-orange-600 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span>전화 상담: 1588-5575</span>
-            </a>
+          {/* ── Right Column: 주요 파트너 & 신뢰 지표 (5 cols) ── */}
+          <div className="lg:col-span-5 flex flex-col justify-between space-y-3.5">
+            {/* 3 Real-time Corporate Trust Metrics */}
+            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+              <div className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2.5">
+                CORPORATE TRUST METRICS
+              </div>
+              <div className="grid grid-cols-3 divide-x divide-slate-100 text-center">
+                <div className="px-2">
+                  <span className="block font-display font-black text-slate-950 text-xl sm:text-2xl tracking-tight">2,500+</span>
+                  <span className="text-xs text-slate-500 font-medium mt-0.5">고정 법인 파트너</span>
+                </div>
+                <div className="px-2">
+                  <span className="block font-display font-black text-emerald-600 text-xl sm:text-2xl tracking-tight">99.8%</span>
+                  <span className="text-xs text-slate-500 font-medium mt-0.5">정시 배송 준수율</span>
+                </div>
+                <div className="px-2">
+                  <span className="block font-display font-black text-blue-600 text-xl sm:text-2xl tracking-tight">5,000만</span>
+                  <span className="text-xs text-slate-500 font-medium mt-0.5">적재물 전액 보장</span>
+                </div>
+              </div>
+            </div>
 
-            {/* PC (Desktop): 안내 형태 */}
-            <div
-              className="hidden md:inline-flex px-8 py-4 rounded-xl bg-white text-slate-950 font-black text-sm sm:text-base shadow-xl text-center items-center justify-center space-x-2.5 select-text cursor-default"
-            >
-              <svg className="w-4 h-4 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <span>전화 상담: 1588-5575</span>
+            {/* Major Partners Grid (8개 엄선 브랜드 뱃지) */}
+            <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
+              <div className="flex items-center justify-between mb-3">
+                <span className="text-xs font-bold text-slate-950 flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
+                  <span>주요 거래처 파트너사</span>
+                </span>
+                <span className="text-[11px] font-bold tracking-wider text-slate-400">PARTNERS</span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
+                {partners.map((partner, idx) => (
+                  <div
+                    key={idx}
+                    className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 flex items-center justify-center hover:bg-white hover:border-orange-300 hover:shadow-2xs transition-all"
+                  >
+                    <span className="font-bold text-slate-800 text-xs sm:text-sm truncate">
+                      {partner}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Quick Assurance Strip */}
+            <div className="p-3.5 rounded-2xl bg-slate-900 text-white shadow-md flex items-center justify-between text-xs sm:text-sm">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="font-bold text-slate-200">국토교통부 정식 허가 주선사</span>
+              </div>
+              <span className="text-slate-400 font-medium">현대해상 100% 가입</span>
             </div>
           </div>
         </div>

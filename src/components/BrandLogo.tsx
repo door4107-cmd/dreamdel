@@ -3,16 +3,23 @@
 interface BrandLogoProps {
   className?: string;
   showText?: boolean;
+  onClick?: () => void;
 }
 
-export default function BrandLogo({ className = "h-10 sm:h-12" }: BrandLogoProps) {
+export default function BrandLogo({ className = "", onClick }: BrandLogoProps) {
   return (
-    <div className={`relative flex items-center ${className}`}>
-      <img
-        src="/images/logo.jpg"
-        alt="드림델 DDL 공식 로고"
-        className="h-9 sm:h-11 w-auto object-contain mix-blend-multiply select-none hover:scale-105 transition-transform"
-      />
-    </div>
+    <button
+      type="button"
+      onClick={onClick}
+      className={`group flex flex-col text-left leading-none cursor-pointer select-none ${className}`}
+      aria-label="드림델 홈으로 이동"
+    >
+      <span className="font-display text-xl sm:text-2xl font-black tracking-tight text-orange-600 group-hover:text-black transition-colors">
+        드림델
+      </span>
+      <span className="text-[9px] sm:text-[10px] font-bold text-slate-400 tracking-widest mt-1">
+        QUICK · FREIGHT
+      </span>
+    </button>
   );
 }

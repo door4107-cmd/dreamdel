@@ -115,6 +115,13 @@ export default function RootLayout({
   return (
     <html lang="ko" className="scroll-smooth">
       <head>
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          as="style"
+          crossOrigin="anonymous"
+          href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css"
+        />
         <link
           rel="stylesheet"
           as="style"
@@ -126,7 +133,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-[#F8F9FC] text-slate-900 antialiased min-h-screen font-sans selection:bg-orange-500 selection:text-white pb-16 sm:pb-0">
+      <body className="bg-[#F8F9FC] text-slate-900 antialiased min-h-screen selection:bg-orange-500 selection:text-white pb-16 sm:pb-0">
         {children}
       </body>
     </html>

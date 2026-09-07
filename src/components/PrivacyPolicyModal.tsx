@@ -161,7 +161,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
               </div>
               <div className="flex items-center space-x-2">
                 <span className="font-bold text-slate-950 w-24">대표 전화</span>
-                <span className="text-slate-800 font-mono font-bold">1588-5575 / 02-3446-7668</span>
+                <span className="text-slate-800 font-bold">1588-5575 / 02-3446-7668</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="font-bold text-slate-950 w-24">사업장 주소</span>
@@ -201,7 +201,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
 
         {/* Footer Close Button */}
         <div className="p-4 px-6 sm:px-8 bg-slate-50 border-t border-slate-200 flex items-center justify-between shrink-0">
-          <span className="text-xs text-slate-500 font-mono">
+          <span className="text-xs text-slate-500 font-medium">
             (주)드림델 개인정보보호 준수
           </span>
           <button

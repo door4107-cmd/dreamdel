@@ -23,7 +23,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
       title: "안정적인 물량 보장",
       description: "30년 축적 기업 고정 거래처 및 실시간 쾌속 오더 우선 배정",
       icon: (
-        <svg className="w-5 h-5 text-orange-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-5 h-5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
         </svg>
       ),
@@ -32,7 +32,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
       title: "투명한 당일 정산",
       description: "업계 최저 수준 수수료 체계 및 운임 100% 당일 정산 원칙 준수",
       icon: (
-        <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
@@ -41,7 +41,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
       title: "1:1 전담 관제 지원",
       description: "초보자도 쉽게 적응하는 1:1 멘토링, 적재물 보험 및 안전 운행 지원",
       icon: (
-        <svg className="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
       ),
@@ -77,25 +77,46 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
   };
 
   return (
-    <section id="driver" className="scroll-mt-14 py-16 sm:py-20 bg-[#F8F9FC] border-t border-slate-200/90 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="driver" data-fullpage-section className="scroll-mt-14 relative overflow-hidden bg-[#060A14] py-16 sm:py-20 lg:flex lg:h-[100svh] lg:snap-start lg:snap-always lg:items-center text-slate-100">
+      {/* ── Top Curved Wave Divider transitioning from 03 CORPORATE (#FEF3C7) ── */}
+      <div className="absolute top-0 inset-x-0 overflow-hidden leading-none pointer-events-none z-10">
+        <svg className="relative block w-full h-7 sm:h-10 text-[#FEF3C7]" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
+          <path d="M0,0 L1200,0 L1200,30 Q600,90 0,30 Z" />
+        </svg>
+      </div>
+
+      {/* ── Dramatic Top Spotlight Effect Beam ── */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[920px] h-[500px] bg-[radial-gradient(ellipse_at_top,rgba(255,149,0,0.22),transparent_70%)] pointer-events-none" />
+
+      {/* ── Intense Navy + Red/Orange & Blue Dual Glow ── */}
+      <div className="absolute -top-20 -left-20 w-[660px] h-[520px] rounded-full bg-gradient-to-br from-red-600/22 via-orange-500/18 to-transparent blur-[140px] pointer-events-none" />
+      <div className="absolute -bottom-28 -right-20 w-[680px] h-[540px] rounded-full bg-gradient-to-tl from-blue-600/25 via-indigo-600/18 to-transparent blur-[140px] pointer-events-none" />
+
+      {/* ── High-Tech Prominent Engineering Grid Texture ── */}
+      <div className="absolute inset-0 bg-grid-driver opacity-75 pointer-events-none" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* ── Left Column: Texts, 3 Benefit Cards & 2 Action Buttons (7 cols) ── */}
           <div className="lg:col-span-7 flex flex-col justify-between">
             <div>
               {/* Header Tag */}
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-slate-900 text-white text-[11px] font-mono font-bold tracking-widest uppercase mb-4 shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-                <span>05 DRIVER</span>
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 text-orange-400 text-[11px] font-bold tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(255,149,0,0.2)]">
+                <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse shadow-[0_0_8px_rgba(251,146,60,0.9)]" />
+                <span>04 DRIVER RECRUIT</span>
               </div>
 
               {/* Main Headline */}
-              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-black text-slate-950 tracking-tight leading-[1.2] break-keep mb-3">
-                함께 달릴 퀵기사·화물기사님을 모십니다
+              <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.2] break-keep mb-3">
+                함께 달릴{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-red-400">
+                  퀵기사·화물기사님
+                </span>
+                을 모십니다
               </h2>
 
               {/* Subtitle */}
-              <p className="text-slate-600 text-sm sm:text-base font-medium break-keep mb-8 sm:mb-10">
+              <p className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed break-keep mb-8 sm:mb-10">
                 기사님의 땀과 시간에 정당한 대가를 드립니다. 안정적인 오더 물량과 투명한 당일 정산으로 오래 일할 수 있는 상생 환경을 만듭니다.
               </p>
 
@@ -104,15 +125,15 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
                 {benefits.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/90 shadow-[0_2px_12px_rgb(0,0,0,0.03)] hover:border-slate-300 hover:shadow-md transition-all group"
+                    className="p-5 sm:p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-[0_10px_35px_rgba(0,0,0,0.6)] hover:border-orange-500/60 hover:bg-slate-850/95 transition-all duration-300 group backdrop-blur-md relative overflow-hidden"
                   >
-                    <div className="w-9 h-9 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-center mb-3.5 group-hover:scale-110 transition-transform">
+                    <div className="w-9 h-9 rounded-xl bg-slate-800/90 border border-slate-700/80 flex items-center justify-center mb-3.5 group-hover:scale-110 transition-transform">
                       {item.icon}
                     </div>
-                    <h3 className="font-display font-black text-base text-slate-950 mb-1 tracking-tight group-hover:text-orange-600 transition-colors">
+                    <h3 className="font-display font-black text-base text-white mb-1.5 tracking-tight group-hover:text-orange-400 transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-slate-600 leading-relaxed break-keep font-normal">
+                    <p className="text-xs text-slate-300 leading-relaxed break-keep font-normal">
                       {item.description}
                     </p>
                   </div>
@@ -120,35 +141,12 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
               </div>
             </div>
 
-            {/* 2 Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-3.5">
-              <button
-                type="button"
-                onClick={() => handleApplyClick("bike")}
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-slate-950 hover:bg-slate-800 active:bg-black text-white font-bold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer text-center flex items-center justify-center space-x-2"
-              >
-                <span>오토바이 퀵기사 지원하기</span>
-                <svg className="w-4 h-4 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </button>
 
-              <button
-                type="button"
-                onClick={() => handleApplyClick("truck")}
-                className="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-white hover:bg-slate-50 active:bg-slate-100 border border-slate-950 text-slate-950 font-bold text-xs sm:text-sm shadow-sm transition-all active:scale-95 cursor-pointer text-center flex items-center justify-center space-x-2"
-              >
-                <span>차량·화물기사 지원하기</span>
-                <svg className="w-4 h-4 text-slate-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </button>
-            </div>
           </div>
 
           {/* ── Right Column: 퀵기사 · 화물기사 인물 컷 (960 x 680) (5 cols) ── */}
           <div className="lg:col-span-5">
-            <div className="relative w-full aspect-[960/680] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-200/90 shadow-xl group">
+            <div className="relative w-full aspect-[960/680] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-700/80 shadow-2xl shadow-black/80 ring-1 ring-orange-500/30 group">
               <Image
                 src="/images/driver.jpg"
                 alt="드림델 퀵기사 및 화물기사 인물 컷"
@@ -156,9 +154,9 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 sizes="(max-width: 1024px) 100vw, 42vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent pointer-events-none" />
               
-              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-950/85 backdrop-blur-md border border-white/15 text-white flex items-center justify-between shadow-lg">
+              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-950/90 backdrop-blur-md border border-white/15 text-white flex items-center justify-between shadow-xl">
                 <div>
                   <div className="text-xs sm:text-sm font-black text-white flex items-center space-x-1.5">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -168,7 +166,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
                     업계 최고 수준 운임 배분 & 24시간 실시간 관제 센터 가동
                   </div>
                 </div>
-                <span className="font-mono text-xs font-bold text-orange-400 bg-orange-500/10 px-2 py-1 rounded border border-orange-500/20">
+                <span className="text-xs font-bold tracking-wider text-orange-400 bg-orange-500/15 px-2.5 py-1 rounded border border-orange-500/30">
                   RECRUIT
                 </span>
               </div>
@@ -184,7 +182,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
             className="fixed inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity"
             onClick={handleCloseModal}
           />
-          <div className="relative z-10 w-full max-w-md rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-2xl p-6 sm:p-8">
+          <div className="relative z-10 w-full max-w-md rounded-2xl sm:rounded-3xl bg-white border border-slate-200 shadow-2xl p-6 sm:p-8 text-slate-900">
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center space-x-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-orange-500 animate-pulse" />
@@ -232,7 +230,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
                     placeholder="홍길동"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none"
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none"
                   />
                 </div>
 
@@ -246,7 +244,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
                     placeholder="010-1234-5678"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none"
+                    className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none"
                   />
                 </div>
 
@@ -258,7 +256,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
                     <select
                       value={formData.region}
                       onChange={(e) => setFormData({ ...formData, region: e.target.value })}
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none"
+                      className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none"
                     >
                       <option value="서울 강남/서초/송파">서울 강남권</option>
                       <option value="서울 강북/종로/마포">서울 강북권</option>
@@ -275,7 +273,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
                     <select
                       value={formData.experience}
                       onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-                      className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none"
+                      className="w-full px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs sm:text-sm font-medium focus:ring-2 focus:ring-orange-500 focus:bg-white outline-none"
                     >
                       <option value="신규 (초보자 환영)">신규 (초보)</option>
                       <option value="1년 미만">1년 미만</option>

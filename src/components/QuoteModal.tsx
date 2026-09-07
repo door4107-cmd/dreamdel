@@ -79,7 +79,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
       <div className="relative w-full max-w-5xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-auto max-h-[92vh] flex flex-col">
         {/* Modal Top Control Bar */}
         <div className="flex items-center justify-between px-6 sm:px-10 pt-6 pb-2 shrink-0 bg-white">
-          <div className="text-xs sm:text-sm font-mono font-bold tracking-widest text-slate-500 uppercase">
+          <div className="text-xs sm:text-sm font-bold tracking-widest text-slate-500 uppercase">
             05 QUOTE
           </div>
           <button
@@ -113,12 +113,12 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                 문의가 정상적으로 접수되었습니다!
               </h3>
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed break-keep">
-                남겨주신 연락처(<span className="font-bold text-slate-900 font-mono">{formData.phone}</span>)로 전문 상담 매니저가 확인 후 신속히 맞춤 견적을 회신드리겠습니다.
+                남겨주신 연락처(<span className="font-bold text-slate-900">{formData.phone}</span>)로 전문 상담 매니저가 확인 후 신속히 맞춤 견적을 회신드리겠습니다.
               </p>
               <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 text-left space-y-1.5">
                 <div>• 문의 유형: <span className="font-bold text-slate-900">{formData.inquiryType}</span></div>
                 <div>• 신청자: <span className="font-bold text-slate-900">{formData.contactName} {formData.companyName ? `(${formData.companyName})` : ""}</span></div>
-                <div>• 빠른 전화 문의: <a href="tel:1588-5575" className="text-orange-600 font-bold font-mono">1588-5575</a></div>
+                <div>• 빠른 전화 문의: <a href="tel:1588-5575" className="text-orange-600 font-bold">1588-5575</a></div>
               </div>
               <button
                 type="button"
@@ -272,7 +272,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
               <div className="lg:col-span-5 xl:col-span-4 space-y-4">
                 {/* 1. CS Center Card */}
                 <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                  <div className="text-[11px] font-mono font-bold tracking-wider text-slate-500 uppercase mb-3">
+                  <div className="text-[11px] font-bold tracking-wider text-slate-500 uppercase mb-3">
                     CS CENTER
                   </div>
 

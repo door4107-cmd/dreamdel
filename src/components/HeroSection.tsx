@@ -1,78 +1,27 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import Image from "next/image";
 
-interface HeroSectionProps {
-  onQuote?: () => void;
-  onOpenDispatchModal?: () => void;
-}
+// 히어로 하단 태그라인 (한 문장씩 fade 슬라이드로 순환)
+const HERO_TAGLINES = [
+  "10분 빠르게 픽업하고",
+  "10분 빠르게 배송하기위해",
+  "오늘도 노력하겠습니다.",
+];
 
-export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
+export default function HeroSection() {
   const video1Ref = useRef<HTMLVideoElement>(null);
   const video2Ref = useRef<HTMLVideoElement>(null);
   const [activeVideo, setActiveVideo] = useState<1 | 2>(1);
+  const [taglineIndex, setTaglineIndex] = useState(0);
 
-  // 5 Base Feature Cards (01 COMPANY, 02 BUSINESS, 03 ORDER, 04 CORPORATE, 05 DRIVER)
-  const cards = [
-    {
-      tag: "01 COMPANY",
-      title: "회사소개",
-      descLine1: "1994년부터 이어온",
-      descLine2: "30년 운송 노하우",
-      imageSrc: "/images/vehicles/van.jpg",
-      actionText: "자세히 보기 ↓",
-      actionType: "scroll",
-      targetId: "company",
-    },
-    {
-      tag: "02 BUSINESS",
-      title: "사업영역",
-      descLine1: "오토바이·차량·전국연계",
-      descLine2: "기타 맞춤 서비스까지",
-      imageSrc: "/images/vehicles/bike.jpg",
-      actionText: "서비스 안내 ↓",
-      actionType: "scroll",
-      targetId: "services",
-    },
-    {
-      tag: "03 ORDER ↗",
-      title: "오더접수",
-      descLine1: "지금 바로 10초 접수",
-      descLine2: "실시간 배차 현황 확인",
-      imageSrc: "/images/vehicles/damas.jpg",
-      actionText: "간편 접수하기 ↗",
-      actionType: "dispatch",
-    },
-    {
-      tag: "04 CORPORATE",
-      title: "법인서비스",
-      descLine1: "월 정산·세금계산서",
-      descLine2: "기업 전용 맞춤 요금제",
-      imageSrc: "/images/vehicles/truck.jpg",
-      actionText: "법인 혜택 보기 ↓",
-      actionType: "scroll",
-      targetId: "about",
-    },
-    {
-      tag: "05 DRIVER",
-      title: "기사모집",
-      descLine1: "함께 달릴 퀵·화물 기사님",
-      descLine2: "100% 당일정산·최대물량",
-      imageSrc: "/images/driver.jpg",
-      actionText: "기사 지원하기 ↓",
-      actionType: "scroll",
-      targetId: "driver",
-    },
-  ];
-
-  // 3-Set Cloned Extended Cards for 100% Infinite Seamless Looping
-  const extendedCards = [...cards, ...cards, ...cards];
-  const CARD_COUNT = cards.length; // 5
-
-  // Start at the first card of the middle set (index 5)
-  const [offsetIndex, setOffsetIndex] = useState(CARD_COUNT);
-  const [isTransitioning, setIsTransitioning] = useState(true);
+  // 하단 태그라인 순환 (3.4초마다 한 문장씩 교체)
+  useEffect(() => {
+    const id = setInterval(() => {
+      setTaglineIndex((i) => (i + 1) % HERO_TAGLINES.length);
+    }, 3400);
+    return () => clearInterval(id);
+  }, []);
 
   // 1. 100% Seamless 60FPS Crossfading Video Loop
   useEffect(() => {
@@ -84,8 +33,14 @@ export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
     const FADE_DURATION_MS = 1800;
     const TRIGGER_BEFORE_END_SEC = 2.4;
 
+    v1.defaultMuted = true;
+    v1.muted = true;
+    v2.defaultMuted = true;
+    v2.muted = true;
+
     v1.playbackRate = SPEED;
     v2.playbackRate = SPEED;
+    v1.play().catch(() => {});
 
     let isVideoTransitioning = false;
     let animId: number;
@@ -117,64 +72,43 @@ export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
     };
   }, [activeVideo]);
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
-  };
-
-  const handleCardClick = (card: (typeof cards)[0]) => {
-    if (card.actionType === "dispatch") {
-      if (onOpenDispatchModal) onOpenDispatchModal();
-    } else if (card.targetId) {
-      scrollTo(card.targetId);
-    }
-  };
-
-  // Slider Navigation: Infinite Next & Prev
-  const nextSlide = () => {
-    setIsTransitioning(true);
-    setOffsetIndex((prev) => prev + 1);
-  };
-
-  const prevSlide = () => {
-    setIsTransitioning(true);
-    setOffsetIndex((prev) => prev - 1);
-  };
-
-  // Seamless Infinite Reset on Transition End (Without flickering)
-  const handleTransitionEnd = () => {
-    if (offsetIndex >= CARD_COUNT * 2) {
-      // Reached the end of middle set -> reset seamlessly to start of middle set
-      setIsTransitioning(false);
-      setOffsetIndex(CARD_COUNT + (offsetIndex % CARD_COUNT));
-    } else if (offsetIndex < CARD_COUNT) {
-      // Reached before middle set -> reset seamlessly to end of middle set
-      setIsTransitioning(false);
-      setOffsetIndex(CARD_COUNT + ((offsetIndex % CARD_COUNT) + CARD_COUNT) % CARD_COUNT);
-    }
-  };
-
-  // Real 1-based index (1 ~ 5)
-  const realCurrentIndex = ((offsetIndex % CARD_COUNT) + CARD_COUNT) % CARD_COUNT;
-
   return (
     <section
       id="hero"
-      className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-28 md:pt-36 pb-12 sm:pb-16 px-4 sm:px-6 lg:px-8 bg-[#18181B]"
+      data-fullpage-section
+      className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-28 md:pt-36 pb-12 sm:pb-16 px-0 lg:h-[100svh] lg:min-h-0 lg:snap-start lg:snap-always bg-[#18181B]"
     >
-      {/* 🎬 1. Full-Width Background Video Layer (1.8초 스무스 크로스페이드 루프) */}
+      {/* 🎬 1. Full-Width Background Video Layer with Fallback Cinematic Ambient Glow */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
+        {/* Dynamic Modern Urban Flow Background (Always visible beneath video) */}
+        <div className="absolute inset-0 bg-[#0B0F19]">
+          {/* Radial ambient glow orbs */}
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-gradient-to-r from-orange-500/20 via-amber-500/15 to-blue-600/20 rounded-full blur-[140px] animate-pulse" style={{ animationDuration: '6s' }} />
+          <div className="absolute bottom-10 right-10 w-[500px] h-[400px] bg-blue-500/15 rounded-full blur-[120px]" />
+          
+          {/* Futuristic Logistics Perspective Highway Grid */}
+          <div className="absolute inset-0 bg-grid-dark opacity-40" />
+          
+          {/* Glowing Speed Light Streaks simulating nighttime city express logistics */}
+          <div className="absolute inset-0 overflow-hidden opacity-30">
+            <div className="absolute h-[1px] w-3/4 -top-10 left-10 bg-gradient-to-r from-transparent via-orange-400 to-transparent rotate-[-12deg] blur-[1px]" />
+            <div className="absolute h-[2px] w-full top-1/3 -left-20 bg-gradient-to-r from-transparent via-amber-400/60 to-transparent rotate-[8deg] blur-[1px]" />
+            <div className="absolute h-[1px] w-2/3 bottom-1/4 right-0 bg-gradient-to-r from-transparent via-blue-400/70 to-transparent rotate-[-6deg] blur-[1px]" />
+          </div>
+        </div>
+
         <video
           ref={video1Ref}
           autoPlay
           muted
           playsInline
           preload="auto"
+          style={{ transform: "scale(1.13)", transformOrigin: "0% 100%" }}
           className={`absolute inset-0 w-full h-full object-cover brightness-[0.95] contrast-[1.05] transition-opacity duration-[1800ms] ease-in-out ${
             activeVideo === 1 ? "opacity-90" : "opacity-0"
           }`}
         >
-          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src="/videos/adt.mp4" type="video/mp4" />
         </video>
 
         <video
@@ -182,23 +116,24 @@ export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
           muted
           playsInline
           preload="auto"
+          style={{ transform: "scale(1.13)", transformOrigin: "0% 100%" }}
           className={`absolute inset-0 w-full h-full object-cover brightness-[0.95] contrast-[1.05] transition-opacity duration-[1800ms] ease-in-out ${
             activeVideo === 2 ? "opacity-90" : "opacity-0"
           }`}
         >
-          <source src="/videos/hero.mp4" type="video/mp4" />
+          <source src="/videos/adt.mp4" type="video/mp4" />
         </video>
 
-        {/* Cinematic Soft Tint Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#12141A]/65 via-[#18181B]/35 to-[#18181B]/75" />
+        {/* Cinematic Soft Tint Overlay (균일하고 자연스러운 영상 톤) */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#12141A]/60 via-[#18181B]/30 to-[#18181B]/80" />
       </div>
 
       {/* ── Content Container (z-10) ── */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full flex flex-col justify-between h-full">
-        {/* ── 2. Top Header & Title Area with < > Navigation Controls ── */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 flex flex-col justify-between h-full">
+        {/* ── 2. Top Header & Title Area ── */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
           <div>
-            <div className="text-xs sm:text-sm font-mono font-bold tracking-widest text-slate-400 uppercase mb-3 sm:mb-4">
+            <div className="text-xs sm:text-sm font-bold tracking-widest text-slate-400 uppercase mb-3 sm:mb-4">
               DREAMDEL · GLOBAL LOGISTICS INNOVATOR
             </div>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18] break-keep mb-3">
@@ -213,96 +148,34 @@ export default function HeroSection({ onOpenDispatchModal }: HeroSectionProps) {
             </p>
           </div>
 
-          {/* ── < > Slide Arrows & Card Index Indicator ── */}
-          <div className="flex items-center space-x-3 self-start md:self-end mb-1">
-            <div className="text-xs font-mono font-bold text-slate-400 bg-slate-900/80 px-3.5 py-1.5 rounded-lg border border-white/10 select-none">
-              <span className="text-orange-400">{realCurrentIndex + 1}</span> / {CARD_COUNT}
-            </div>
-
-            <div className="flex items-center space-x-2">
-              <button
-                type="button"
-                onClick={prevSlide}
-                className="w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-orange-600 active:bg-orange-700 border border-white/15 hover:border-orange-500 text-white flex items-center justify-center transition-all duration-200 text-lg font-black shadow-lg cursor-pointer active:scale-95"
-                aria-label="이전 카드 보기"
-              >
-                ‹
-              </button>
-              <button
-                type="button"
-                onClick={nextSlide}
-                className="w-11 h-11 rounded-xl bg-slate-900/90 hover:bg-orange-600 active:bg-orange-700 border border-white/15 hover:border-orange-500 text-white flex items-center justify-center transition-all duration-200 text-lg font-black shadow-lg cursor-pointer active:scale-95"
-                aria-label="다음 카드 보기"
-              >
-                ›
-              </button>
-            </div>
-          </div>
         </div>
 
-        {/* ── 3. 5-Card Infinite Seamless Carousel (Desktop 4 cards always fully visible) ── */}
-        <div className="relative w-full overflow-hidden mb-8 sm:mb-10 [--slider-gap:16px] sm:[--slider-gap:20px] [--slider-visible:1] sm:[--slider-visible:2] lg:[--slider-visible:4]">
-          <div
-            onTransitionEnd={handleTransitionEnd}
-            className={`flex gap-4 sm:gap-5 ${
-              isTransitioning ? "transition-transform duration-500 ease-out" : ""
-            }`}
-            style={{
-              transform: `translateX(calc(-${offsetIndex} * (100% + var(--slider-gap)) / var(--slider-visible)))`,
-            }}
-          >
-            {extendedCards.map((card, idx) => (
-              <div
-                key={idx}
-                onClick={() => handleCardClick(card)}
-                className="group relative flex-shrink-0 w-full sm:w-[calc((100%-20px)/2)] lg:w-[calc((100%-60px)/4)] h-[350px] sm:h-[370px] md:h-[390px] rounded-2xl bg-white border border-slate-200/90 hover:border-orange-500 overflow-hidden flex flex-col justify-between p-6 sm:p-7 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 cursor-pointer select-none"
+        {/* ── 2.5 Tagline (하단 중앙에서 한 문장씩 사라지고 나타남) ── */}
+        <div className="relative flex justify-center mb-6 sm:mb-8">
+          <div className="relative h-8 sm:h-9 w-full max-w-md overflow-hidden">
+            {HERO_TAGLINES.map((line, i) => (
+              <p
+                key={line}
+                aria-hidden={i !== taglineIndex}
+                className={`absolute inset-x-0 top-0 h-full flex items-center justify-center whitespace-nowrap text-lg sm:text-xl md:text-2xl font-bold text-white/90 break-keep leading-none transition-all duration-700 ease-out ${
+                  i === taglineIndex
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 -translate-y-full"
+                }`}
               >
-                {/* Background Visual Layer */}
-                <div className="absolute inset-0 z-0">
-                  <Image
-                    src={card.imageSrc}
-                    alt={card.title}
-                    fill
-                    className="object-cover object-center opacity-65 group-hover:opacity-85 group-hover:scale-105 transition-all duration-500"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-white/95 via-white/45 to-white/90 group-hover:from-white/90 group-hover:via-white/25 group-hover:to-white/85 transition-colors" />
-                </div>
-
-                {/* Card Header (Tag, Title, Description) */}
-                <div className="relative z-10">
-                  <div className="text-[11px] font-mono font-bold tracking-wider text-slate-600 uppercase mb-2">
-                    {card.tag}
-                  </div>
-                  <h3 className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight mb-2 group-hover:text-orange-600 transition-colors drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]">
-                    {card.title}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-slate-800 leading-snug font-semibold drop-shadow-[0_1px_4px_rgba(255,255,255,0.9)]">
-                    {card.descLine1}<br />
-                    {card.descLine2}
-                  </p>
-                </div>
-
-                {/* Card Footer (Action Link with Hover Transition) */}
-                <div className="relative z-10 pt-4 border-t border-slate-200/80 flex items-center justify-between">
-                  <span className="font-black text-xs sm:text-sm text-slate-950 group-hover:text-orange-600 transition-colors inline-flex items-center space-x-1.5 drop-shadow-[0_1px_3px_rgba(255,255,255,0.8)]">
-                    <span>{card.actionText}</span>
-                  </span>
-                  <span className="w-7 h-7 rounded-full bg-white/90 shadow-sm group-hover:bg-orange-50 text-slate-700 group-hover:text-orange-600 flex items-center justify-center text-xs font-bold transition-colors">
-                    →
-                  </span>
-                </div>
-              </div>
+                <span className="inline-block w-1.5 h-5 sm:h-6 rounded-full bg-orange-500 mr-3 shrink-0" />
+                {line}
+              </p>
             ))}
           </div>
         </div>
 
-        {/* ── 4. Bottom Badges (2 Pill/Box Badges) ── */}
+        {/* ── 3. Bottom Badges ── */}
         <div className="flex flex-wrap items-center gap-3">
-          <div className="px-4 py-2 rounded-lg bg-slate-900/90 border border-slate-700 text-slate-300 text-xs sm:text-sm font-medium">
+          <div className="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-300 text-xs sm:text-sm font-medium backdrop-blur-md shadow-sm">
             적재물배상책임보험 보상한도 5,000만원
           </div>
-          <div className="px-4 py-2 rounded-lg bg-slate-900/90 border border-slate-700 text-slate-300 text-xs sm:text-sm font-medium">
+          <div className="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-300 text-xs sm:text-sm font-medium backdrop-blur-md shadow-sm">
             사랑의열매 &apos;착한가게&apos; 참여업체
           </div>
         </div>

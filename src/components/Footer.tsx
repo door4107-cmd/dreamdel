@@ -9,17 +9,32 @@ export default function Footer() {
 
   const scrollToTop = () => {
     if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      const pageScroller = document.getElementById("page-scroller");
+      if (pageScroller) {
+        pageScroller.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
     }
   };
 
   return (
     <>
-      <footer id="footer" className="bg-white border-t border-slate-200 py-12 sm:py-16 text-slate-700 text-xs sm:text-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* ── 1. Logo ── */}
+      <footer id="footer" data-fullpage-section className="scroll-mt-14 relative overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#F8F9FC] to-[#F1F3F9] py-12 text-xs text-slate-700 sm:py-16 sm:text-sm lg:flex lg:h-[100svh] lg:snap-start lg:snap-always lg:items-center">
+        {/* ── Top Curved Wave Divider transitioning from 04 DRIVER (#060A14) ── */}
+        <div className="absolute top-0 inset-x-0 overflow-hidden leading-none pointer-events-none z-10">
+          <svg className="relative block w-full h-7 sm:h-10 text-[#060A14]" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
+            <path d="M0,0 L1200,0 L1200,30 Q600,90 0,30 Z" />
+          </svg>
+        </div>
+
+        {/* Subtle ground texture */}
+        <div className="absolute inset-0 bg-dot-subtle opacity-40 pointer-events-none" />
+
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+          {/* ── 1. Brand Wordmark (마크로고 이미지 제거, 텍스트 워드마크 적용) ── */}
           <div className="mb-6 sm:mb-8">
-            <BrandLogo className="h-9 sm:h-10" showText={true} />
+            <BrandLogo onClick={scrollToTop} />
           </div>
 
           {/* ── 2. Business Information Grid (전자상거래법 제10조 필수고지) ── */}
@@ -38,15 +53,15 @@ export default function Footer() {
             <div className="flex flex-wrap items-baseline gap-x-6 gap-y-1">
               <div className="flex items-center space-x-2">
                 <span className="text-slate-400 font-bold">사업자등록번호</span>
-                <span className="text-slate-800 font-mono">211-86-77077</span>
+                <span className="text-slate-800 font-semibold">211-86-77077</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-slate-400 font-bold">Tel</span>
-                <span className="text-slate-800 font-mono">02-3446-7668</span>
+                <span className="text-slate-800 font-semibold">02-3446-7668</span>
               </div>
               <div className="flex items-center space-x-2">
                 <span className="text-slate-400 font-bold">Fax</span>
-                <span className="text-slate-800 font-mono">02-3446-6388</span>
+                <span className="text-slate-800 font-semibold">02-3446-6388</span>
               </div>
             </div>
 
@@ -71,7 +86,7 @@ export default function Footer() {
                   개인정보처리방침
                 </button>
               </div>
-              <div className="text-[11px] sm:text-xs text-slate-500 font-mono">
+              <div className="text-[11px] sm:text-xs text-slate-500 font-medium">
                 COPYRIGHT © (주)드림델 ALL RIGHTS RESERVED.
               </div>
             </div>
@@ -80,7 +95,7 @@ export default function Footer() {
             <div className="flex items-center space-x-4 self-end md:self-auto">
               <div className="flex items-center space-x-2">
                 <span className="text-xs sm:text-sm text-slate-500 font-medium">고객센터</span>
-                <span className="font-mono text-base sm:text-lg md:text-xl font-black text-slate-950">
+                <span className="font-display text-base sm:text-lg md:text-xl font-black text-slate-950 tracking-tight">
                   1588-5575
                 </span>
               </div>

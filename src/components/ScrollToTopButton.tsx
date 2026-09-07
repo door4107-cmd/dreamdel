@@ -6,27 +6,31 @@ export default function ScrollToTopButton() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
+    const pageScroller = document.getElementById("page-scroller");
     const toggleVisibility = () => {
-      if (window.scrollY > 300) {
+      if ((pageScroller?.scrollTop ?? window.scrollY) > 300) {
         setIsVisible(true);
       } else {
         setIsVisible(false);
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility, { passive: true });
+    const scrollTarget = pageScroller ?? window;
+    scrollTarget.addEventListener("scroll", toggleVisibility, { passive: true });
     toggleVisibility();
 
     return () => {
-      window.removeEventListener("scroll", toggleVisibility);
+      scrollTarget.removeEventListener("scroll", toggleVisibility);
     };
   }, []);
 
   const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    const pageScroller = document.getElementById("page-scroller");
+    if (pageScroller) {
+      pageScroller.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (

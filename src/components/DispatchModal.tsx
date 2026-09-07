@@ -37,7 +37,7 @@ export default function DispatchModal({ isOpen, onClose }: DispatchModalProps) {
             aria-label="닫기"
           >
             <span>닫기</span>
-            <span className="font-mono">✕</span>
+            <span>✕</span>
           </button>
         </div>
 

@@ -1,8 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import BrandLogo from "@/components/BrandLogo";
 
 interface NavItem {
   href: string;
@@ -14,18 +12,29 @@ interface NavbarProps {
   onOpenPriceModal?: () => void;
   onOpenDispatchModal?: () => void;
   onOpenQuoteModal?: () => void;
+  onOpenQuickTalkModal?: () => void;
 }
 
-export default function Navbar({ navItems, onOpenPriceModal, onOpenDispatchModal, onOpenQuoteModal }: NavbarProps) {
+
+export default function Navbar({
+  navItems,
+  onOpenPriceModal,
+  onOpenDispatchModal,
+  onOpenQuoteModal,
+  onOpenQuickTalkModal,
+}: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    const pageScroller = document.getElementById("page-scroller");
     const handleScroll = () => {
-      setScrolled(window.scrollY > 15);
+      setScrolled((pageScroller?.scrollTop ?? window.scrollY) > 15);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const scrollTarget = pageScroller ?? window;
+    scrollTarget.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => scrollTarget.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollTo = (id: string) => {
@@ -48,114 +57,157 @@ export default function Navbar({ navItems, onOpenPriceModal, onOpenDispatchModal
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-40 px-3 pt-2 sm:px-6 sm:pt-3">
+      <div className="pointer-events-auto relative z-10 mx-auto max-w-7xl">
         <div
-          className={`mt-4 flex items-center justify-between h-16 md:h-20 px-5 md:px-8 rounded-full transition-all duration-300 ${
+          className={`flex w-full min-w-0 items-center justify-between rounded-2xl border px-3 py-2 sm:px-4 shadow-[0_2px_12px_rgba(0,0,0,0.06)] backdrop-blur-md transition-all duration-300 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] ${
             scrolled
-              ? "bg-white/95 backdrop-blur-2xl border border-slate-200/90 shadow-[0_8px_30px_rgb(0,0,0,0.08)]"
-              : "bg-white/90 backdrop-blur-xl border border-slate-200/70 shadow-[0_4px_20px_rgb(0,0,0,0.04)]"
+              ? "border-slate-300 bg-white/98 text-slate-950"
+              : "border-slate-200/90 bg-white/95 text-slate-950"
           }`}
         >
-          {/* Brand Identity with Modern DDL Logo */}
-          <Link
-            href="/"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="flex items-center space-x-3 group cursor-pointer"
-          >
-            <BrandLogo className="h-9 sm:h-10" showText={true} />
-            <span className="hidden lg:inline-block h-4 w-px bg-slate-300 mx-1" />
-            <div className="hidden lg:flex items-center space-x-2 text-xs sm:text-sm font-extrabold text-orange-600">
-              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-              <span>30초 쾌속 배차</span>
-            </div>
-          </Link>
+          {/* ── 1. Left: 한글 드림델 텍스트 브랜드 & 검정색 전화번호 ── */}
+          <div className="flex items-center gap-2 sm:gap-3 lg:col-start-1 lg:justify-self-start shrink-0">
+            <button
+              type="button"
+              onClick={() => scrollTo("hero")}
+              className="group shrink-0 flex items-center text-left leading-none cursor-pointer"
+              aria-label="드림델 첫 화면으로 이동"
+            >
+              <span className="flex flex-col">
+                <span className="font-display text-xl sm:text-2xl font-black tracking-tight text-orange-600 group-hover:text-black transition-colors">
+                  드림델
+                </span>
+                <span className="text-[8px] sm:text-[9px] font-bold tracking-widest text-slate-400 leading-none">
+                  QUICK · FREIGHT
+                </span>
+              </span>
+            </button>
 
-          {/* Desktop Navigation Links (크고 또렷해진 메뉴 폰트) */}
-          <nav className="hidden md:flex items-center space-x-1.5">
+            {/* 전화번호 (검정색으로 명확하게 강조) */}
+            <div className="h-5 w-[1px] bg-slate-300 mx-0.5 hidden sm:block" />
+            <a
+              href="tel:1588-5575"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-slate-100 hover:bg-slate-200 border border-slate-300/80 shadow-sm transition-all active:scale-95 group shrink-0"
+              aria-label="고객센터 전화 1588-5575"
+            >
+              <svg aria-hidden="true" className="h-3.5 w-3.5 text-orange-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+              </svg>
+              <span className="font-display text-xs sm:text-base font-black text-black tracking-tight whitespace-nowrap">
+                1588-5575
+              </span>
+            </a>
+          </div>
+
+          {/* ── 2. Center: 네비게이션 메뉴 ── */}
+          <nav className="hidden items-center gap-0.5 lg:col-start-2 lg:flex lg:justify-self-center" aria-label="주요 메뉴">
             {navItems.map((item) => (
               <button
                 key={item.href}
+                type="button"
                 onClick={() => handleNavClick(item.href)}
-                className="px-5 py-2.5 rounded-full text-base font-bold text-slate-700 hover:text-slate-950 hover:bg-slate-100 transition-all cursor-pointer"
+                className="rounded-full px-3 py-1.5 text-sm font-bold text-slate-700 hover:bg-slate-100 hover:text-orange-600 transition-colors cursor-pointer"
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          {/* Right Action Area (24시 접수 1588-5575 & 오더접수 버튼) */}
-          <div className="flex items-center space-x-3 sm:space-x-4">
-            {/* Phone Info: Mobile (clickable) */}
-            <a
-              href="tel:1588-5575"
-              className="md:hidden flex flex-col items-end text-right active:scale-95 transition-transform"
-            >
-              <span className="text-[10px] font-bold text-slate-500 leading-none">24시 접수</span>
-              <span className="font-mono font-black text-sm text-slate-900 leading-tight">1588-5575</span>
-            </a>
-
-            {/* Phone Info: PC Desktop (unclickable) */}
-            <div className="hidden md:flex flex-col items-end text-right select-text cursor-default">
-              <span className="text-[11px] font-medium text-slate-500 leading-none">24시 접수</span>
-              <span className="font-mono font-black text-base text-slate-900 leading-tight">1588-5575</span>
-            </div>
-
-            {/* [오더접수 ↗] Button */}
+          {/* ── 3. Right: 인터넷접수 & AI퀵톡접수 2개 액션 버튼 (메뉴바 상시 노출, 깔끔한 솔리드 캡슐) ── */}
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:col-start-3 lg:justify-self-end shrink-0">
+            {/* 인터넷접수 버튼 */}
             {onOpenDispatchModal && (
               <button
                 type="button"
                 onClick={onOpenDispatchModal}
-                className="hidden sm:inline-flex items-center space-x-1 px-4 sm:px-5 py-2.5 rounded-full bg-slate-950 hover:bg-slate-800 active:bg-black text-white font-bold text-xs sm:text-sm shadow-sm hover:shadow-md transition-all cursor-pointer"
+                className="flex h-9 w-[94px] sm:w-[114px] items-center justify-center gap-1.5 rounded-full border border-blue-700/30 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-[11.5px] sm:text-xs font-black text-white shadow-sm transition-all duration-150 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
               >
-                <span>오더접수</span>
-                <span>↗</span>
+                <svg aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span>인터넷접수</span>
               </button>
             )}
-          </div>
 
-          {/* Mobile Menu Trigger */}
-          <div className="flex md:hidden items-center">
+            {/* AI퀵톡접수 버튼 */}
+            {onOpenQuickTalkModal && (
+              <button
+                type="button"
+                onClick={onOpenQuickTalkModal}
+                className="flex h-9 w-[94px] sm:w-[114px] items-center justify-center gap-1.5 rounded-full border border-black/10 bg-[#FEE500] hover:bg-[#FDD835] active:bg-[#FBC02D] text-[11.5px] sm:text-xs font-black text-[#191919] shadow-sm transition-all duration-150 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
+              >
+                <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-[#191919]" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.558 1.708 4.8 4.27 6.054-.187.697-.68 2.528-.778 2.923-.122.493.18.487.38.354.157-.105 2.502-1.701 3.518-2.392.525.077 1.06.118 1.61.118 4.97 0 9-3.185 9-7.115S16.97 3 12 3z" />
+                </svg>
+                <span>AI퀵톡접수</span>
+              </button>
+            )}
+
+            {/* 모바일 햄버거 토글 */}
             <button
+              type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-xl text-slate-700 hover:text-slate-950 hover:bg-slate-100 focus:outline-none cursor-pointer"
+              className="grid h-9 w-9 place-items-center rounded-full bg-slate-100 text-slate-900 hover:bg-slate-200 border border-slate-300/80 shadow-sm transition-all active:scale-95 lg:hidden cursor-pointer shrink-0"
+              aria-expanded={isMenuOpen}
               aria-label="메뉴"
             >
-              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
+              <span className="text-sm sm:text-base leading-none font-bold">{isMenuOpen ? "✕" : "☰"}</span>
             </button>
           </div>
         </div>
 
-        {/* Mobile Dropdown Menu */}
+        {/* 모바일 네비게이션 드롭다운 */}
         {isMenuOpen && (
-          <div className="md:hidden mt-2 p-4 rounded-3xl bg-white/95 backdrop-blur-2xl border border-slate-200/90 shadow-2xl space-y-1 animate-fade-in">
+          <nav
+            className="mt-2 space-y-1.5 rounded-2xl border border-slate-200 bg-white/98 p-3 shadow-2xl backdrop-blur-xl lg:hidden"
+            aria-label="모바일 주요 메뉴"
+          >
             {navItems.map((item) => (
               <button
                 key={item.href}
+                type="button"
                 onClick={() => handleNavClick(item.href)}
-                className="w-full text-left px-4 py-3 rounded-2xl text-sm font-bold text-slate-700 hover:text-slate-950 hover:bg-slate-100/80 transition-colors"
+                className="block w-full rounded-xl px-4 py-2.5 text-left text-sm font-bold text-slate-800 hover:bg-slate-100 hover:text-orange-600 transition-colors"
               >
                 {item.label}
               </button>
             ))}
-            <div className="pt-3 mt-2 border-t border-slate-100">
-              <a
-                href="tel:1588-5575"
-                className="block text-center py-3 text-xs font-bold text-slate-800 bg-slate-100 rounded-2xl"
-              >
-                📞 24시간 친절 상담: 1588-5575
-              </a>
+
+            <div className="pt-2 border-t border-slate-100 grid grid-cols-2 gap-2">
+              {onOpenDispatchModal && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    onOpenDispatchModal();
+                  }}
+                  className="flex h-10 items-center justify-center gap-1.5 px-3 rounded-xl border border-blue-700/30 bg-blue-600 text-white font-black text-xs shadow-sm active:scale-95 transition-transform"
+                >
+                  <svg aria-hidden="true" className="h-4 w-4 shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <span>인터넷접수</span>
+                </button>
+              )}
+
+              {onOpenQuickTalkModal && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    onOpenQuickTalkModal();
+                  }}
+                  className="flex h-10 items-center justify-center gap-1.5 px-3 rounded-xl bg-[#FEE500] text-[#191919] font-black text-xs shadow-sm border border-black/10 active:scale-95 transition-transform"
+                >
+                  <svg className="h-4 w-4 shrink-0 text-[#191919]" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.558 1.708 4.8 4.27 6.054-.187.697-.68 2.528-.778 2.923-.122.493.18.487.38.354.157-.105 2.502-1.701 3.518-2.392.525.077 1.06.118 1.61.118 4.97 0 9-3.185 9-7.115S16.97 3 12 3z" />
+                  </svg>
+                  <span>AI퀵톡접수</span>
+                </button>
+              )}
             </div>
-          </div>
+          </nav>
         )}
       </div>
     </header>
