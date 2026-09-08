@@ -60,10 +60,10 @@ export default function Navbar({
     <header className="pointer-events-none fixed inset-x-0 top-0 z-40 px-3 pt-2 sm:px-6 sm:pt-3">
       <div className="pointer-events-auto relative z-10 mx-auto max-w-7xl">
         <div
-          className={`flex w-full min-w-0 items-center justify-between rounded-2xl border px-3 py-2 sm:px-4 shadow-[0_8px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl transition-all duration-300 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] ${
+          className={`flex w-full min-w-0 items-center justify-between rounded-2xl border px-3 py-2 sm:px-4 shadow-[0_8px_30px_rgba(15,23,42,0.35)] backdrop-blur-xl transition-all duration-300 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] ${
             scrolled
-              ? "border-slate-800 bg-[#0B0F19]/95 text-white shadow-[0_12px_40px_rgba(0,0,0,0.5)]"
-              : "border-slate-800/80 bg-[#0B0F19]/90 text-white"
+              ? "border-blue-900/50 bg-[#101828]/95 text-white shadow-[0_12px_40px_rgba(15,23,42,0.5)]"
+              : "border-blue-900/40 bg-[#141F36]/90 text-white"
           }`}
         >
           {/* ── 1. Left: 한글 드림델 텍스트 브랜드 & 전화번호 ── */}
@@ -85,10 +85,10 @@ export default function Navbar({
             </button>
 
             {/* 전화번호 */}
-            <div className="h-5 w-[1px] bg-slate-800 mx-0.5 hidden sm:block" />
+            <div className="h-5 w-[1px] bg-blue-900/60 mx-0.5 hidden sm:block" />
             <a
               href="tel:1588-5575"
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 shadow-sm transition-all active:scale-95 group shrink-0"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-[#1E2C4A]/80 hover:bg-[#25365A] border border-blue-400/25 shadow-sm transition-all active:scale-95 group shrink-0"
               aria-label="고객센터 전화 1588-5575"
             >
               <svg aria-hidden="true" className="h-3.5 w-3.5 text-orange-400 shrink-0 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,7 +107,7 @@ export default function Navbar({
                 key={item.href}
                 type="button"
                 onClick={() => handleNavClick(item.href)}
-                className="rounded-full px-3 py-1.5 text-sm font-bold text-slate-300 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
+                className="rounded-full px-3 py-1.5 text-sm font-bold text-slate-200 hover:bg-white/10 hover:text-white transition-colors cursor-pointer"
               >
                 {item.label}
               </button>
@@ -148,7 +148,7 @@ export default function Navbar({
             <button
               type="button"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="grid h-9 w-9 place-items-center rounded-full bg-slate-900 text-slate-200 hover:bg-slate-800 border border-slate-700/80 shadow-sm transition-all active:scale-95 lg:hidden cursor-pointer shrink-0"
+              className="grid h-9 w-9 place-items-center rounded-full bg-[#1E2C4A] text-slate-100 hover:bg-[#25365A] border border-blue-400/25 shadow-sm transition-all active:scale-95 lg:hidden cursor-pointer shrink-0"
               aria-expanded={isMenuOpen}
               aria-label="메뉴"
             >
@@ -160,7 +160,7 @@ export default function Navbar({
         {/* 모바일 네비게이션 드롭다운 */}
         {isMenuOpen && (
           <nav
-            className="mt-2 space-y-1.5 rounded-2xl border border-slate-800 bg-[#0B0F19]/95 p-3 shadow-2xl backdrop-blur-xl lg:hidden"
+            className="mt-2 space-y-1.5 rounded-2xl border border-blue-900/40 bg-[#101828]/98 p-3 shadow-2xl backdrop-blur-xl lg:hidden"
             aria-label="모바일 주요 메뉴"
           >
             {navItems.map((item) => (
@@ -174,7 +174,7 @@ export default function Navbar({
               </button>
             ))}
 
-            <div className="pt-2 border-t border-slate-800 grid grid-cols-2 gap-2">
+            <div className="pt-2 border-t border-blue-900/50 grid grid-cols-2 gap-2">
               {onOpenDispatchModal && (
                 <button
                   type="button"
