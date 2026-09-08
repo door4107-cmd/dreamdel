@@ -150,36 +150,23 @@ export default function HeroSection() {
 
         </div>
 
-        {/* ── Bottom Section: Tagline + Badges (히어로 섹션 하단 밀착 배치) ── */}
-        <div className="mt-auto pt-6 sm:pt-10 space-y-4 sm:space-y-6">
-          {/* ── 2.5 Tagline (하단 중앙에서 한 문장씩 부드럽게 순환) ── */}
-          <div className="relative flex justify-center">
-            <div className="relative h-8 sm:h-9 w-full max-w-md overflow-hidden">
-              {HERO_TAGLINES.map((line, i) => (
-                <p
-                  key={line}
-                  aria-hidden={i !== taglineIndex}
-                  className={`absolute inset-x-0 top-0 h-full flex items-center justify-center whitespace-nowrap text-lg sm:text-xl md:text-2xl font-bold text-white/90 break-keep leading-none transition-all duration-700 ease-out ${
-                    i === taglineIndex
-                      ? "opacity-100 translate-y-0"
-                      : "opacity-0 -translate-y-full"
-                  }`}
-                >
-                  <span className="inline-block w-1.5 h-5 sm:h-6 rounded-full bg-orange-500 mr-3 shrink-0 shadow-[0_0_12px_rgba(249,115,22,0.8)]" />
-                  {line}
-                </p>
-              ))}
-            </div>
-          </div>
-
-          {/* ── 3. Bottom Badges ── */}
-          <div className="flex flex-wrap items-center gap-3">
-            <div className="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-300 text-xs sm:text-sm font-medium backdrop-blur-md shadow-sm">
-              적재물배상책임보험 보상한도 5,000만원
-            </div>
-            <div className="px-4 py-2 rounded-xl bg-slate-900/80 border border-slate-700/80 text-slate-300 text-xs sm:text-sm font-medium backdrop-blur-md shadow-sm">
-              사랑의열매 &apos;착한가게&apos; 참여업체
-            </div>
+        {/* ── Bottom Section: Tagline (히어로 섹션 하단 중앙 순환) ── */}
+        <div className="mt-auto pb-2 sm:pb-6 flex justify-center">
+          <div className="relative h-8 sm:h-9 w-full max-w-md overflow-hidden">
+            {HERO_TAGLINES.map((line, i) => (
+              <p
+                key={line}
+                aria-hidden={i !== taglineIndex}
+                className={`absolute inset-x-0 top-0 h-full flex items-center justify-center whitespace-nowrap text-lg sm:text-xl md:text-2xl font-bold text-white/90 break-keep leading-none transition-all duration-700 ease-out ${
+                  i === taglineIndex
+                    ? "opacity-100 translate-y-0"
+                    : "opacity-0 -translate-y-full"
+                }`}
+              >
+                <span className="inline-block w-1.5 h-5 sm:h-6 rounded-full bg-orange-500 mr-3 shrink-0 shadow-[0_0_12px_rgba(249,115,22,0.8)]" />
+                {line}
+              </p>
+            ))}
           </div>
         </div>
       </div>
