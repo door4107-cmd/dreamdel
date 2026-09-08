@@ -164,36 +164,6 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
                   </div>
                 ))}
               </div>
-
-              {/* Direct Driver Registration Action Bar */}
-              <div className="flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() => handleApplyClick("bike")}
-                  className="group px-6 py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-orange-500/25 transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center gap-2"
-                >
-                  <span>오토바이 퀵기사 간편등록</span>
-                  <span className="group-hover:translate-x-0.5 transition-transform font-bold">→</span>
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => handleApplyClick("truck")}
-                  className="group px-6 py-3.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm border border-slate-700 shadow-md transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center gap-2"
-                >
-                  <span>차량·화물기사 등록</span>
-                  <span className="group-hover:translate-x-0.5 transition-transform font-bold">→</span>
-                </button>
-
-                <a
-                  href="tel:1588-5575"
-                  className="px-4 py-3 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 text-slate-300 hover:text-white font-medium text-xs sm:text-sm transition-all flex items-center gap-2 shrink-0"
-                >
-                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                  <span className="text-slate-400">모집직통:</span>
-                  <span className="font-display font-black text-white text-sm sm:text-base tracking-tight">1588-5575</span>
-                </a>
-              </div>
             </div>
           </div>
 
