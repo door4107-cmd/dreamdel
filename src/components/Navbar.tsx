@@ -126,7 +126,7 @@ export default function Navbar({
                 <svg className="h-3.5 w-3.5 shrink-0 text-[#FEE500] group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.558 1.708 4.8 4.27 6.054-.187.697-.68 2.528-.778 2.923-.122.493.18.487.38.354.157-.105 2.502-1.701 3.518-2.392.525.077 1.06.118 1.61.118 4.97 0 9-3.185 9-7.115S16.97 3 12 3z" />
                 </svg>
-                <span>AI 퀵톡</span>
+                <span>AI퀵톡접수</span>
               </button>
             )}
 
@@ -187,7 +187,7 @@ export default function Navbar({
                   <svg className="h-4 w-4 shrink-0 text-[#FEE500]" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.558 1.708 4.8 4.27 6.054-.187.697-.68 2.528-.778 2.923-.122.493.18.487.38.354.157-.105 2.502-1.701 3.518-2.392.525.077 1.06.118 1.61.118 4.97 0 9-3.185 9-7.115S16.97 3 12 3z" />
                   </svg>
-                  <span>AI 퀵톡</span>
+                  <span>AI퀵톡접수</span>
                 </button>
               )}
 
