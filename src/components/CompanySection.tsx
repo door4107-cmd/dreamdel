@@ -53,40 +53,98 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* ── Left Column: 3 핵심 강점 & 기업 인증 (7 cols) ── */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-5">
-            {/* 3 Core Highlights (글자 크기를 시원하게 키운 카드) */}
+            {/* 3 Core Highlights: Editorial Metric Cards (AI 템플릿 아이콘 박스 완전 제거, 전문 디자이너 에디토리얼 타이포그래피) */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-orange-400 transition-all group">
-                <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
+              {/* Card 1: 10분 배차 */}
+              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-orange-500/80 hover:shadow-[0_8px_30px_rgba(249,115,22,0.1)] transition-all duration-300 group flex flex-col justify-between overflow-hidden">
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-orange-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Micro Header */}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-mono text-[10px] sm:text-[11px] font-bold text-orange-600 tracking-wider uppercase bg-orange-50/80 px-2 py-0.5 rounded border border-orange-200/60">
+                    01 · SPEED
+                  </span>
+                  <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-600">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                    LIVE
+                  </span>
                 </div>
-                <h4 className="font-bold text-slate-950 text-base sm:text-lg mb-1.5">10분 내 즉시 배차</h4>
-                <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed break-keep">
+
+                {/* Big Metric Display */}
+                <div className="mb-2">
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-display text-3xl sm:text-4xl font-black text-slate-950 tracking-tight group-hover:text-orange-600 transition-colors">
+                      10
+                    </span>
+                    <span className="text-base sm:text-lg font-bold text-slate-900">
+                      분 내 배차
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-[13px] text-slate-600 font-medium leading-relaxed break-keep">
                   수도권 1,200대 실시간 GPS 최단거리 매칭
                 </p>
               </div>
 
-              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 transition-all group">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
+              {/* Card 2: 5천만원 책임보상 */}
+              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-blue-500/80 hover:shadow-[0_8px_30px_rgba(37,99,235,0.1)] transition-all duration-300 group flex flex-col justify-between overflow-hidden">
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Micro Header */}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-mono text-[10px] sm:text-[11px] font-bold text-blue-600 tracking-wider uppercase bg-blue-50/80 px-2 py-0.5 rounded border border-blue-200/60">
+                    02 · GUARANTEE
+                  </span>
+                  <span className="text-[10px] font-bold text-slate-400 font-mono">
+                    100% COVER
+                  </span>
                 </div>
-                <h4 className="font-bold text-slate-950 text-base sm:text-lg mb-1.5">5천만원 책임보상</h4>
-                <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed break-keep">
+
+                {/* Big Metric Display */}
+                <div className="mb-2">
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-display text-3xl sm:text-4xl font-black text-slate-950 tracking-tight group-hover:text-blue-600 transition-colors">
+                      5,000
+                    </span>
+                    <span className="text-base sm:text-lg font-bold text-slate-900">
+                      만 책임보상
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-[13px] text-slate-600 font-medium leading-relaxed break-keep">
                   현대해상 적재물 보험 100% 가입 안심 보장
                 </p>
               </div>
 
-              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-emerald-400 transition-all group">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
+              {/* Card 3: 기업 후불 정산 */}
+              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-slate-800 hover:shadow-[0_8px_30px_rgba(15,23,42,0.1)] transition-all duration-300 group flex flex-col justify-between overflow-hidden">
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-slate-900 to-slate-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                
+                {/* Micro Header */}
+                <div className="flex items-center justify-between mb-3">
+                  <span className="font-mono text-[10px] sm:text-[11px] font-bold text-slate-700 tracking-wider uppercase bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                    03 · B2B CREDIT
+                  </span>
+                  <span className="text-[10px] font-bold text-orange-600">
+                    월말정산
+                  </span>
                 </div>
-                <h4 className="font-bold text-slate-950 text-base sm:text-lg mb-1.5">기업 후불 정산</h4>
-                <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed break-keep">
+
+                {/* Big Metric Display */}
+                <div className="mb-2">
+                  <div className="flex items-baseline gap-1">
+                    <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-slate-700 transition-colors">
+                      월 1회
+                    </span>
+                    <span className="text-base sm:text-lg font-bold text-slate-900">
+                      후불 정산
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-[13px] text-slate-600 font-medium leading-relaxed break-keep">
                   월말 세금계산서 &amp; 전담 매니저 지원
                 </p>
               </div>

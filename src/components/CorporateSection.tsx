@@ -48,13 +48,13 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
           {/* ── Left Column: 3대 핵심 혜택 (7 cols) ── */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-3.5">
             {/* 3 Core Benefit Rows */}
+            {/* 3 Core Benefit Rows */}
             <div className="space-y-3">
               {/* Benefit 1 */}
               <div className="p-4 sm:p-4.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-orange-400 transition-all flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-orange-50 text-orange-600 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
+                <div className="flex flex-col items-center justify-center w-12 h-12 rounded-xl bg-slate-900 text-white shrink-0 font-mono shadow-xs group-hover:bg-orange-600 transition-colors duration-200">
+                  <span className="text-[9px] font-bold text-slate-400 group-hover:text-orange-200 tracking-wider">SAVE</span>
+                  <span className="text-sm font-black tracking-tight leading-none mt-0.5">30%</span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
@@ -71,10 +71,9 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
 
               {/* Benefit 2 */}
               <div className="p-4 sm:p-4.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 transition-all flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                  </svg>
+                <div className="flex flex-col items-center justify-center w-12 h-12 rounded-xl bg-slate-900 text-white shrink-0 font-mono shadow-xs group-hover:bg-blue-600 transition-colors duration-200">
+                  <span className="text-[9px] font-bold text-slate-400 group-hover:text-blue-200 tracking-wider">BILL</span>
+                  <span className="text-sm font-black tracking-tight leading-none mt-0.5">M/E</span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
@@ -90,16 +89,15 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
               </div>
 
               {/* Benefit 3 */}
-              <div className="p-4 sm:p-4.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-emerald-400 transition-all flex items-start gap-4 group">
-                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5 group-hover:scale-105 transition-transform">
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
+              <div className="p-4 sm:p-4.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs hover:border-slate-800 transition-all flex items-start gap-4 group">
+                <div className="flex flex-col items-center justify-center w-12 h-12 rounded-xl bg-slate-900 text-white shrink-0 font-mono shadow-xs group-hover:bg-slate-800 transition-colors duration-200">
+                  <span className="text-[9px] font-bold text-slate-400 group-hover:text-amber-200 tracking-wider">CARE</span>
+                  <span className="text-sm font-black tracking-tight leading-none mt-0.5">1:1</span>
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <h4 className="font-bold text-slate-950 text-base sm:text-lg">1:1 전담 배차 플래너</h4>
-                    <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200/70 shrink-0">
+                    <span className="text-xs font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-md border border-slate-200 shrink-0">
                       전담 지원
                     </span>
                   </div>
