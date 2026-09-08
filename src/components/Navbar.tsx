@@ -60,10 +60,10 @@ export default function Navbar({
     <header className="pointer-events-none fixed inset-x-0 top-0 z-40 px-3 pt-2 sm:px-6 sm:pt-3">
       <div className="pointer-events-auto relative z-10 mx-auto max-w-7xl">
         <div
-          className={`flex w-full min-w-0 items-center justify-between rounded-2xl border px-3 py-2 sm:px-4 shadow-[0_8px_30px_rgba(15,23,42,0.35)] backdrop-blur-xl transition-all duration-300 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] ${
+          className={`flex w-full min-w-0 items-center justify-between rounded-2xl border px-3 py-2 sm:px-4 shadow-[0_6px_25px_rgba(15,23,42,0.25)] backdrop-blur-xl transition-all duration-300 lg:grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] ${
             scrolled
-              ? "border-blue-900/50 bg-[#101828]/95 text-white shadow-[0_12px_40px_rgba(15,23,42,0.5)]"
-              : "border-blue-900/40 bg-[#141F36]/90 text-white"
+              ? "border-blue-800/40 bg-[#141F36]/85 text-white shadow-[0_10px_35px_rgba(15,23,42,0.35)]"
+              : "border-blue-500/25 bg-[#1A2744]/75 text-white"
           }`}
         >
           {/* ── 1. Left: 한글 드림델 텍스트 브랜드 & 전화번호 ── */}
@@ -78,17 +78,17 @@ export default function Navbar({
                 <span className="font-display text-xl sm:text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 drop-shadow-[0_2px_16px_rgba(249,115,22,0.5)] group-hover:brightness-125 group-hover:scale-[1.02] transition-all duration-300">
                   드림델
                 </span>
-                <span className="text-[8px] sm:text-[9px] font-bold tracking-widest text-slate-400 leading-none">
+                <span className="text-[8px] sm:text-[9px] font-bold tracking-widest text-slate-300 leading-none">
                   QUICK · FREIGHT
                 </span>
               </span>
             </button>
 
             {/* 전화번호 */}
-            <div className="h-5 w-[1px] bg-blue-900/60 mx-0.5 hidden sm:block" />
+            <div className="h-5 w-[1px] bg-blue-700/40 mx-0.5 hidden sm:block" />
             <a
               href="tel:1588-5575"
-              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-[#1E2C4A]/80 hover:bg-[#25365A] border border-blue-400/25 shadow-sm transition-all active:scale-95 group shrink-0"
+              className="flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-full bg-[#233558]/60 hover:bg-[#233558]/80 border border-blue-400/20 shadow-sm transition-all active:scale-95 group shrink-0"
               aria-label="고객센터 전화 1588-5575"
             >
               <svg aria-hidden="true" className="h-3.5 w-3.5 text-orange-400 shrink-0 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
