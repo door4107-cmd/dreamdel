@@ -150,8 +150,8 @@ export default function HeroSection() {
 
         </div>
 
-        {/* ── Bottom Section: Tagline (히어로 섹션 하단 중앙 순환) ── */}
-        <div className="mt-auto pb-2 sm:pb-6 flex justify-center">
+        {/* ── Bottom Section: Tagline (히어로 섹션 하단 적정 높이 순환) ── */}
+        <div className="mt-auto pb-10 sm:pb-16 flex justify-center">
           <div className="relative h-8 sm:h-9 w-full max-w-md overflow-hidden">
             {HERO_TAGLINES.map((line, i) => (
               <p
