@@ -75,7 +75,7 @@ export default function Navbar({
               aria-label="드림델 첫 화면으로 이동"
             >
               <span className="flex flex-col">
-                <span className="font-display text-xl sm:text-2xl font-black tracking-tight text-orange-600 group-hover:text-black transition-colors">
+                <span className="font-display text-xl sm:text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 drop-shadow-[0_2px_14px_rgba(249,115,22,0.45)] group-hover:from-slate-950 group-hover:via-slate-900 group-hover:to-slate-950 group-hover:drop-shadow-none transition-all duration-300">
                   드림델
                 </span>
                 <span className="text-[8px] sm:text-[9px] font-bold tracking-widest text-slate-400 leading-none">
