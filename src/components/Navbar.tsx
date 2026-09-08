@@ -114,33 +114,33 @@ export default function Navbar({
             ))}
           </nav>
 
-          {/* ── 3. Right: 인터넷접수 & AI퀵톡접수 2개 액션 버튼 (메뉴바 상시 노출, 깔끔한 솔리드 캡슐) ── */}
+          {/* ── 3. Right: AI 퀵톡 & 인터넷접수 액션 허브 ── */}
           <div className="flex items-center gap-1.5 sm:gap-2 lg:col-start-3 lg:justify-self-end shrink-0">
-            {/* 인터넷접수 버튼 */}
-            {onOpenDispatchModal && (
-              <button
-                type="button"
-                onClick={onOpenDispatchModal}
-                className="flex h-9 w-[94px] sm:w-[114px] items-center justify-center gap-1.5 rounded-full border border-blue-700/30 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-[11.5px] sm:text-xs font-black text-white shadow-sm transition-all duration-150 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
-              >
-                <svg aria-hidden="true" className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-                <span>인터넷접수</span>
-              </button>
-            )}
-
-            {/* AI퀵톡접수 버튼 */}
+            {/* AI 퀵톡접수 버튼 (세련된 세미 트랜스루센트 카카오 앰버 글래스) */}
             {onOpenQuickTalkModal && (
               <button
                 type="button"
                 onClick={onOpenQuickTalkModal}
-                className="flex h-9 w-[94px] sm:w-[114px] items-center justify-center gap-1.5 rounded-full border border-black/10 bg-[#FEE500] hover:bg-[#FDD835] active:bg-[#FBC02D] text-[11.5px] sm:text-xs font-black text-[#191919] shadow-sm transition-all duration-150 hover:-translate-y-0.5 active:translate-y-0 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
+                className="group flex h-9 items-center gap-1.5 px-3 sm:px-3.5 rounded-full bg-amber-400/10 hover:bg-amber-400/20 border border-amber-400/30 hover:border-amber-400/50 text-amber-200 hover:text-white font-bold text-xs sm:text-[12.5px] backdrop-blur-md shadow-xs transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
               >
-                <svg className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0 text-[#191919]" viewBox="0 0 24 24" fill="currentColor">
+                <svg className="h-3.5 w-3.5 shrink-0 text-[#FEE500] group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.558 1.708 4.8 4.27 6.054-.187.697-.68 2.528-.778 2.923-.122.493.18.487.38.354.157-.105 2.502-1.701 3.518-2.392.525.077 1.06.118 1.61.118 4.97 0 9-3.185 9-7.115S16.97 3 12 3z" />
                 </svg>
-                <span>AI퀵톡접수</span>
+                <span>AI 퀵톡</span>
+              </button>
+            )}
+
+            {/* 인터넷접수 버튼 (시그니처 오렌지-골드 프라임 CTA 캡슐) */}
+            {onOpenDispatchModal && (
+              <button
+                type="button"
+                onClick={onOpenDispatchModal}
+                className="group flex h-9 items-center gap-1.5 px-3.5 sm:px-4 rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 hover:from-orange-600 hover:via-amber-600 hover:to-orange-600 text-white font-black text-xs sm:text-[12.5px] shadow-[0_2px_14px_rgba(249,115,22,0.4)] hover:shadow-[0_4px_18px_rgba(249,115,22,0.6)] border border-orange-300/30 transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
+              >
+                <svg aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                <span>인터넷접수</span>
               </button>
             )}
 
@@ -174,23 +174,7 @@ export default function Navbar({
               </button>
             ))}
 
-            <div className="pt-2 border-t border-blue-900/50 grid grid-cols-2 gap-2">
-              {onOpenDispatchModal && (
-                <button
-                  type="button"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    onOpenDispatchModal();
-                  }}
-                  className="flex h-10 items-center justify-center gap-1.5 px-3 rounded-xl border border-blue-700/30 bg-blue-600 text-white font-black text-xs shadow-sm active:scale-95 transition-transform"
-                >
-                  <svg aria-hidden="true" className="h-4 w-4 shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  <span>인터넷접수</span>
-                </button>
-              )}
-
+            <div className="pt-2.5 border-t border-blue-900/50 grid grid-cols-2 gap-2">
               {onOpenQuickTalkModal && (
                 <button
                   type="button"
@@ -198,12 +182,28 @@ export default function Navbar({
                     setIsMenuOpen(false);
                     onOpenQuickTalkModal();
                   }}
-                  className="flex h-10 items-center justify-center gap-1.5 px-3 rounded-xl bg-[#FEE500] text-[#191919] font-black text-xs shadow-sm border border-black/10 active:scale-95 transition-transform"
+                  className="flex h-10 items-center justify-center gap-1.5 px-3 rounded-xl bg-amber-400/15 border border-amber-400/30 text-amber-200 font-bold text-xs shadow-sm active:scale-95 transition-transform"
                 >
-                  <svg className="h-4 w-4 shrink-0 text-[#191919]" viewBox="0 0 24 24" fill="currentColor">
+                  <svg className="h-4 w-4 shrink-0 text-[#FEE500]" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.558 1.708 4.8 4.27 6.054-.187.697-.68 2.528-.778 2.923-.122.493.18.487.38.354.157-.105 2.502-1.701 3.518-2.392.525.077 1.06.118 1.61.118 4.97 0 9-3.185 9-7.115S16.97 3 12 3z" />
                   </svg>
-                  <span>AI퀵톡접수</span>
+                  <span>AI 퀵톡</span>
+                </button>
+              )}
+
+              {onOpenDispatchModal && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    onOpenDispatchModal();
+                  }}
+                  className="flex h-10 items-center justify-center gap-1.5 px-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-black text-xs shadow-sm active:scale-95 transition-transform"
+                >
+                  <svg aria-hidden="true" className="h-4 w-4 shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                  <span>인터넷접수</span>
                 </button>
               )}
             </div>
