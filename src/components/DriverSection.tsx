@@ -18,33 +18,36 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const benefits = [
+  const driverHighlights = [
     {
-      title: "안정적인 물량 보장",
-      description: "30년 축적 기업 고정 거래처 및 실시간 쾌속 오더 우선 배정",
-      icon: (
-        <svg className="w-5 h-5 text-orange-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-        </svg>
-      ),
+      code: "01 · VOLUME",
+      badge: "우선 배정",
+      badgeColor: "text-orange-400 bg-orange-500/15 border-orange-500/30",
+      headlineMetric: "고정 오더",
+      metricUnit: "1위 배정",
+      description: "30년 축적 2,500+ 기업 거래처 독점 물량 및 실시간 최단거리 우선 배차",
+      subNote: "일 1,200건+ 실시간 배차망",
+      accentGrad: "from-orange-500 to-amber-400",
     },
     {
-      title: "투명한 당일 정산",
-      description: "업계 최저 수준 수수료 체계 및 운임 100% 당일 정산 원칙 준수",
-      icon: (
-        <svg className="w-5 h-5 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-        </svg>
-      ),
+      code: "02 · SETTLE",
+      badge: "당일 지급",
+      badgeColor: "text-emerald-400 bg-emerald-500/15 border-emerald-500/30",
+      headlineMetric: "당일 100%",
+      metricUnit: "즉시 정산",
+      description: "업계 최저 수준 수수료 체계 및 운임 마감 즉시 당일 전액 정산 원칙",
+      subNote: "투명한 수수료 실시간 공시",
+      accentGrad: "from-emerald-500 to-teal-400",
     },
     {
-      title: "1:1 전담 관제 지원",
-      description: "초보자도 쉽게 적응하는 1:1 멘토링, 적재물 보험 및 안전 운행 지원",
-      icon: (
-        <svg className="w-5 h-5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-      ),
+      code: "03 · SUPPORT",
+      badge: "1:1 CARE",
+      badgeColor: "text-blue-400 bg-blue-500/15 border-blue-500/30",
+      headlineMetric: "1:1 전담",
+      metricUnit: "관제 지원",
+      description: "초보 기사님도 즉시 적응하는 전담 멘토링 & 현대해상 적재물 보험 완비",
+      subNote: "24시 안전 운행 중재 지원",
+      accentGrad: "from-blue-500 to-cyan-400",
     },
   ];
 
@@ -78,9 +81,9 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
 
   return (
     <section id="driver" data-fullpage-section className="scroll-mt-14 relative overflow-hidden bg-[#060A14] py-16 sm:py-20 lg:flex lg:h-[100svh] lg:snap-start lg:snap-always lg:items-center text-slate-100">
-      {/* ── Top Curved Wave Divider transitioning from 03 CORPORATE (#FEF3C7) ── */}
+      {/* ── Top Curved Wave Divider transitioning from 03 CORPORATE (#F1F5F9) ── */}
       <div className="absolute top-0 inset-x-0 overflow-hidden leading-none pointer-events-none z-10">
-        <svg className="relative block w-full h-7 sm:h-10 text-[#FEF3C7]" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
+        <svg className="relative block w-full h-7 sm:h-10 text-[#F1F5F9]" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
           <path d="M0,0 L1200,0 L1200,30 Q600,90 0,30 Z" />
         </svg>
       </div>
@@ -116,32 +119,82 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
               </h2>
 
               {/* Subtitle */}
-              <p className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed break-keep mb-8 sm:mb-10">
-                기사님의 땀과 시간에 정당한 대가를 드립니다. 안정적인 오더 물량과 투명한 당일 정산으로 오래 일할 수 있는 상생 환경을 만듭니다.
+              <p className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed break-keep mb-6 sm:mb-8">
+                기사님의 땀과 시간에 정당한 대가를 드립니다. 안정적인 대기업 고정 오더와 투명한 당일 정산으로 오래 일할 수 있는 든든한 상생 환경을 만듭니다.
               </p>
 
-              {/* 3 Benefit Cards (3-col horizontal grid) */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 mb-8 sm:mb-10">
-                {benefits.map((item, idx) => (
+              {/* 3 Bespoke Editorial KPI Cards (AI 템플릿 아이콘 박스 완전 제거) */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 mb-6 sm:mb-8">
+                {driverHighlights.map((item, idx) => (
                   <div
                     key={idx}
-                    className="p-5 sm:p-6 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-[0_10px_35px_rgba(0,0,0,0.6)] hover:border-orange-500/60 hover:bg-slate-850/95 transition-all duration-300 group backdrop-blur-md relative overflow-hidden"
+                    className="relative p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-[0_10px_35px_rgba(0,0,0,0.6)] hover:border-slate-700 hover:bg-slate-850/95 transition-all duration-300 group backdrop-blur-md flex flex-col justify-between overflow-hidden"
                   >
-                    <div className="w-9 h-9 rounded-xl bg-slate-800/90 border border-slate-700/80 flex items-center justify-center mb-3.5 group-hover:scale-110 transition-transform">
-                      {item.icon}
+                    <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${item.accentGrad} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+
+                    {/* Micro Technical Tag */}
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="font-mono text-[10px] sm:text-[11px] font-bold text-slate-400 tracking-wider uppercase bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/60">
+                        {item.code}
+                      </span>
+                      <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${item.badgeColor}`}>
+                        {item.badge}
+                      </span>
                     </div>
-                    <h3 className="font-display font-black text-base text-white mb-1.5 tracking-tight group-hover:text-orange-400 transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-xs text-slate-300 leading-relaxed break-keep font-normal">
+
+                    {/* Big Metric Display */}
+                    <div className="mb-2">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="font-display text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-orange-400 transition-colors">
+                          {item.headlineMetric}
+                        </span>
+                        <span className="text-xs sm:text-sm font-bold text-slate-300">
+                          {item.metricUnit}
+                        </span>
+                      </div>
+                    </div>
+
+                    <p className="text-xs text-slate-300 leading-relaxed break-keep font-normal mb-2.5">
                       {item.description}
                     </p>
+
+                    <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between text-[11px] text-slate-400 font-mono">
+                      <span>{item.subNote}</span>
+                    </div>
                   </div>
                 ))}
               </div>
+
+              {/* Direct Driver Registration Action Bar */}
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => handleApplyClick("bike")}
+                  className="group px-6 py-3.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-slate-950 font-black text-xs sm:text-sm shadow-lg shadow-orange-500/25 transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center gap-2"
+                >
+                  <span>오토바이 퀵기사 간편등록</span>
+                  <span className="group-hover:translate-x-0.5 transition-transform font-bold">→</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => handleApplyClick("truck")}
+                  className="group px-6 py-3.5 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs sm:text-sm border border-slate-700 shadow-md transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer flex items-center gap-2"
+                >
+                  <span>차량·화물기사 등록</span>
+                  <span className="group-hover:translate-x-0.5 transition-transform font-bold">→</span>
+                </button>
+
+                <a
+                  href="tel:1588-5575"
+                  className="px-4 py-3 rounded-full bg-slate-900/80 hover:bg-slate-800 border border-slate-700/80 text-slate-300 hover:text-white font-medium text-xs sm:text-sm transition-all flex items-center gap-2 shrink-0"
+                >
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-slate-400">모집직통:</span>
+                  <span className="font-display font-black text-white text-sm sm:text-base tracking-tight">1588-5575</span>
+                </a>
+              </div>
             </div>
-
-
           </div>
 
           {/* ── Right Column: 퀵기사 · 화물기사 인물 컷 (960 x 680) (5 cols) ── */}
