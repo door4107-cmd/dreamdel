@@ -130,15 +130,15 @@ export default function Navbar({
               </button>
             )}
 
-            {/* 인터넷접수 버튼 (시그니처 오렌지-골드 프라임 CTA 캡슐) */}
+            {/* 인터넷접수 버튼 (세련된 세미 트랜스루센트 스카이 블루 글래스) */}
             {onOpenDispatchModal && (
               <button
                 type="button"
                 onClick={onOpenDispatchModal}
-                className="group flex h-9 items-center gap-1.5 px-3.5 sm:px-4 rounded-full bg-gradient-to-r from-orange-500 via-amber-500 to-orange-500 hover:from-orange-600 hover:via-amber-600 hover:to-orange-600 text-white font-black text-xs sm:text-[12.5px] shadow-[0_2px_14px_rgba(249,115,22,0.4)] hover:shadow-[0_4px_18px_rgba(249,115,22,0.6)] border border-orange-300/30 transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
+                className="group flex h-9 items-center gap-1.5 px-3 sm:px-3.5 rounded-full bg-sky-500/15 hover:bg-sky-500/25 border border-sky-400/30 hover:border-sky-400/50 text-sky-200 hover:text-white font-bold text-xs sm:text-[12.5px] backdrop-blur-md shadow-xs transition-all duration-200 hover:-translate-y-0.5 active:scale-95 cursor-pointer whitespace-nowrap shrink-0"
               >
-                <svg aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-white group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.4" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <svg aria-hidden="true" className="h-3.5 w-3.5 shrink-0 text-sky-400 group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
                 <span>인터넷접수</span>
               </button>
@@ -198,9 +198,9 @@ export default function Navbar({
                     setIsMenuOpen(false);
                     onOpenDispatchModal();
                   }}
-                  className="flex h-10 items-center justify-center gap-1.5 px-3 rounded-xl bg-gradient-to-r from-orange-500 to-amber-500 text-white font-black text-xs shadow-sm active:scale-95 transition-transform"
+                  className="flex h-10 items-center justify-center gap-1.5 px-3 rounded-xl bg-sky-500/15 border border-sky-400/30 text-sky-200 font-bold text-xs shadow-sm active:scale-95 transition-transform"
                 >
-                  <svg aria-hidden="true" className="h-4 w-4 shrink-0 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <svg aria-hidden="true" className="h-4 w-4 shrink-0 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
                   <span>인터넷접수</span>
