@@ -34,8 +34,8 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
       badge: "우선 배정",
       badgeColor: "text-orange-400 bg-orange-500/15 border-orange-500/30",
       headlineMetric: "고정 오더",
-      metricUnit: "1위 배정",
-      description: "30년 축적 2,500+ 기업 거래처 독점 물량 및 실시간 최단거리 우선 배차",
+      metricUnit: "우선 배정",
+      description: "2,500여 개 기업 고객사 오더 및 위치 기반 실시간 최단거리 우선 배차",
       subNote: "일 1,200건+ 실시간 배차망",
       accentGrad: "from-orange-500 to-amber-400",
     },
@@ -45,7 +45,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
       badgeColor: "text-emerald-400 bg-emerald-500/15 border-emerald-500/30",
       headlineMetric: "당일 100%",
       metricUnit: "즉시 정산",
-      description: "업계 최저 수준 수수료 체계 및 운임 마감 즉시 당일 전액 정산 원칙",
+      description: "운임 마감 즉시 당일 계좌 입금 및 투명한 수수료 체계 운영",
       subNote: "투명한 수수료 실시간 공시",
       accentGrad: "from-emerald-500 to-teal-400",
     },
@@ -55,7 +55,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
       badgeColor: "text-blue-400 bg-blue-500/15 border-blue-500/30",
       headlineMetric: "1:1 전담",
       metricUnit: "관제 지원",
-      description: "초보 기사님도 즉시 적응하는 전담 멘토링 & 현대해상 적재물 보험 완비",
+      description: "신규 기사 1:1 배차 안내 및 현대해상 적재물 배상책임보험 지원",
       subNote: "24시 안전 운행 중재 지원",
       accentGrad: "from-blue-500 to-cyan-400",
     },
@@ -114,15 +114,15 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
           <div className="lg:col-span-7 flex flex-col justify-between">
             <div>
               {/* Header Tag */}
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-500/40 text-orange-400 text-[11px] font-bold tracking-widest uppercase mb-4 shadow-[0_0_15px_rgba(255,149,0,0.2)]">
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse shadow-[0_0_8px_rgba(251,146,60,0.9)]" />
+              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-orange-500/30 text-orange-400 text-[11px] font-bold tracking-widest uppercase mb-4 shadow-sm">
+                <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
                 <span>04 DRIVER RECRUIT</span>
               </div>
 
               {/* Main Headline */}
               <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.2] break-keep mb-3">
                 함께 달릴{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-red-400">
+                <span className="text-orange-400 font-black">
                   퀵기사·화물기사님
                 </span>
                 을 모십니다
@@ -130,18 +130,16 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
 
               {/* Subtitle */}
               <p className="text-slate-300 text-sm sm:text-base font-normal leading-relaxed break-keep mb-6 sm:mb-8">
-                기사님의 땀과 시간에 정당한 대가를 드립니다. 안정적인 대기업 고정 오더와 투명한 당일 정산으로 오래 일할 수 있는 든든한 상생 환경을 만듭니다.
+                기업 고객의 안정적인 정기 오더와 운임 마감 즉시 당일 정산으로 일한 만큼 확실한 수익을 보장합니다.
               </p>
 
-              {/* 3 Bespoke Editorial KPI Cards (AI 템플릿 아이콘 박스 완전 제거) */}
+              {/* 3 Bespoke Editorial KPI Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 sm:gap-4 mb-6 sm:mb-8">
                 {driverHighlights.map((item, idx) => (
                   <div
                     key={idx}
-                    className="relative p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-[0_10px_35px_rgba(0,0,0,0.6)] hover:border-slate-700 hover:bg-slate-850/95 transition-all duration-300 group backdrop-blur-md flex flex-col justify-between overflow-hidden"
+                    className="relative p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-md hover:border-slate-700 hover:bg-slate-850/95 transition-all duration-200 group flex flex-col justify-between overflow-hidden"
                   >
-                    <div className={`absolute top-0 inset-x-0 h-1 bg-gradient-to-r ${item.accentGrad} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
-
                     {/* Micro Technical Tag */}
                     <div className="flex items-center justify-between mb-3">
                       <span className="font-mono text-[10px] sm:text-[11px] font-bold text-slate-400 tracking-wider uppercase bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/60">
@@ -179,7 +177,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
 
           {/* ── Right Column: 퀵기사 · 화물기사 인물 컷 (960 x 680) (5 cols) ── */}
           <div className="lg:col-span-5">
-            <div className="relative w-full aspect-[960/680] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-700/80 shadow-2xl shadow-black/80 ring-1 ring-orange-500/30 group">
+            <div className="relative w-full aspect-[960/680] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-700 shadow-xl group">
               <Image
                 src="/images/driver.jpg"
                 alt="드림델 퀵기사 및 화물기사 인물 컷"
@@ -189,14 +187,14 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/25 to-transparent pointer-events-none" />
               
-              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-950/90 backdrop-blur-md border border-white/15 text-white flex items-center justify-between shadow-xl">
+              <div className="absolute bottom-4 left-4 right-4 p-4 rounded-xl bg-slate-950/95 border border-slate-800 text-white flex items-center justify-between shadow-xl">
                 <div>
                   <div className="text-xs sm:text-sm font-black text-white flex items-center space-x-1.5">
                     <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>드림델 상생 배차 네트워크</span>
+                    <span>드림델 기사 배차 네트워크</span>
                   </div>
                   <div className="text-[11px] text-slate-300 font-medium mt-0.5">
-                    업계 최고 수준 운임 배분 & 24시간 실시간 관제 센터 가동
+                    실시간 관제 센터 운영 및 당일 운임 정산 원칙
                   </div>
                 </div>
                 <span className="text-xs font-bold tracking-wider text-orange-400 bg-orange-500/15 px-2.5 py-1 rounded border border-orange-500/30">

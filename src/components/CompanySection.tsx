@@ -39,12 +39,12 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-3">
             <h2 className="font-display text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-950 tracking-tight leading-[1.2] break-keep">
               30년 신뢰의 도심 퀵서비스,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500">
+              <span className="text-orange-600 font-black">
                 드림델
               </span>
             </h2>
             <p className="text-sm sm:text-base lg:text-lg text-slate-600 font-medium break-keep">
-              수도권 10분 내 신속 배차부터 전국 당일 연계 특송까지
+              수도권 10분 내 신속 배차부터 전국 당일 연계 특송까지 지원합니다.
             </p>
           </div>
         </div>
@@ -53,12 +53,10 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* ── Left Column: 3 핵심 강점 & 기업 인증 (7 cols) ── */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-5">
-            {/* 3 Core Highlights: Editorial Metric Cards (AI 템플릿 아이콘 박스 완전 제거, 전문 디자이너 에디토리얼 타이포그래피) */}
+            {/* 3 Core Highlights: Editorial Metric Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
               {/* Card 1: 10분 배차 */}
-              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-orange-500/80 hover:shadow-[0_8px_30px_rgba(249,115,22,0.1)] transition-all duration-300 group flex flex-col justify-between overflow-hidden">
-                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-orange-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-orange-500/80 hover:shadow-md transition-all duration-200 group flex flex-col justify-between overflow-hidden">
                 {/* Micro Header */}
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-mono text-[10px] sm:text-[11px] font-bold text-orange-600 tracking-wider uppercase bg-orange-50/80 px-2 py-0.5 rounded border border-orange-200/60">
@@ -83,14 +81,12 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
                 </div>
 
                 <p className="text-xs sm:text-[13px] text-slate-600 font-medium leading-relaxed break-keep">
-                  수도권 1,200대 실시간 GPS 최단거리 매칭
+                  수도권 전역 1,200대 기사 실시간 최단거리 배차
                 </p>
               </div>
 
               {/* Card 2: 5천만원 책임보상 */}
-              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-blue-500/80 hover:shadow-[0_8px_30px_rgba(37,99,235,0.1)] transition-all duration-300 group flex flex-col justify-between overflow-hidden">
-                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-blue-600 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-500/80 hover:shadow-md transition-all duration-200 group flex flex-col justify-between overflow-hidden">
                 {/* Micro Header */}
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-mono text-[10px] sm:text-[11px] font-bold text-blue-600 tracking-wider uppercase bg-blue-50/80 px-2 py-0.5 rounded border border-blue-200/60">
@@ -114,14 +110,12 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
                 </div>
 
                 <p className="text-xs sm:text-[13px] text-slate-600 font-medium leading-relaxed break-keep">
-                  현대해상 적재물 보험 100% 가입 안심 보장
+                  현대해상 적재물 배상책임보험 최대 5,000만원 보장
                 </p>
               </div>
 
               {/* Card 3: 기업 후불 정산 */}
-              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:border-slate-800 hover:shadow-[0_8px_30px_rgba(15,23,42,0.1)] transition-all duration-300 group flex flex-col justify-between overflow-hidden">
-                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-slate-900 to-slate-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                
+              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-slate-800 hover:shadow-md transition-all duration-200 group flex flex-col justify-between overflow-hidden">
                 {/* Micro Header */}
                 <div className="flex items-center justify-between mb-3">
                   <span className="font-mono text-[10px] sm:text-[11px] font-bold text-slate-700 tracking-wider uppercase bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
@@ -145,7 +139,7 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
                 </div>
 
                 <p className="text-xs sm:text-[13px] text-slate-600 font-medium leading-relaxed break-keep">
-                  월말 세금계산서 &amp; 전담 매니저 지원
+                  월말 합산 전자세금계산서 발행 및 전담 배차 담당자 배정
                 </p>
               </div>
             </div>
@@ -228,14 +222,14 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent pointer-events-none" />
 
                 {/* Top Live Badge */}
-                <div className="absolute top-3.5 right-3.5 px-3 py-1.5 rounded-full bg-slate-950/80 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-bold flex items-center gap-2 shadow-sm">
+                <div className="absolute top-3.5 right-3.5 px-3 py-1.5 rounded-full bg-slate-950/90 border border-slate-700/60 text-white text-xs sm:text-sm font-bold flex items-center gap-2 shadow-sm">
                   <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                   <span>전문 상담원 대기</span>
                 </div>
 
-                {/* Bottom Glass Strip */}
-                <div className="absolute bottom-3.5 inset-x-3.5 px-4 py-2.5 rounded-xl bg-slate-950/80 backdrop-blur-md border border-white/20 text-white flex items-center justify-between">
-                  <span className="text-sm sm:text-base font-bold text-white">친절 1:1 맞춤 배차 상담</span>
+                {/* Bottom Strip */}
+                <div className="absolute bottom-3.5 inset-x-3.5 px-4 py-2.5 rounded-xl bg-slate-950/90 border border-slate-700/60 text-white flex items-center justify-between shadow-md">
+                  <span className="text-sm sm:text-base font-bold text-white">배차 전문 상담원 1:1 직통 안내</span>
                   <span className="text-orange-400 font-display font-black text-sm sm:text-base tracking-tight">1588-5575</span>
                 </div>
               </div>

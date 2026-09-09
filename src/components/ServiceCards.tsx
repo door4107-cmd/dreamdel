@@ -31,12 +31,12 @@ export default function ServiceCards() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-2">
           <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight break-keep">
             화물 크기와 긴급도에 맞춘{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400">
+            <span className="text-orange-400 font-black">
               최적의 운송 라인업
             </span>
           </h2>
           <p className="text-slate-300 text-sm sm:text-base font-medium break-keep">
-            도심 소형 긴급 퀵배송부터 1톤 화물, KTX·항공 전국 당일 특송까지 완벽 지원
+            도심 소형 긴급 퀵배송부터 1톤 화물, KTX·항공 전국 당일 특송까지 지원합니다.
           </p>
         </div>
       </div>
@@ -115,7 +115,7 @@ export default function ServiceCards() {
                   오토바이 운송서비스
                 </h3>
                 <p className="text-xs sm:text-sm md:text-base text-slate-600 mt-0.5 font-medium leading-normal">
-                  도심 정체 속에서도 가장 빠른 기동성으로 서류, 소형 패키지, 긴급 물품을 안전하게 배송합니다.
+                  도심 정체 속에서도 신속하게 서류, 소형 패키지, 긴급 물품을 안전하게 운송합니다.
                 </p>
               </div>
 
@@ -256,7 +256,7 @@ export default function ServiceCards() {
                   차량 운송서비스 (다마스 / 라보 / 1톤)
                 </h3>
                 <p className="text-xs sm:text-sm md:text-base text-slate-600 mt-0.5 font-medium leading-normal">
-                  오토바이로 불가능한 박스 화물, 가전·가구, 파레트 화물을 전차종으로 안전하게 운송합니다.
+                  오토바이 적재가 어려운 다량 박스, 가전·가구, 파레트 화물을 규격에 맞춰 안전하게 운송합니다.
                 </p>
               </div>
 
@@ -433,7 +433,7 @@ export default function ServiceCards() {
                   전국연계 당일 특송서비스
                 </h3>
                 <p className="text-xs sm:text-sm md:text-base text-slate-600 mt-0.5 font-medium leading-normal">
-                  KTX 특급망, 고속버스 터미널망, 국내 항공망과 도심 퀵서비스를 연계하여 전국 어디든 당일 배송합니다.
+                  KTX 특급망, 고속버스 터미널망, 국내 항공망과 연계하여 전국 주요 지역으로 당일 배송합니다.
                 </p>
               </div>
 
@@ -605,7 +605,7 @@ export default function ServiceCards() {
                   맞춤형 특수 운송 솔루션
                 </h3>
                 <p className="text-xs sm:text-sm md:text-base text-slate-600 mt-0.5 font-medium leading-normal">
-                  고객사의 업무 스케줄과 현장 조건에 맞춘 맞춤형 부가 운송 솔루션을 제공합니다.
+                  정시 픽업 지정, 보관 후 출고, 복수 경유 등 거래처 현장 조건에 맞춘 부가 운송을 제공합니다.
                 </p>
               </div>
 

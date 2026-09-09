@@ -33,12 +33,12 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-2">
             <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 tracking-tight leading-tight break-keep">
               기업 물류의 모든 번거로움,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-amber-500">
-                드림델이 해결합니다
+              <span className="text-orange-600 font-black">
+                드림델이 전담합니다
               </span>
             </h2>
             <p className="text-sm sm:text-base text-slate-600 font-medium break-keep">
-              맞춤 우대 요금 · 월 통합 후불 정산 · B2B 전담 매니저 배정
+              물량별 맞춤 요율 · 월 1회 합산 전자세금계산서 · 전담 배차 담당자 지원
             </p>
           </div>
         </div>
@@ -47,7 +47,6 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
           {/* ── Left Column: 3대 핵심 혜택 (7 cols) ── */}
           <div className="lg:col-span-7 flex flex-col justify-between space-y-3.5">
-            {/* 3 Core Benefit Rows */}
             {/* 3 Core Benefit Rows */}
             <div className="space-y-3">
               {/* Benefit 1 */}
@@ -64,7 +63,7 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
                     </span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed break-keep">
-                    정기 운송 노선과 월 발송 물량을 분석하여 합리적인 전용 요율표를 제안합니다.
+                    주요 운송 구간과 월 발송 물량을 분석하여 기업 전용 할인 요율표를 적용합니다.
                   </p>
                 </div>
               </div>
@@ -83,7 +82,7 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
                     </span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed break-keep">
-                    건별 결제 번거로움 없이 월말 전자세금계산서 100% 발행 및 상세 배송 명세서를 제공합니다.
+                    건별 현장 결제 없이 월말 합산 전자세금계산서와 상세 배송 명세서를 발행합니다.
                   </p>
                 </div>
               </div>
@@ -102,7 +101,7 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
                     </span>
                   </div>
                   <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed break-keep">
-                    다건 대량 배송도 담당 플래너가 1:1로 실시간 배차 및 완료 상태를 끝까지 책임집니다.
+                    다량 동시 배송 시에도 전담 배차 담당자가 픽업부터 배송 완료까지 확인합니다.
                   </p>
                 </div>
               </div>
@@ -185,7 +184,7 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                 <span className="font-bold text-slate-200">국토교통부 정식 허가 주선사</span>
               </div>
-              <span className="text-slate-400 font-medium">현대해상 100% 가입</span>
+              <span className="text-slate-400 font-medium">현대해상 5,000만원 적재물보험</span>
             </div>
           </div>
         </div>

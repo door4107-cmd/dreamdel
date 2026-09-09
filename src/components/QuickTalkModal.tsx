@@ -69,17 +69,17 @@ export default function QuickTalkModal({
         <div className="p-6 space-y-5">
           {/* Main Hero Card */}
           <div className="p-4.5 rounded-2xl bg-slate-900 text-white border border-slate-800 relative overflow-hidden group">
-            <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-amber-400 via-orange-500 to-amber-400" />
+            <div className="absolute top-0 inset-x-0 h-0.5 bg-amber-500" />
             <div className="flex items-start justify-between gap-3">
               <div>
                 <div className="font-mono text-[10px] font-bold tracking-wider text-amber-400 uppercase mb-1">
                   INSTANT AUTO DISPATCH
                 </div>
                 <div className="font-bold text-base text-white tracking-tight mb-1">
-                  출발지와 도착지만 남기면 끝!
+                  출발지와 도착지 주소로 간편 접수
                 </div>
                 <p className="text-xs text-slate-300 leading-relaxed break-keep font-normal">
-                  카카오톡 채널에 주소와 화물 내용만 남겨주시면 AI 관제 시스템이 가장 가까운 최단거리 기사님을 실시간 10초 내 자동 배차합니다.
+                  카카오톡 채널에 주소와 물품 정보를 입력하시면 관제 시스템에서 가장 가까운 기사님을 신속하게 자동 배차합니다.
                 </p>
               </div>
             </div>
