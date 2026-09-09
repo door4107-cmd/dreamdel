@@ -141,52 +141,62 @@ export default function ServiceCards() {
                 </div>
               </div>
 
-              {/* 소요시간 비교 카드 (일반 vs 급송) */}
+              {/* 소요시간 비교 카드 (스위스 엔지니어링 에디토리얼 카드) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {/* 일반 오토바이 */}
-                <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-black text-slate-950 text-sm sm:text-base">일반 오토바이 운송</span>
-                    <span className="text-xs font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded">
-                      표준 퀵
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-slate-400 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-mono text-[10px] font-bold tracking-wider text-slate-500 uppercase bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
+                      SPEED 01 · STANDARD
+                    </span>
+                    <span className="text-[11px] font-bold text-slate-600 bg-slate-100/80 px-2 py-0.5 rounded">
+                      표준 퀵배송
                     </span>
                   </div>
-                  <div className="space-y-1 text-xs sm:text-sm">
-                    <div className="flex items-center justify-between py-0.5 border-b border-slate-100">
-                      <span className="text-slate-600 font-semibold">10km 이내</span>
-                      <span className="font-black text-slate-950 text-sm sm:text-base">60분 내외</span>
-                    </div>
-                    <div className="flex items-center justify-between py-0.5">
-                      <span className="text-slate-600 font-semibold">수도권 전역</span>
-                      <span className="font-black text-slate-950 text-sm sm:text-base">90분 내외</span>
-                    </div>
+
+                  <div className="flex items-baseline gap-1.5 mb-2">
+                    <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight">
+                      60
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-slate-700">분 내외 (10km)</span>
                   </div>
-                  <p className="text-xs text-slate-500 mt-1 font-medium">
-                    규격 소형물품 표준 경로 배송
-                  </p>
+
+                  <div className="space-y-1 text-xs text-slate-600 font-medium pt-1.5 border-t border-slate-100">
+                    <div className="flex justify-between">
+                      <span className="text-slate-500">수도권 전역</span>
+                      <span className="font-bold text-slate-900">90분 내외</span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 mt-0.5">규격 소형물품 표준 경로 배송</p>
+                  </div>
                 </div>
 
                 {/* 급송 오토바이 */}
-                <div className="p-3.5 rounded-xl bg-orange-50/60 border border-orange-200/90 shadow-xs flex flex-col justify-between">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-black text-orange-950 text-sm sm:text-base">급송 · 프리미엄 직송</span>
-                    <span className="text-xs font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded">
-                      단독 배차
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-orange-50/50 border border-orange-200/90 shadow-xs hover:border-orange-500/80 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-orange-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-mono text-[10px] font-bold tracking-wider text-orange-700 uppercase bg-orange-100/80 px-2 py-0.5 rounded border border-orange-200">
+                      SPEED 02 · DIRECT EXPRESS
+                    </span>
+                    <span className="text-[11px] font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded">
+                      단독 직송
                     </span>
                   </div>
-                  <div className="space-y-1 text-xs sm:text-sm">
-                    <div className="flex items-center justify-between py-0.5 border-b border-orange-100">
-                      <span className="text-orange-900 font-semibold">10km 이내</span>
-                      <span className="font-black text-orange-600 text-sm sm:text-base">40분 내외</span>
-                    </div>
-                    <div className="flex items-center justify-between py-0.5">
-                      <span className="text-orange-900 font-semibold">수도권 전역</span>
-                      <span className="font-black text-orange-600 text-sm sm:text-base">60분 내외</span>
-                    </div>
+
+                  <div className="flex items-baseline gap-1.5 mb-2">
+                    <span className="font-display text-2xl sm:text-3xl font-black text-orange-600 tracking-tight">
+                      40
+                    </span>
+                    <span className="text-xs sm:text-sm font-bold text-orange-950">분 내외 (10km)</span>
                   </div>
-                  <p className="text-xs text-orange-700/90 mt-1 font-semibold">
-                    접수 즉시 최우선 픽업 &amp; 1:1 직통 배송
-                  </p>
+
+                  <div className="space-y-1 text-xs text-orange-900 font-medium pt-1.5 border-t border-orange-100/80">
+                    <div className="flex justify-between">
+                      <span className="text-orange-700">수도권 전역</span>
+                      <span className="font-bold text-orange-950">60분 내외</span>
+                    </div>
+                    <p className="text-[11px] text-orange-700/80 mt-0.5">접수 즉시 최우선 픽업 &amp; 1:1 직통</p>
+                  </div>
                 </div>
               </div>
 
@@ -272,45 +282,99 @@ export default function ServiceCards() {
                 </div>
               </div>
 
-              {/* 3대 차종 스펙 카드 (1톤 1,000kg "이상" 삭제 반영) */}
+              {/* 3대 차종 스펙 카드 (스위스 테크니컬 제원 스펙 시트) */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 {/* 다마스 */}
-                <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 transition-colors flex flex-col justify-between">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-black text-slate-950 text-sm sm:text-base">다마스 (밴)</span>
-                    <span className="text-xs font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
-                      350kg
-                    </span>
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-500/80 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[10px] font-bold tracking-wider text-blue-700 uppercase bg-blue-50 px-2 py-0.5 rounded border border-blue-200/60">
+                        FLEET 01 · DAMAS
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
+                        밀폐형 밴
+                      </span>
+                    </div>
+
+                    <div className="flex items-baseline gap-1 mb-1.5">
+                      <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-blue-600 transition-colors">
+                        350
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-slate-700">kg 적재</span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                      소형 박스(최대 25박스), 서류, 우천 안심 완벽 밀폐 운송
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-normal">
-                    소형 박스(최대 25박스), 서류박스, 우천 안심 밀폐 운송
-                  </p>
+
+                  <div className="pt-2 mt-2 border-t border-slate-100 text-[11px] text-slate-400 font-mono flex justify-between">
+                    <span>CAPACITY: 25 BOX</span>
+                    <span>우천 특화</span>
+                  </div>
                 </div>
 
                 {/* 라보 */}
-                <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 transition-colors flex flex-col justify-between">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-black text-slate-950 text-sm sm:text-base">라보 (소형화물)</span>
-                    <span className="text-xs font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
-                      450kg
-                    </span>
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-500/80 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[10px] font-bold tracking-wider text-blue-700 uppercase bg-blue-50 px-2 py-0.5 rounded border border-blue-200/60">
+                        FLEET 02 · LABO
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
+                        오픈 카고
+                      </span>
+                    </div>
+
+                    <div className="flex items-baseline gap-1 mb-1.5">
+                      <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-blue-600 transition-colors">
+                        450
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-slate-700">kg 적재</span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                      표준 파레트 1개, 소형 가구, 기계부품, 높은 화물 적재
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-normal">
-                    표준 파레트 1개, 소형 가구, 기계부품, 높은 화물 적재
-                  </p>
+
+                  <div className="pt-2 mt-2 border-t border-slate-100 text-[11px] text-slate-400 font-mono flex justify-between">
+                    <span>PALLET: 1 EA</span>
+                    <span>높은화물</span>
+                  </div>
                 </div>
 
-                {/* 1톤 트럭 (1000kg - "이상" 삭제) */}
-                <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-400 transition-colors flex flex-col justify-between">
-                  <div className="flex items-center justify-between mb-1.5">
-                    <span className="font-black text-slate-950 text-sm sm:text-base">1톤 트럭</span>
-                    <span className="text-xs font-black text-blue-600 bg-blue-50 px-2 py-0.5 rounded">
-                      1,000kg
-                    </span>
+                {/* 1톤 트럭 */}
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-500/80 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[10px] font-bold tracking-wider text-blue-700 uppercase bg-blue-50 px-2 py-0.5 rounded border border-blue-200/60">
+                        FLEET 03 · 1-TON
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
+                        카고 / 탑차
+                      </span>
+                    </div>
+
+                    <div className="flex items-baseline gap-1 mb-1.5">
+                      <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-blue-600 transition-colors">
+                        1,000
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-slate-700">kg 적재</span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                      대형 파레트 2개, 기업 대량 물류, 카고/탑차 맞춤 배차
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-normal">
-                    대형 파레트 2개, 기업 대량 물류, 카고/탑차 맞춤 배차
-                  </p>
+
+                  <div className="pt-2 mt-2 border-t border-slate-100 text-[11px] text-slate-400 font-mono flex justify-between">
+                    <span>PALLET: 2 EA</span>
+                    <span>기업 물류</span>
+                  </div>
                 </div>
               </div>
 
@@ -395,25 +459,94 @@ export default function ServiceCards() {
                 </div>
               </div>
 
-              {/* 3대 연계망 카드 */}
+              {/* 3대 연계망 카드 (스위스 에디토리얼 연계 스펙 시트) */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                  <div className="font-bold text-slate-950 text-sm sm:text-base mb-1">KTX 특급 연계</div>
-                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-normal">
-                    서울/용산역 발 주요 KTX 정차역 2~3시간 내 직송 연계
-                  </p>
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-emerald-500/80 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[10px] font-bold tracking-wider text-emerald-700 uppercase bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
+                        NATION 01 · KTX
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
+                        초고속 연계
+                      </span>
+                    </div>
+
+                    <div className="flex items-baseline gap-1 mb-1.5">
+                      <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-emerald-600 transition-colors">
+                        2~3
+                      </span>
+                      <span className="text-xs sm:text-sm font-bold text-slate-700">시간 내 직송</span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                      서울/용산역 발 주요 KTX 정차역 2~3시간 내 당일 특급 연계
+                    </p>
+                  </div>
+
+                  <div className="pt-2 mt-2 border-t border-slate-100 text-[11px] text-slate-400 font-mono flex justify-between">
+                    <span>ROUTE: KTX SPEED</span>
+                    <span>당일 완결</span>
+                  </div>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                  <div className="font-bold text-slate-950 text-sm sm:text-base mb-1">고속버스 터미널 연계</div>
-                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-normal">
-                    강남·동서울 터미널 수하물 발송 후 현지 퀵 최종 문앞 배송
-                  </p>
+
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-emerald-500/80 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[10px] font-bold tracking-wider text-emerald-700 uppercase bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
+                        NATION 02 · BUS
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
+                        터미널 직송
+                      </span>
+                    </div>
+
+                    <div className="flex items-baseline gap-1 mb-1.5">
+                      <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-emerald-600 transition-colors">
+                        도어투도어
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                      강남·동서울 터미널 수하물 발송 후 현지 퀵 최종 문앞 배송
+                    </p>
+                  </div>
+
+                  <div className="pt-2 mt-2 border-t border-slate-100 text-[11px] text-slate-400 font-mono flex justify-between">
+                    <span>TERMINAL CONNECT</span>
+                    <span>전국 커버</span>
+                  </div>
                 </div>
-                <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                  <div className="font-bold text-slate-950 text-sm sm:text-base mb-1">국내 항공 특송 연계</div>
-                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-normal">
-                    김포공항 발 제주·부산 등 원거리 도서 지역 당일 도착 보장
-                  </p>
+
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-emerald-500/80 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[10px] font-bold tracking-wider text-emerald-700 uppercase bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
+                        NATION 03 · AIR
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
+                        항공 특송
+                      </span>
+                    </div>
+
+                    <div className="flex items-baseline gap-1 mb-1.5">
+                      <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-emerald-600 transition-colors">
+                        항공 당일
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                      김포공항 발 제주·부산 등 원거리 도서 지역 당일 도착 보장
+                    </p>
+                  </div>
+
+                  <div className="pt-2 mt-2 border-t border-slate-100 text-[11px] text-slate-400 font-mono flex justify-between">
+                    <span>DOMESTIC AIR CARGO</span>
+                    <span>제주/부산</span>
+                  </div>
                 </div>
               </div>
 
@@ -498,42 +631,93 @@ export default function ServiceCards() {
                 </div>
               </div>
 
-              {/* 3대 특수 옵션 카드 */}
+              {/* 3대 특수 옵션 카드 (스위스 에디토리얼 솔루션 스펙 시트) */}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-slate-950 text-sm sm:text-base">시간 예약 운송</span>
-                    <span className="text-[10px] font-bold tracking-wider text-orange-600 bg-orange-50 px-1.5 py-0.5 rounded">
-                      RESERVE
-                    </span>
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-purple-500/80 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[10px] font-bold tracking-wider text-purple-700 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-200/60">
+                        OPTION 01 · RESERVE
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
+                        시간 예약
+                      </span>
+                    </div>
+
+                    <div className="flex items-baseline gap-1 mb-1.5">
+                      <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-purple-600 transition-colors">
+                        정시 지정
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                      고객이 지정한 정확한 일시 및 분 단위 픽업 &amp; 정시 배송
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-normal">
-                    고객이 지정한 정확한 일시 및 분 단위 픽업 &amp; 배송
-                  </p>
+
+                  <div className="pt-2 mt-2 border-t border-slate-100 text-[11px] text-slate-400 font-mono flex justify-between">
+                    <span>SCHEDULE: EXACT TIME</span>
+                    <span>사전 예약</span>
+                  </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-slate-950 text-sm sm:text-base">보관 후 배송</span>
-                    <span className="text-[10px] font-bold tracking-wider text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">
-                      STORAGE
-                    </span>
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-purple-500/80 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[10px] font-bold tracking-wider text-purple-700 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-200/60">
+                        OPTION 02 · STORAGE
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
+                        안전 보관
+                      </span>
+                    </div>
+
+                    <div className="flex items-baseline gap-1 mb-1.5">
+                      <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-purple-600 transition-colors">
+                        보관 후 출고
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                      안전 물류 창고 보관 후 원하는 일정에 맞춘 순차 분할 배송
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-normal">
-                    안전 물류 창고 보관 후 원하는 일정에 맞춘 순차 배송
-                  </p>
+
+                  <div className="pt-2 mt-2 border-t border-slate-100 text-[11px] text-slate-400 font-mono flex justify-between">
+                    <span>WAREHOUSE CARE</span>
+                    <span>단기 보관</span>
+                  </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-xs flex flex-col justify-between">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="font-bold text-slate-950 text-sm sm:text-base">다중 경유 운송</span>
-                    <span className="text-[10px] font-bold tracking-wider text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
-                      MULTI-WAY
-                    </span>
+                <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-purple-500/80 transition-all group overflow-hidden flex flex-col justify-between">
+                  <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <span className="font-mono text-[10px] font-bold tracking-wider text-purple-700 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-200/60">
+                        OPTION 03 · MULTI-WAY
+                      </span>
+                      <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
+                        다중 경유
+                      </span>
+                    </div>
+
+                    <div className="flex items-baseline gap-1 mb-1.5">
+                      <span className="font-display text-2xl sm:text-3xl font-black text-slate-950 tracking-tight group-hover:text-purple-600 transition-colors">
+                        순회 배송
+                      </span>
+                    </div>
+
+                    <p className="text-xs text-slate-600 font-medium leading-relaxed">
+                      1회 접수로 여러 거래처 동시 순차 배송 및 영수증 회수 처리
+                    </p>
                   </div>
-                  <p className="text-xs sm:text-sm text-slate-600 font-medium leading-normal">
-                    1회 접수로 여러 거래처 동시 배송 및 회수 처리
-                  </p>
+
+                  <div className="pt-2 mt-2 border-t border-slate-100 text-[11px] text-slate-400 font-mono flex justify-between">
+                    <span>MULTI-STOP ROUTE</span>
+                    <span>회수 가능</span>
+                  </div>
                 </div>
               </div>
 

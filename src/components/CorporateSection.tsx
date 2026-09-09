@@ -154,22 +154,24 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
               </div>
             </div>
 
-            {/* Major Partners Grid (8개 엄선 브랜드 뱃지) */}
+            {/* Major Partners Grid (8개 엄선 브랜드 럭셔리 모노크롬 뱃지) */}
             <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-bold text-slate-950 flex items-center gap-1.5">
+                <div className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-                  <span>주요 거래처 파트너사</span>
+                  <span className="text-xs font-bold text-slate-950">주요 거래처 파트너사</span>
+                </div>
+                <span className="font-mono text-[10px] font-bold tracking-widest text-slate-400 uppercase">
+                  B2B CLIENTS
                 </span>
-                <span className="text-[11px] font-bold tracking-wider text-slate-400">PARTNERS</span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center">
                 {partners.map((partner, idx) => (
                   <div
                     key={idx}
-                    className="p-2.5 rounded-xl bg-slate-50 border border-slate-200/70 flex items-center justify-center hover:bg-white hover:border-orange-300 hover:shadow-2xs transition-all"
+                    className="group py-2.5 px-3 rounded-xl bg-slate-50/80 border border-slate-200/80 hover:bg-slate-950 hover:border-slate-950 transition-all duration-300 flex items-center justify-center cursor-default shadow-2xs hover:shadow-md"
                   >
-                    <span className="font-bold text-slate-800 text-xs sm:text-sm truncate">
+                    <span className="font-display font-bold text-xs tracking-wider text-slate-700 group-hover:text-white transition-colors truncate">
                       {partner}
                     </span>
                   </div>
