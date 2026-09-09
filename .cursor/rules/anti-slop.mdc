@@ -1,0 +1,21 @@
+﻿---
+description: Anti-Slop (Anti-AI) UI & Code Rules
+globs: ["**/*.tsx", "**/*.ts", "**/*.jsx", "**/*.js", "**/*.css"]
+alwaysApply: true
+---
+
+# Anti-Slop: Anti-AI Rules for UI & Code
+
+Read `.agents/skills/antislop/SKILL.md` and related skills:
+- UI / visual: `.agents/skills/antislop-ui/SKILL.md`
+- Copy & text: `.agents/skills/antislop-copywriting/SKILL.md`
+- People / Accessibility: `.agents/skills/antislop-human/SKILL.md`
+- Mobile / Responsive: `.agents/skills/antislop-layoutmobile/SKILL.md`
+- Code comments: `.agents/skills/antislop-code/SKILL.md`
+
+## Core Hard Gates (Zero AI Cliché)
+1. Never put generic SVG icons inside pastel rounded-lg boxes (bg-orange-50 p-3 rounded-xl).
+2. Never use emojis as UI icons, badges, or section decoration.
+3. Replace generic icon cards with bold editorial KPI typography (e.g. 10분 내 배차, 99.8%) and monospaced technical tags (e.g. [ 01 · SPEED ]).
+4. Reject technique without purpose: apply 3-layered depth (frosted glass backdrop-blur-xl, hairline borders border-white/10, top rim-light gradients).
+5. Always preserve Korean typography discipline (break-keep, tight title letter-spacing tracking-tight).
