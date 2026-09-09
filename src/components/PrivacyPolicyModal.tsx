@@ -1,11 +1,23 @@
 "use client";
 
+import { useEffect } from "react";
+
 interface PrivacyPolicyModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyModalProps) {
+  // Keyboard accessibility: Close modal on Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
@@ -29,7 +41,7 @@ export default function PrivacyPolicyModal({ isOpen, onClose }: PrivacyPolicyMod
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-sm font-bold cursor-pointer transition-colors"
+            className="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-sm font-bold cursor-pointer transition-colors border border-slate-700"
             aria-label="닫기"
           >
             ✕

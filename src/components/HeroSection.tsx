@@ -133,8 +133,9 @@ export default function HeroSection() {
         {/* ── 2. Top Header & Title Area ── */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 sm:mb-10 gap-4">
           <div>
-            <div className="text-xs sm:text-sm font-bold tracking-widest text-slate-400 uppercase mb-3 sm:mb-4">
-              DREAMDEL · GLOBAL LOGISTICS INNOVATOR
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 border border-white/15 backdrop-blur-md text-[11px] sm:text-xs font-mono font-bold tracking-wider text-slate-200 uppercase mb-3 sm:mb-4">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span>DREAMDEL · 24/7 FLEET DISPATCH CONTROL</span>
             </div>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18] break-keep mb-3">
               꿈의 운송서비스<br />
@@ -150,20 +151,20 @@ export default function HeroSection() {
 
         </div>
 
-        {/* ── Bottom Section: Tagline (히어로 섹션 하단 적정 높이 순환) ── */}
+        {/* ── Bottom Section: Tagline (스위스 엔지니어링 반투명 캡슐) ── */}
         <div className="mt-auto pb-10 sm:pb-16 flex justify-center">
-          <div className="relative h-8 sm:h-9 w-full max-w-md overflow-hidden">
+          <div className="relative h-10 w-full max-w-lg px-5 py-2 rounded-full bg-slate-950/60 border border-white/15 backdrop-blur-md overflow-hidden flex items-center justify-center shadow-lg">
             {HERO_TAGLINES.map((line, i) => (
               <p
                 key={line}
                 aria-hidden={i !== taglineIndex}
-                className={`absolute inset-x-0 top-0 h-full flex items-center justify-center whitespace-nowrap text-lg sm:text-xl md:text-2xl font-bold text-white/90 break-keep leading-none transition-all duration-700 ease-out ${
+                className={`absolute inset-0 flex items-center justify-center whitespace-nowrap text-sm sm:text-base md:text-lg font-bold text-white tracking-tight break-keep transition-all duration-700 ease-out px-4 ${
                   i === taglineIndex
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 -translate-y-full"
                 }`}
               >
-                <span className="inline-block w-1.5 h-5 sm:h-6 rounded-full bg-orange-500 mr-3 shrink-0 shadow-[0_0_12px_rgba(249,115,22,0.8)]" />
+                <span className="inline-block w-1.5 h-4 sm:h-5 rounded-full bg-orange-500 mr-2.5 shrink-0 shadow-[0_0_10px_rgba(249,115,22,0.8)]" />
                 {line}
               </p>
             ))}

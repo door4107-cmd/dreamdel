@@ -1,5 +1,7 @@
 "use client";
 
+import { useEffect } from "react";
+
 interface QuickTalkModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -11,6 +13,16 @@ export default function QuickTalkModal({
   onClose,
   onOpenDispatchModal,
 }: QuickTalkModalProps) {
+  // Keyboard accessibility: Close modal on Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
+
   if (!isOpen) return null;
 
   return (
@@ -46,7 +58,7 @@ export default function QuickTalkModal({
           <button
             type="button"
             onClick={onClose}
-            className="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center font-bold text-sm transition-colors cursor-pointer border border-slate-700"
+            className="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center font-bold text-sm transition-colors cursor-pointer border border-slate-700"
             aria-label="닫기"
           >
             ✕

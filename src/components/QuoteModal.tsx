@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface QuoteModalProps {
   isOpen: boolean;
@@ -23,6 +23,16 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
   const [showPrivacyDetail, setShowPrivacyDetail] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Keyboard accessibility: Close modal on Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
 
   const faqs = [
     {
@@ -79,13 +89,14 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
       <div className="relative w-full max-w-5xl bg-white rounded-2xl sm:rounded-3xl shadow-2xl border border-slate-200 overflow-hidden my-auto max-h-[92vh] flex flex-col">
         {/* Modal Top Control Bar */}
         <div className="flex items-center justify-between px-6 sm:px-10 pt-6 pb-2 shrink-0 bg-white">
-          <div className="text-xs sm:text-sm font-bold tracking-widest text-slate-500 uppercase">
-            05 QUOTE
+          <div className="inline-flex items-center gap-2 text-[11px] font-mono font-bold tracking-widest text-slate-500 uppercase">
+            <span className="w-1.5 h-1.5 rounded-full bg-orange-600" />
+            <span>[ 05 · DIRECT INQUIRY & QUOTE ]</span>
           </div>
           <button
             type="button"
             onClick={onClose}
-            className="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 flex items-center justify-center transition-colors text-sm font-bold cursor-pointer"
+            className="w-10 h-10 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 hover:text-slate-950 flex items-center justify-center transition-colors text-sm font-bold cursor-pointer"
             aria-label="닫기"
           >
             ✕
@@ -100,7 +111,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
               견적 및 상담 문의
             </h2>
             <p className="text-xs sm:text-sm md:text-base text-slate-600 font-medium break-keep">
-              품목과 지역만 남겨주시면 담당자가 확인 후 회신드립니다.
+              품목과 지역만 남겨주시면 담당자가 확인 후 신속히 회신드립니다.
             </p>
           </div>
 
@@ -139,7 +150,7 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                       <select
                         value={formData.inquiryType}
                         onChange={(e) => setFormData({ ...formData, inquiryType: e.target.value })}
-                        className="w-full px-3.5 sm:px-4 py-3 rounded-lg border border-slate-300 text-xs sm:text-sm font-medium text-slate-800 bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 focus:outline-none appearance-none cursor-pointer"
+                        className="w-full px-3.5 sm:px-4 py-3 rounded-lg border border-slate-300 text-xs sm:text-sm font-medium text-slate-800 bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 focus:outline-none appearance-none cursor-pointer pr-10"
                       >
                         <option value="문의 유형 (퀵 / 화물 / 법인계약)">문의 유형 (퀵 / 화물 / 법인계약)</option>
                         <option value="퀵">퀵 서비스</option>
@@ -147,8 +158,10 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         <option value="법인계약">법인 정기 계약 / 월정산</option>
                         <option value="기타">기타 맞춤 운송</option>
                       </select>
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-500 text-xs">
-                        ▼
+                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-slate-400">
+                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                        </svg>
                       </div>
                     </div>
 
@@ -314,15 +327,22 @@ export default function QuoteModal({ isOpen, onClose }: QuoteModalProps) {
                         <button
                           type="button"
                           onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
-                          className="w-full text-left font-medium text-slate-800 hover:text-slate-950 flex items-center justify-between group cursor-pointer"
+                          className="w-full text-left font-medium text-slate-800 hover:text-slate-950 flex items-center justify-between group cursor-pointer py-1"
                         >
                           <span className="break-keep group-hover:underline">{faq.q}</span>
-                          <span className="text-xs text-slate-400 ml-2 shrink-0">
-                            {openFaqIndex === idx ? "▲" : "▼"}
-                          </span>
+                          <svg
+                            className={`w-3.5 h-3.5 text-slate-400 group-hover:text-slate-900 transition-transform duration-200 shrink-0 ml-2 ${
+                              openFaqIndex === idx ? "rotate-180 text-slate-950" : ""
+                            }`}
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19 9l-7 7-7-7" />
+                          </svg>
                         </button>
                         {openFaqIndex === idx && (
-                          <p className="mt-2 text-xs text-slate-600 bg-slate-50 p-2.5 rounded-lg leading-relaxed break-keep">
+                          <p className="mt-2 text-xs text-slate-600 bg-slate-50 p-2.5 rounded-lg leading-relaxed break-keep border border-slate-100">
                             {faq.a}
                           </p>
                         )}

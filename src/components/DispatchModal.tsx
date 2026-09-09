@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface DispatchModalProps {
   isOpen: boolean;
@@ -9,6 +9,16 @@ interface DispatchModalProps {
 
 export default function DispatchModal({ isOpen, onClose }: DispatchModalProps) {
   const [isLoading, setIsLoading] = useState(true);
+
+  // Keyboard accessibility: Close modal on Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
 
   if (!isOpen) return null;
 
@@ -33,7 +43,7 @@ export default function DispatchModal({ isOpen, onClose }: DispatchModalProps) {
 
           <button
             onClick={onClose}
-            className="flex items-center space-x-1.5 px-4 py-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs sm:text-sm font-bold transition-all active:scale-95 cursor-pointer border border-slate-700"
+            className="flex items-center space-x-1.5 px-4 py-2.5 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs sm:text-sm font-bold transition-all active:scale-95 cursor-pointer border border-slate-700 min-h-[40px]"
             aria-label="닫기"
           >
             <span>닫기</span>
