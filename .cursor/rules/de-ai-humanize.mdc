@@ -1,0 +1,23 @@
+﻿---
+description: De-AI & Humanize Rules for Code & Text
+globs: [**/*.ts, **/*.tsx, **/*.js, **/*.md, **/*.json]
+alwaysApply: true
+---
+
+# De-AI & Humanizer: Remove AI Code & Text Tells
+
+Reference Skills:
+- Code De-AI: .agents/skills/de-ai/SKILL.md (deai-code v2.0)
+- Text Humanizer: .agents/skills/humanize/SKILL.md (humanizer v3.0)
+
+## Code De-AI Principles
+1. **No Over-Engineering**: Avoid premature abstractions, useless strategy classes, or generic interfaces for single-use logic.
+2. **No Phantom Edge Cases**: Only handle real, physically possible failure modes.
+3. **No Defensive Clutter & Comment Noise**: Remove obvious comments that just repeat the code (// Sets user id).
+4. **Senior Dev Restraint**: Write concise, purposeful, readable code that matches the project's actual context.
+
+## Text Humanizer Principles
+1. **No Staged Openers / Closers**: Remove robotic formulas like Here's what you need to know or In conclusion....
+2. **No Empty AI Vocabulary**: Replace seamless, cutting-edge, game-changer, empower, unlock with concrete, honest facts.
+3. **No Forced Triads**: Don't mechanically force everything into groups of three.
+4. **Natural Rhythm**: Alternate sentence lengths naturally, with genuine human cadences.

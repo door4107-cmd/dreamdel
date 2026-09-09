@@ -18,3 +18,9 @@ For UI, copy, people, mobile layout, or code comments work, read `.agents/skills
 - Code comments: `.agents/skills/antislop-code/SKILL.md`
 Before starting, ask the user when antislop applies: during the work, or after it is done.
 <!-- antislop:end -->
+
+## clean-ui & de-ai / humanize
+- Clean UI & Component Restraint: `.agents/skills/clean-ui/SKILL.md`
+- Code De-AI & Anti-Slop (v2.0): `.agents/skills/de-ai/SKILL.md`
+- Text Humanizer & Voice Match (v3.0): `.agents/skills/humanize/SKILL.md`
+

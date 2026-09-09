@@ -1,0 +1,24 @@
+﻿---
+description: Clean UI / UX Design & Component Rules
+globs: [**/*.tsx, **/*.jsx, **/*.css, **/*.html]
+alwaysApply: true
+---
+
+# Clean UI / UX Generation Standards
+
+Reference Skill: .agents/skills/clean-ui/SKILL.md
+
+## 1. Less is More. Restraint is Taste
+- Every visual element must earn its place by serving a clear communicative purpose.
+- Follow the 70/20/10 rule: 70% neutral base, 20% secondary neutral/structure, 10% high-contrast brand accent.
+- Avoid homogenous color goo: do not make every element the same color tint.
+- Let whitespace and layout do the separation rather than unnecessary background boxes or heavy borders.
+
+## 2. No Rounded-Square Icon Containers
+- Never wrap icons in decorative rounded-rectangle pastel containers.
+- Use icons inline or rely on typography and layout.
+- Use consistent, professional vector SVGs rather than mixed icon libraries or emojis.
+
+## 3. Typography & Hierarchy
+- Clean, legible typography with reak-keep and -0.02em to -0.035em tracking for headings.
+- Avoid decorative serif overuse or generic font combinations.
