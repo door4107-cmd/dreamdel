@@ -34,8 +34,8 @@ export default function HeroSection() {
         if (p1El) {
           if (t < 3.4) {
             const p1 = Math.min(1, Math.max(0, t / 3.4));
-            const w1 = p1El.offsetWidth || 280;
-            const maxTravel1 = Math.max(0, runwayWidth - w1 - 32);
+            const w1 = p1El.offsetWidth || 180;
+            const maxTravel1 = Math.max(0, runwayWidth - w1 - 24);
             const x1 = p1 * maxTravel1 * 0.78;
 
             let op1 = 1;
@@ -53,8 +53,8 @@ export default function HeroSection() {
         if (p2El) {
           if (t >= 3.4 && t < 6.7) {
             const p2 = Math.min(1, Math.max(0, (t - 3.4) / 3.3));
-            const w2 = p2El.offsetWidth || 320;
-            const maxTravel2 = Math.max(0, runwayWidth - w2 - 32);
+            const w2 = p2El.offsetWidth || 210;
+            const maxTravel2 = Math.max(0, runwayWidth - w2 - 24);
             const x2 = p2 * maxTravel2 * 0.82;
 
             let op2 = 1;
@@ -72,8 +72,8 @@ export default function HeroSection() {
         if (p3El) {
           if (t >= 6.7 && t <= duration) {
             const p3 = Math.min(1, Math.max(0, (t - 6.7) / 3.3));
-            const w3 = p3El.offsetWidth || 300;
-            const maxTravel3 = Math.max(0, runwayWidth - w3 - 32);
+            const w3 = p3El.offsetWidth || 190;
+            const maxTravel3 = Math.max(0, runwayWidth - w3 - 24);
             const startX = maxTravel3 * 0.45;
             const endX = maxTravel3 * 0.95;
             const x3 = startX + p3 * (endX - startX);
@@ -157,12 +157,12 @@ export default function HeroSection() {
         <div className="mt-auto pb-8 sm:pb-12 md:pb-16 w-full max-w-7xl mx-auto">
           <div
             ref={runwayRef}
-            className="relative h-14 sm:h-18 md:h-20 w-full overflow-hidden flex items-center pointer-events-none"
+            className="relative h-10 sm:h-12 w-full overflow-hidden flex items-center pointer-events-none"
           >
             {/* Phase 1: 10분 빠르게 픽업하고 (오토바이 속도 동기화: 좌 -> 우) */}
             <div
               ref={phase1Ref}
-              className="absolute left-0 will-change-transform whitespace-nowrap text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] select-none"
+              className="absolute left-0 will-change-transform whitespace-nowrap text-sm sm:text-base md:text-lg font-bold text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] select-none"
               style={{ opacity: 0 }}
             >
               10분 빠르게 픽업하고
@@ -171,7 +171,7 @@ export default function HeroSection() {
             {/* Phase 2: 10분 빠르게 배송하기위해 (다마스 등장과 동시: 좌 -> 우 매끄럽게 흐르듯 이동, 완전 선명) */}
             <div
               ref={phase2Ref}
-              className="absolute left-0 will-change-transform whitespace-nowrap text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] select-none"
+              className="absolute left-0 will-change-transform whitespace-nowrap text-sm sm:text-base md:text-lg font-bold text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] select-none"
               style={{ opacity: 0 }}
             >
               10분 빠르게 배송하기위해
@@ -180,7 +180,7 @@ export default function HeroSection() {
             {/* Phase 3: 오늘도 노력하겠습니다. (1톤 탑차 시점~종료 동기화: 우측 zone에서 우측으로 이동) */}
             <div
               ref={phase3Ref}
-              className="absolute left-0 will-change-transform whitespace-nowrap text-xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white tracking-tight drop-shadow-[0_4px_24px_rgba(0,0,0,0.95)] select-none"
+              className="absolute left-0 will-change-transform whitespace-nowrap text-sm sm:text-base md:text-lg font-bold text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] select-none"
               style={{ opacity: 0 }}
             >
               오늘도 노력하겠습니다.
