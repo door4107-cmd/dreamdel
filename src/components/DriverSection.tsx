@@ -166,7 +166,7 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
           <div className="lg:col-span-5">
             <div className="relative w-full aspect-[960/700] rounded-2xl sm:rounded-3xl overflow-hidden bg-slate-900 border border-slate-700 shadow-xl group">
               <Image
-                src="/images/driver.jpg"
+                src="/images/driver_dreamdel.jpg"
                 alt="드림델 퀵기사 및 화물기사 인물 컷"
                 fill
                 className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
