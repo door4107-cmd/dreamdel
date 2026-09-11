@@ -108,7 +108,7 @@ export default function HeroSection() {
             activeVideo === 1 ? "opacity-90" : "opacity-0"
           }`}
         >
-          <source src="/videos/adt.mp4" type="video/mp4" />
+          <source src="/videos/sian.mp4" type="video/mp4" />
         </video>
 
         <video
@@ -121,7 +121,7 @@ export default function HeroSection() {
             activeVideo === 2 ? "opacity-90" : "opacity-0"
           }`}
         >
-          <source src="/videos/adt.mp4" type="video/mp4" />
+          <source src="/videos/sian.mp4" type="video/mp4" />
         </video>
 
         {/* Cinematic Soft Tint Overlay (균일하고 자연스러운 영상 톤) */}
