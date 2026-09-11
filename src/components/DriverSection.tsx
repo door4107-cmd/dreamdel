@@ -27,7 +27,7 @@ export default function DriverSection() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* ── Left Column: 헤드라인, 서브카피, 3대 핵심 혜택 & 전화 문의 액션 (7 cols) ── */}
+          {/* ── Left Column: 헤드라인, 서브카피 & 전화 문의 액션 (7 cols) ── */}
           <div className="lg:col-span-7 flex flex-col justify-between">
             <div>
               {/* Main Headline */}
@@ -45,47 +45,11 @@ export default function DriverSection() {
                 열정넘치는 라이더/기사 분들을 상시모집합니다.
               </p>
 
-              {/* 3대 핵심 혜택 카드 */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-3.5 mb-6 sm:mb-8">
-                {/* 1. 안정적인 물량 */}
-                <div className="p-3.5 sm:p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-sm flex flex-col justify-between hover:border-slate-700 transition-all">
-                  <div>
-                    <div className="text-xs font-bold text-orange-400 mb-1">안정적인 물량</div>
-                    <div className="font-bold text-white text-sm sm:text-base mb-1">풍부한 고정 오더</div>
-                    <p className="text-xs text-slate-300 leading-relaxed break-keep">
-                      2,500여 개 기업 고객사 기반으로 비수기 없이 안정적인 배차를 지원합니다.
-                    </p>
-                  </div>
-                </div>
-
-                {/* 2. 당일 정산 */}
-                <div className="p-3.5 sm:p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-sm flex flex-col justify-between hover:border-slate-700 transition-all">
-                  <div>
-                    <div className="text-xs font-bold text-emerald-400 mb-1">투명한 정산</div>
-                    <div className="font-bold text-white text-sm sm:text-base mb-1">당일 100% 입금</div>
-                    <p className="text-xs text-slate-300 leading-relaxed break-keep">
-                      운임 마감 즉시 당일 정산 원칙으로 일한 만큼 확실한 수익을 보장합니다.
-                    </p>
-                  </div>
-                </div>
-
-                {/* 3. 전 차종 지원 */}
-                <div className="p-3.5 sm:p-4 rounded-xl bg-slate-900/90 border border-slate-800 shadow-sm flex flex-col justify-between hover:border-slate-700 transition-all">
-                  <div>
-                    <div className="text-xs font-bold text-blue-400 mb-1">전 차종 모집</div>
-                    <div className="font-bold text-white text-sm sm:text-base mb-1">초보자 1:1 안내</div>
-                    <p className="text-xs text-slate-300 leading-relaxed break-keep">
-                      오토바이부터 다마스, 라보, 1톤까지 신규 기사님도 바로 적응할 수 있습니다.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
               {/* Action Button: 전화 문의 직통 */}
               <div>
                 <a
                   href="tel:1588-5575"
-                  className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-black text-base shadow-lg shadow-orange-500/25 transition-all active:scale-95 cursor-pointer"
+                  className="inline-flex items-center gap-3 px-8 py-4.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-black text-base sm:text-lg shadow-xl shadow-orange-500/25 transition-all active:scale-95 cursor-pointer"
                 >
                   <svg className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
