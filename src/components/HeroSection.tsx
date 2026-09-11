@@ -140,10 +140,6 @@ export default function HeroSection() {
         {/* ── 2. Top Header & Title Area ── */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 sm:mb-8 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-white/10 border border-white/15 backdrop-blur-md text-[11px] sm:text-xs font-mono font-bold tracking-wider text-slate-200 uppercase mb-3 sm:mb-4">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>DREAMDEL · 24/7 FLEET DISPATCH CONTROL</span>
-            </div>
             <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18] break-keep mb-3">
               꿈의 운송서비스<br />
               고객님의 든든한 운송파트너{" "}
