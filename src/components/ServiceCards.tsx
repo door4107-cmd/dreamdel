@@ -24,10 +24,6 @@ export default function ServiceCards() {
     <div className="w-full">
       {/* ── 1. Section Header ── */}
       <div className="mb-4 sm:mb-6 lg:mb-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-orange-400 text-xs sm:text-sm font-bold tracking-wider uppercase mb-2 shadow-xs">
-          <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-          <span>02 FLEET &amp; SERVICES</span>
-        </div>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-2">
           <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight break-keep">
             화물 크기와 긴급도에 맞춘{" "}
@@ -108,9 +104,6 @@ export default function ServiceCards() {
             <div className="lg:col-span-8 flex flex-col justify-between h-full space-y-3">
               {/* Header Title */}
               <div>
-                <div className="inline-block text-xs sm:text-sm font-bold tracking-wider text-orange-600 uppercase mb-0.5">
-                  TAB 01 · MOTORCYCLE QUICK
-                </div>
                 <h3 className="font-display text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
                   오토바이 운송서비스
                 </h3>
@@ -146,10 +139,7 @@ export default function ServiceCards() {
                 {/* 일반 오토바이 */}
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-slate-400 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-mono text-[10px] font-bold tracking-wider text-slate-500 uppercase bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
-                      SPEED 01 · STANDARD
-                    </span>
+                  <div className="flex items-center mb-2">
                     <span className="text-[11px] font-bold text-slate-600 bg-slate-100/80 px-2 py-0.5 rounded">
                       표준 퀵배송
                     </span>
@@ -174,10 +164,7 @@ export default function ServiceCards() {
                 {/* 급송 오토바이 */}
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-orange-50/50 border border-orange-200/90 shadow-xs hover:border-orange-500/80 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-orange-500 to-amber-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="font-mono text-[10px] font-bold tracking-wider text-orange-700 uppercase bg-orange-100/80 px-2 py-0.5 rounded border border-orange-200">
-                      SPEED 02 · DIRECT EXPRESS
-                    </span>
+                  <div className="flex items-center mb-2">
                     <span className="text-[11px] font-bold text-orange-700 bg-orange-100 px-2 py-0.5 rounded">
                       단독 직송
                     </span>
@@ -249,9 +236,6 @@ export default function ServiceCards() {
             <div className="lg:col-span-8 flex flex-col justify-between h-full space-y-3">
               {/* Header Title */}
               <div>
-                <div className="inline-block text-xs sm:text-sm font-bold tracking-wider text-blue-600 uppercase mb-0.5">
-                  TAB 02 · VEHICLE FREIGHT
-                </div>
                 <h3 className="font-display text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
                   차량 운송서비스 (다마스 / 라보 / 1톤)
                 </h3>
@@ -288,10 +272,7 @@ export default function ServiceCards() {
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-500/80 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] font-bold tracking-wider text-blue-700 uppercase bg-blue-50 px-2 py-0.5 rounded border border-blue-200/60">
-                        FLEET 01 · DAMAS
-                      </span>
+                    <div className="flex items-center mb-2">
                       <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
                         밀폐형 밴
                       </span>
@@ -319,10 +300,7 @@ export default function ServiceCards() {
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-500/80 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] font-bold tracking-wider text-blue-700 uppercase bg-blue-50 px-2 py-0.5 rounded border border-blue-200/60">
-                        FLEET 02 · LABO
-                      </span>
+                    <div className="flex items-center mb-2">
                       <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
                         오픈 카고
                       </span>
@@ -350,10 +328,7 @@ export default function ServiceCards() {
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-blue-500/80 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-blue-500 to-cyan-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] font-bold tracking-wider text-blue-700 uppercase bg-blue-50 px-2 py-0.5 rounded border border-blue-200/60">
-                        FLEET 03 · 1-TON
-                      </span>
+                    <div className="flex items-center mb-2">
                       <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
                         카고 / 탑차
                       </span>
@@ -426,9 +401,6 @@ export default function ServiceCards() {
             {/* Right Column: 전국 연계망 안내 */}
             <div className="lg:col-span-8 flex flex-col justify-between h-full space-y-3">
               <div>
-                <div className="inline-block text-xs sm:text-sm font-bold tracking-wider text-emerald-600 uppercase mb-0.5">
-                  TAB 03 · NATIONWIDE EXPRESS
-                </div>
                 <h3 className="font-display text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
                   전국연계 당일 특송서비스
                 </h3>
@@ -464,10 +436,7 @@ export default function ServiceCards() {
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-emerald-500/80 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] font-bold tracking-wider text-emerald-700 uppercase bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
-                        NATION 01 · KTX
-                      </span>
+                    <div className="flex items-center mb-2">
                       <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
                         초고속 연계
                       </span>
@@ -494,10 +463,7 @@ export default function ServiceCards() {
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-emerald-500/80 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] font-bold tracking-wider text-emerald-700 uppercase bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
-                        NATION 02 · BUS
-                      </span>
+                    <div className="flex items-center mb-2">
                       <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
                         터미널 직송
                       </span>
@@ -523,10 +489,7 @@ export default function ServiceCards() {
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-emerald-500/80 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-emerald-500 to-teal-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] font-bold tracking-wider text-emerald-700 uppercase bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">
-                        NATION 03 · AIR
-                      </span>
+                    <div className="flex items-center mb-2">
                       <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
                         항공 특송
                       </span>
@@ -598,9 +561,6 @@ export default function ServiceCards() {
             {/* Right Column: 특수 옵션 리스트 (다른 탭과 동일한 4단 구조로 완전 일치) */}
             <div className="lg:col-span-8 flex flex-col justify-between h-full space-y-3">
               <div>
-                <div className="inline-block text-xs sm:text-sm font-bold tracking-wider text-purple-600 uppercase mb-0.5">
-                  TAB 04 · CUSTOMIZED SOLUTIONS
-                </div>
                 <h3 className="font-display text-xl sm:text-2xl font-black text-slate-950 tracking-tight">
                   맞춤형 특수 운송 솔루션
                 </h3>
@@ -636,10 +596,7 @@ export default function ServiceCards() {
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-purple-500/80 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] font-bold tracking-wider text-purple-700 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-200/60">
-                        OPTION 01 · RESERVE
-                      </span>
+                    <div className="flex items-center mb-2">
                       <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
                         시간 예약
                       </span>
@@ -665,10 +622,7 @@ export default function ServiceCards() {
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-purple-500/80 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] font-bold tracking-wider text-purple-700 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-200/60">
-                        OPTION 02 · STORAGE
-                      </span>
+                    <div className="flex items-center mb-2">
                       <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
                         안전 보관
                       </span>
@@ -694,10 +648,7 @@ export default function ServiceCards() {
                 <div className="relative p-3.5 sm:p-4 rounded-xl bg-white border border-slate-200/90 shadow-xs hover:border-purple-500/80 transition-all group overflow-hidden flex flex-col justify-between">
                   <div className="absolute top-0 inset-x-0 h-0.5 bg-gradient-to-r from-purple-500 to-indigo-400 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div>
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono text-[10px] font-bold tracking-wider text-purple-700 uppercase bg-purple-50 px-2 py-0.5 rounded border border-purple-200/60">
-                        OPTION 03 · MULTI-WAY
-                      </span>
+                    <div className="flex items-center mb-2">
                       <span className="text-[11px] font-bold text-slate-600 bg-slate-100 px-1.5 py-0.5 rounded">
                         다중 경유
                       </span>

@@ -32,10 +32,6 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-2 sm:py-3 lg:py-0 lg:-translate-y-6">
         {/* ── Section Header (시원하고 또렷한 헤드라인) ── */}
         <div className="mb-5 sm:mb-6 lg:mb-7">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/80 text-orange-700 text-xs sm:text-sm font-bold tracking-wider uppercase mb-2.5">
-            <span className="w-2 h-2 rounded-full bg-orange-500" />
-            <span>01 ABOUT DREAMDEL</span>
-          </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-3">
             <h2 className="font-display text-3xl sm:text-4xl lg:text-[42px] font-black text-slate-950 tracking-tight leading-[1.2] break-keep">
               30년 신뢰의 도심 퀵서비스,{" "}
@@ -57,17 +53,6 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
               {/* Card 1: 10분 배차 */}
               <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-orange-500/80 hover:shadow-md transition-all duration-200 group flex flex-col justify-between overflow-hidden">
-                {/* Micro Header */}
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-[10px] sm:text-[11px] font-bold text-orange-600 tracking-wider uppercase bg-orange-50/80 px-2 py-0.5 rounded border border-orange-200/60">
-                    01 · SPEED
-                  </span>
-                  <span className="flex items-center gap-1 text-[10px] font-bold text-emerald-600">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    LIVE
-                  </span>
-                </div>
-
                 {/* Big Metric Display */}
                 <div className="mb-2">
                   <div className="flex items-baseline gap-1">
@@ -87,16 +72,6 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
 
               {/* Card 2: 5천만원 책임보상 */}
               <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-blue-500/80 hover:shadow-md transition-all duration-200 group flex flex-col justify-between overflow-hidden">
-                {/* Micro Header */}
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-[10px] sm:text-[11px] font-bold text-blue-600 tracking-wider uppercase bg-blue-50/80 px-2 py-0.5 rounded border border-blue-200/60">
-                    02 · GUARANTEE
-                  </span>
-                  <span className="text-[10px] font-bold text-slate-400 font-mono">
-                    100% COVER
-                  </span>
-                </div>
-
                 {/* Big Metric Display */}
                 <div className="mb-2">
                   <div className="flex items-baseline gap-1">
@@ -116,16 +91,6 @@ export default function CompanySection({ onQuote }: CompanySectionProps) {
 
               {/* Card 3: 기업 후불 정산 */}
               <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-sm hover:border-slate-800 hover:shadow-md transition-all duration-200 group flex flex-col justify-between overflow-hidden">
-                {/* Micro Header */}
-                <div className="flex items-center justify-between mb-3">
-                  <span className="font-mono text-[10px] sm:text-[11px] font-bold text-slate-700 tracking-wider uppercase bg-slate-100 px-2 py-0.5 rounded border border-slate-200">
-                    03 · B2B CREDIT
-                  </span>
-                  <span className="text-[10px] font-bold text-orange-600">
-                    월말정산
-                  </span>
-                </div>
-
                 {/* Big Metric Display */}
                 <div className="mb-2">
                   <div className="flex items-baseline gap-1">

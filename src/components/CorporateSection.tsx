@@ -26,10 +26,6 @@ export default function CorporateSection({ onOpenQuoteModal }: CorporateSectionP
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-4 lg:-translate-y-4">
         {/* ── 1. Section Header ── */}
         <div className="mb-6 lg:mb-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-50 border border-orange-200/80 text-orange-700 text-xs sm:text-sm font-bold tracking-wider uppercase mb-2.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-orange-500" />
-            <span>03 CORPORATE B2B</span>
-          </div>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-2">
             <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 tracking-tight leading-tight break-keep">
               기업 물류의 모든 번거로움,{" "}

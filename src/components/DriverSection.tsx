@@ -113,12 +113,6 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
           {/* ── Left Column: Texts, 3 Benefit Cards & 2 Action Buttons (7 cols) ── */}
           <div className="lg:col-span-7 flex flex-col justify-between">
             <div>
-              {/* Header Tag */}
-              <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-slate-900 border border-orange-500/30 text-orange-400 text-[11px] font-bold tracking-widest uppercase mb-4 shadow-sm">
-                <span className="w-1.5 h-1.5 rounded-full bg-orange-400 animate-pulse" />
-                <span>04 DRIVER RECRUIT</span>
-              </div>
-
               {/* Main Headline */}
               <h2 className="font-display text-2xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.2] break-keep mb-3">
                 함께 달릴{" "}
@@ -140,11 +134,8 @@ export default function DriverSection({ onOpenDriverApply }: DriverSectionProps)
                     key={idx}
                     className="relative p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-md hover:border-slate-700 hover:bg-slate-850/95 transition-all duration-200 group flex flex-col justify-between overflow-hidden"
                   >
-                    {/* Micro Technical Tag */}
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="font-mono text-[10px] sm:text-[11px] font-bold text-slate-400 tracking-wider uppercase bg-slate-800/80 px-2 py-0.5 rounded border border-slate-700/60">
-                        {item.code}
-                      </span>
+                    {/* Badge */}
+                    <div className="flex items-center mb-3">
                       <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded border ${item.badgeColor}`}>
                         {item.badge}
                       </span>
