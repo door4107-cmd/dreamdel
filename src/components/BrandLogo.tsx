@@ -22,25 +22,15 @@ export default function BrandLogo({
       aria-label="드림델 홈으로 이동"
     >
       {isLight ? (
-        <>
-          <span className="font-display text-xl sm:text-2xl font-black tracking-tight text-slate-950 group-hover:text-orange-600 transition-colors flex items-baseline">
-            드림델
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-orange-600 ml-1 mb-0.5" />
-          </span>
-          <span className="text-[9px] sm:text-[10px] font-mono font-bold text-slate-500 group-hover:text-slate-700 tracking-widest mt-1 transition-colors">
-            QUICK · FREIGHT
-          </span>
-        </>
+        <span className="font-display text-xl sm:text-2xl font-black tracking-tight text-slate-950 group-hover:text-orange-600 transition-colors flex items-baseline">
+          드림델
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-orange-600 ml-1 mb-0.5" />
+        </span>
       ) : (
-        <>
-          <span className="font-display text-xl sm:text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 drop-shadow-[0_2px_14px_rgba(249,115,22,0.45)] group-hover:brightness-125 transition-all duration-300 flex items-baseline">
-            드림델
-            <span className="inline-block w-1.5 h-1.5 rounded-full bg-orange-400 ml-1 mb-0.5" />
-          </span>
-          <span className="text-[9px] sm:text-[10px] font-mono font-bold text-slate-300 tracking-widest mt-1">
-            QUICK · FREIGHT
-          </span>
-        </>
+        <span className="font-display text-xl sm:text-2xl font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-orange-400 via-amber-300 to-orange-400 drop-shadow-[0_2px_14px_rgba(249,115,22,0.45)] group-hover:brightness-125 transition-all duration-300 flex items-baseline">
+          드림델
+          <span className="inline-block w-1.5 h-1.5 rounded-full bg-orange-400 ml-1 mb-0.5" />
+        </span>
       )}
     </button>
   );
