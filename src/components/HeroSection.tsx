@@ -30,16 +30,19 @@ export default function HeroSection() {
         const t = v.currentTime % duration;
         const runwayWidth = runway ? runway.clientWidth : 800;
 
-        // 1. Phase 1: "10분 빠르게 픽업하고" (0.0s ~ 3.4s - 정중앙 기준 좌 -> 우 미세 글라이딩)
+        // 1. Phase 1: "10분 빠르게 픽업하고" (0.0s ~ 3.4s - 속도 상향 & 지나가면서 사라짐)
         if (p1El) {
           if (t < 3.4) {
             const p1 = Math.min(1, Math.max(0, t / 3.4));
-            // 정중앙(0px) 기준 -25px에서 +25px로 부드럽게 글라이딩
-            const x1 = (p1 - 0.5) * 50;
+            // 이동 거리 140px (-65px -> +75px)로 속도감 있게 진행
+            const x1 = -65 + p1 * 140;
 
             let op1 = 1;
-            if (t < 0.25) op1 = t / 0.25;
-            else if (t > 3.1) op1 = Math.max(0, (3.4 - t) / 0.3);
+            if (t < 0.3) {
+              op1 = t / 0.3; // 부드러운 등장
+            } else if (t > 2.4) {
+              op1 = Math.max(0, (3.1 - t) / 0.7); // 지나가면서 완전히 사라짐
+            }
 
             p1El.style.opacity = op1.toFixed(3);
             p1El.style.transform = `translate3d(${x1.toFixed(1)}px, 0, 0)`;
@@ -48,15 +51,19 @@ export default function HeroSection() {
           }
         }
 
-        // 2. Phase 2: "10분 빠르게 배송하기위해" (3.4s ~ 6.7s - 정중앙 기준 좌 -> 우 미세 글라이딩, 선명)
+        // 2. Phase 2: "10분 빠르게 배송하기위해" (3.4s ~ 6.7s - 속도 상향 & 지나가면서 사라짐, 선명)
         if (p2El) {
           if (t >= 3.4 && t < 6.7) {
             const p2 = Math.min(1, Math.max(0, (t - 3.4) / 3.3));
-            const x2 = (p2 - 0.5) * 50;
+            // 이동 거리 140px (-65px -> +75px)로 속도감 있게 진행
+            const x2 = -65 + p2 * 140;
 
             let op2 = 1;
-            if (t < 3.65) op2 = Math.max(0, (t - 3.4) / 0.25);
-            else if (t > 6.4) op2 = Math.max(0, (6.7 - t) / 0.3);
+            if (t < 3.7) {
+              op2 = (t - 3.4) / 0.3; // 부드러운 등장
+            } else if (t > 5.7) {
+              op2 = Math.max(0, (6.4 - t) / 0.7); // 지나가면서 완전히 사라짐
+            }
 
             p2El.style.opacity = op2.toFixed(3);
             p2El.style.transform = `translate3d(${x2.toFixed(1)}px, 0, 0)`;
@@ -65,15 +72,19 @@ export default function HeroSection() {
           }
         }
 
-        // 3. Phase 3: "오늘도 노력하겠습니다." (6.7s ~ 10.0s - 정중앙 기준 우측 방향 글라이딩)
+        // 3. Phase 3: "오늘도 노력하겠습니다." (6.7s ~ 10.0s - 속도 상향 & 지나가면서 사라짐)
         if (p3El) {
           if (t >= 6.7 && t <= duration) {
             const p3 = Math.min(1, Math.max(0, (t - 6.7) / 3.3));
-            const x3 = -15 + p3 * 40;
+            // 이동 거리 130px (-45px -> +85px)로 우측 방향으로 속도감 있게 진행
+            const x3 = -45 + p3 * 130;
 
             let op3 = 1;
-            if (t < 6.95) op3 = Math.max(0, (t - 6.7) / 0.25);
-            else if (t > 9.7) op3 = Math.max(0, (duration - t) / 0.3);
+            if (t < 7.0) {
+              op3 = (t - 6.7) / 0.3; // 부드러운 등장
+            } else if (t > 9.0) {
+              op3 = Math.max(0, (9.7 - t) / 0.7); // 지나가면서 완전히 사라짐
+            }
 
             p3El.style.opacity = op3.toFixed(3);
             p3El.style.transform = `translate3d(${x3.toFixed(1)}px, 0, 0)`;
