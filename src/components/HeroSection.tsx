@@ -30,13 +30,14 @@ export default function HeroSection() {
         const t = v.currentTime % duration;
         const runwayWidth = runway ? runway.clientWidth : 800;
 
-        // 1. Phase 1: "10분 빠르게 픽업하고" (0.0s ~ 3.4s - 오토바이 속도 맞춰 왼쪽 -> 오른쪽 이동)
+        // 1. Phase 1: "10분 빠르게 픽업하고" (0.0s ~ 3.4s - 오토바이 속도 맞춰 왼쪽 -> 오른쪽 천천히 이동)
         if (p1El) {
           if (t < 3.4) {
             const p1 = Math.min(1, Math.max(0, t / 3.4));
             const w1 = p1El.offsetWidth || 180;
             const maxTravel1 = Math.max(0, runwayWidth - w1 - 24);
-            const x1 = p1 * maxTravel1 * 0.78;
+            const travel1 = Math.min(110, Math.max(40, maxTravel1 * 0.35));
+            const x1 = p1 * travel1;
 
             let op1 = 1;
             if (t < 0.25) op1 = t / 0.25;
@@ -49,13 +50,14 @@ export default function HeroSection() {
           }
         }
 
-        // 2. Phase 2: "10분 빠르게 배송하기위해" (3.4s ~ 6.7s - 다마스 등장과 동시 왼쪽 -> 오른쪽 매끄럽게 흐르듯 이동, 100% 선명)
+        // 2. Phase 2: "10분 빠르게 배송하기위해" (3.4s ~ 6.7s - 다마스 등장과 동시 왼쪽 -> 오른쪽 천천히 이동, 100% 선명)
         if (p2El) {
           if (t >= 3.4 && t < 6.7) {
             const p2 = Math.min(1, Math.max(0, (t - 3.4) / 3.3));
             const w2 = p2El.offsetWidth || 210;
             const maxTravel2 = Math.max(0, runwayWidth - w2 - 24);
-            const x2 = p2 * maxTravel2 * 0.82;
+            const travel2 = Math.min(110, Math.max(40, maxTravel2 * 0.35));
+            const x2 = p2 * travel2;
 
             let op2 = 1;
             if (t < 3.65) op2 = Math.max(0, (t - 3.4) / 0.25);
@@ -68,15 +70,15 @@ export default function HeroSection() {
           }
         }
 
-        // 3. Phase 3: "오늘도 노력하겠습니다." (6.7s ~ 10.0s - 1톤 탑차 시점~종료 동기화: 우측 zone에서 우측으로 이동)
+        // 3. Phase 3: "오늘도 노력하겠습니다." (6.7s ~ 10.0s - 1톤 탑차 시점~종료 동기화: 우측 zone에서 우측으로 천천히 이동)
         if (p3El) {
           if (t >= 6.7 && t <= duration) {
             const p3 = Math.min(1, Math.max(0, (t - 6.7) / 3.3));
             const w3 = p3El.offsetWidth || 190;
             const maxTravel3 = Math.max(0, runwayWidth - w3 - 24);
-            const startX = maxTravel3 * 0.45;
-            const endX = maxTravel3 * 0.95;
-            const x3 = startX + p3 * (endX - startX);
+            const startX = Math.max(60, maxTravel3 * 0.45);
+            const travel3 = Math.min(80, Math.max(30, (maxTravel3 - startX) * 0.5));
+            const x3 = startX + p3 * travel3;
 
             let op3 = 1;
             if (t < 6.95) op3 = Math.max(0, (t - 6.7) / 0.25);
@@ -153,8 +155,8 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* ── 3. Bottom Panoramic Synchronized Tagline Stage (오로지 글씨만 나타남) ── */}
-        <div className="mt-auto pb-8 sm:pb-12 md:pb-16 w-full max-w-7xl mx-auto">
+        {/* ── 3. Bottom Panoramic Synchronized Tagline Stage (길이 축소 max-w-2xl 및 차분한 속도) ── */}
+        <div className="mt-auto pb-8 sm:pb-12 md:pb-16 w-full max-w-2xl mx-auto px-4 sm:px-6">
           <div
             ref={runwayRef}
             className="relative h-10 sm:h-12 w-full overflow-hidden flex items-center pointer-events-none"
