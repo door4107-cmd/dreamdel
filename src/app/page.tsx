@@ -7,10 +7,10 @@ import CompanySection from "@/components/CompanySection";
 import ServiceCards from "@/components/ServiceCards";
 import CorporateSection from "@/components/CorporateSection";
 import DriverSection from "@/components/DriverSection";
+import ContactSection from "@/components/ContactSection";
 import FloatingActions from "@/components/FloatingActions";
 import DispatchModal from "@/components/DispatchModal";
 import QuickTalkModal from "@/components/QuickTalkModal";
-import QuoteModal from "@/components/QuoteModal";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import Footer from "@/components/Footer";
 
@@ -19,7 +19,13 @@ export default function Home() {
   const isSectionTransitioningRef = useRef(false);
   const [isDispatchModalOpen, setIsDispatchModalOpen] = useState(false);
   const [isQuickTalkModalOpen, setIsQuickTalkModalOpen] = useState(false);
-  const [isQuoteModalOpen, setIsQuoteModalOpen] = useState(false);
+
+  const scrollToContact = () => {
+    const el = document.getElementById("contact");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     const scroller = pageScrollerRef.current;
@@ -65,12 +71,12 @@ export default function Home() {
           { href: "#company", label: "회사소개" },
           { href: "#services", label: "사업영역" },
           { href: "#about", label: "법인서비스" },
-          { href: "#calculator", label: "문의하기" },
           { href: "#driver", label: "기사모집" },
+          { href: "#contact", label: "문의하기" },
         ]}
         onOpenDispatchModal={() => setIsDispatchModalOpen(true)}
         onOpenQuickTalkModal={() => setIsQuickTalkModalOpen(true)}
-        onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
+        onOpenQuoteModal={scrollToContact}
       />
 
       <main
@@ -81,12 +87,12 @@ export default function Home() {
         {/* Top Hero Section */}
         <HeroSection />
 
-        {/* 1. Company Introduction Section (01 COMPANY) */}
+        {/* 1. Company Introduction Section */}
         <CompanySection
-          onQuote={() => setIsQuoteModalOpen(true)}
+          onQuote={scrollToContact}
         />
 
-        {/* 2. Fleet Specifications Section (02 BUSINESS) */}
+        {/* 2. Fleet Specifications Section */}
         <section id="services" data-fullpage-section className="scroll-mt-14 relative overflow-hidden bg-[#0F172A] py-12 sm:py-18 lg:flex lg:h-[100svh] lg:snap-start lg:snap-always lg:items-center lg:py-8 text-white">
           {/* Top Divider */}
           <div className="absolute top-0 inset-x-0 overflow-hidden leading-none pointer-events-none z-10">
@@ -105,15 +111,18 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 3. Corporate B2B & Clients Section (03 CORPORATE) */}
+        {/* 3. Corporate B2B & Clients Section */}
         <CorporateSection
-          onOpenQuoteModal={() => setIsQuoteModalOpen(true)}
+          onOpenQuoteModal={scrollToContact}
         />
 
-        {/* 4. Driver Recruitment Section (04 DRIVER) */}
+        {/* 4. Driver Recruitment Section */}
         <DriverSection />
 
-        {/* 5. Footer */}
+        {/* 5. Contact & Inquiry Section */}
+        <ContactSection />
+
+        {/* 6. Footer */}
         <Footer />
       </main>
 
@@ -134,12 +143,6 @@ export default function Home() {
         isOpen={isQuickTalkModalOpen}
         onClose={() => setIsQuickTalkModalOpen(false)}
         onOpenDispatchModal={() => setIsDispatchModalOpen(true)}
-      />
-
-      {/* Custom B2B & Freight Quote Modal */}
-      <QuoteModal
-        isOpen={isQuoteModalOpen}
-        onClose={() => setIsQuoteModalOpen(false)}
       />
 
       {/* Floating Scroll To Top Button */}

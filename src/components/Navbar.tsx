@@ -38,20 +38,19 @@ export default function Navbar({
   }, []);
 
   const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
+    const el = document.getElementById(id) || (id === "calculator" ? document.getElementById("contact") : null);
     if (el) el.scrollIntoView({ behavior: "smooth" });
     setIsMenuOpen(false);
   };
 
   const handleNavClick = (href: string) => {
-    if (href === "#calculator" && onOpenQuoteModal) {
-      onOpenQuoteModal();
-    } else if (href === "#price" && onOpenPriceModal) {
+    if (href === "#price" && onOpenPriceModal) {
       onOpenPriceModal();
     } else if (href === "#order" && onOpenDispatchModal) {
       onOpenDispatchModal();
     } else {
-      scrollTo(href.replace("#", ""));
+      const targetId = href.replace("#", "");
+      scrollTo(targetId);
     }
     setIsMenuOpen(false);
   };

@@ -21,12 +21,8 @@ export default function Footer() {
   return (
     <>
       <footer id="footer" data-fullpage-section className="scroll-mt-14 relative overflow-hidden bg-gradient-to-b from-[#FFFFFF] via-[#F8F9FC] to-[#F1F3F9] py-12 text-xs text-slate-700 sm:py-16 sm:text-sm lg:flex lg:h-[100svh] lg:snap-start lg:snap-always lg:items-center">
-        {/* ── Top Curved Wave Divider transitioning from 04 DRIVER (#060A14) ── */}
-        <div className="absolute top-0 inset-x-0 overflow-hidden leading-none pointer-events-none z-10">
-          <svg className="relative block w-full h-7 sm:h-10 text-[#060A14]" viewBox="0 0 1200 120" preserveAspectRatio="none" fill="currentColor">
-            <path d="M0,0 L1200,0 L1200,30 Q600,90 0,30 Z" />
-          </svg>
-        </div>
+        {/* ── Top Border Divider transitioning from CONTACT (#F1F5F9) ── */}
+        <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-slate-300/80 to-transparent pointer-events-none" />
 
         {/* Subtle ground texture */}
         <div className="absolute inset-0 bg-dot-subtle opacity-40 pointer-events-none" />
