@@ -30,52 +30,53 @@ export default function HeroSection() {
         const t = v.currentTime % duration;
         const runwayWidth = runway ? runway.clientWidth : 800;
 
-        // 1. Phase 1: "10분 빠르게 픽업하고" (0.0s ~ 3.4s - 가로 한중간 기준 좌 -> 우 천천히 이동)
+        // 1. Phase 1: "10분 빠르게 픽업하고" (0.0s ~ 3.4s - 정중앙 기준 좌 -> 우 미세 글라이딩)
         if (p1El) {
           if (t < 3.4) {
             const p1 = Math.min(1, Math.max(0, t / 3.4));
-            const x1 = (p1 - 0.5) * 70;
+            // 정중앙(0px) 기준 -25px에서 +25px로 부드럽게 글라이딩
+            const x1 = (p1 - 0.5) * 50;
 
             let op1 = 1;
             if (t < 0.25) op1 = t / 0.25;
             else if (t > 3.1) op1 = Math.max(0, (3.4 - t) / 0.3);
 
             p1El.style.opacity = op1.toFixed(3);
-            p1El.style.transform = `translate3d(calc(-50% + ${x1.toFixed(1)}px), 0, 0)`;
+            p1El.style.transform = `translate3d(${x1.toFixed(1)}px, 0, 0)`;
           } else {
             p1El.style.opacity = "0";
           }
         }
 
-        // 2. Phase 2: "10분 빠르게 배송하기위해" (3.4s ~ 6.7s - 가로 한중간 기준 좌 -> 우 천천히 이동, 100% 선명)
+        // 2. Phase 2: "10분 빠르게 배송하기위해" (3.4s ~ 6.7s - 정중앙 기준 좌 -> 우 미세 글라이딩, 선명)
         if (p2El) {
           if (t >= 3.4 && t < 6.7) {
             const p2 = Math.min(1, Math.max(0, (t - 3.4) / 3.3));
-            const x2 = (p2 - 0.5) * 70;
+            const x2 = (p2 - 0.5) * 50;
 
             let op2 = 1;
             if (t < 3.65) op2 = Math.max(0, (t - 3.4) / 0.25);
             else if (t > 6.4) op2 = Math.max(0, (6.7 - t) / 0.3);
 
             p2El.style.opacity = op2.toFixed(3);
-            p2El.style.transform = `translate3d(calc(-50% + ${x2.toFixed(1)}px), 0, 0)`;
+            p2El.style.transform = `translate3d(${x2.toFixed(1)}px, 0, 0)`;
           } else {
             p2El.style.opacity = "0";
           }
         }
 
-        // 3. Phase 3: "오늘도 노력하겠습니다." (6.7s ~ 10.0s - 가로 한중간 기준 우측으로 천천히 이동)
+        // 3. Phase 3: "오늘도 노력하겠습니다." (6.7s ~ 10.0s - 정중앙 기준 우측 방향 글라이딩)
         if (p3El) {
           if (t >= 6.7 && t <= duration) {
             const p3 = Math.min(1, Math.max(0, (t - 6.7) / 3.3));
-            const x3 = -20 + p3 * 55;
+            const x3 = -15 + p3 * 40;
 
             let op3 = 1;
             if (t < 6.95) op3 = Math.max(0, (t - 6.7) / 0.25);
             else if (t > 9.7) op3 = Math.max(0, (duration - t) / 0.3);
 
             p3El.style.opacity = op3.toFixed(3);
-            p3El.style.transform = `translate3d(calc(-50% + ${x3.toFixed(1)}px), 0, 0)`;
+            p3El.style.transform = `translate3d(${x3.toFixed(1)}px, 0, 0)`;
           } else {
             p3El.style.opacity = "0";
           }
@@ -145,37 +146,37 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* ── 3. Bottom Panoramic Synchronized Tagline Stage (3문장 모두 가로 한중간 배치) ── */}
-        <div className="mt-auto pb-8 sm:pb-12 md:pb-16 w-full max-w-lg mx-auto px-4 flex justify-center">
+        {/* ── 3. Bottom Panoramic Synchronized Tagline Stage (화면 가로 완전 정중앙 & 최적 비율) ── */}
+        <div className="mt-auto pb-10 sm:pb-14 md:pb-16 w-full flex justify-center items-center">
           <div
             ref={runwayRef}
-            className="relative h-10 sm:h-12 w-full overflow-hidden flex items-center justify-center pointer-events-none"
+            className="relative h-12 sm:h-14 w-full max-w-2xl mx-auto overflow-hidden flex items-center justify-center pointer-events-none"
           >
-            {/* Phase 1: 10분 빠르게 픽업하고 (가로 한중간, 좌 -> 우 천천히 이동) */}
+            {/* Phase 1: 10분 빠르게 픽업하고 (정중앙 flex 기준) */}
             <div
               ref={phase1Ref}
-              className="absolute left-1/2 will-change-transform whitespace-nowrap text-sm sm:text-base md:text-lg font-bold text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] select-none text-center"
-              style={{ opacity: 0, transform: "translate3d(-50%, 0, 0)" }}
+              className="absolute inset-x-0 mx-auto w-full will-change-transform flex items-center justify-center text-center text-base sm:text-xl md:text-2xl font-bold text-white tracking-tight drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)] select-none"
+              style={{ opacity: 0 }}
             >
-              10분 빠르게 픽업하고
+              <span>10분 빠르게 픽업하고</span>
             </div>
 
-            {/* Phase 2: 10분 빠르게 배송하기위해 (가로 한중간, 좌 -> 우 천천히 이동, 100% 선명) */}
+            {/* Phase 2: 10분 빠르게 배송하기위해 (정중앙 flex 기준) */}
             <div
               ref={phase2Ref}
-              className="absolute left-1/2 will-change-transform whitespace-nowrap text-sm sm:text-base md:text-lg font-bold text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] select-none text-center"
-              style={{ opacity: 0, transform: "translate3d(-50%, 0, 0)" }}
+              className="absolute inset-x-0 mx-auto w-full will-change-transform flex items-center justify-center text-center text-base sm:text-xl md:text-2xl font-bold text-white tracking-tight drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)] select-none"
+              style={{ opacity: 0 }}
             >
-              10분 빠르게 배송하기위해
+              <span>10분 빠르게 배송하기위해</span>
             </div>
 
-            {/* Phase 3: 오늘도 노력하겠습니다. (가로 한중간, 우측 방향 천천히 이동) */}
+            {/* Phase 3: 오늘도 노력하겠습니다. (정중앙 flex 기준) */}
             <div
               ref={phase3Ref}
-              className="absolute left-1/2 will-change-transform whitespace-nowrap text-sm sm:text-base md:text-lg font-bold text-white tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.95)] select-none text-center"
-              style={{ opacity: 0, transform: "translate3d(-50%, 0, 0)" }}
+              className="absolute inset-x-0 mx-auto w-full will-change-transform flex items-center justify-center text-center text-base sm:text-xl md:text-2xl font-bold text-white tracking-tight drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)] select-none"
+              style={{ opacity: 0 }}
             >
-              오늘도 노력하겠습니다.
+              <span>오늘도 노력하겠습니다.</span>
             </div>
           </div>
         </div>
